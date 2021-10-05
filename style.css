@@ -6,12 +6,15 @@ body
 header
 {
     display: flex;
+    flex-direction: column;
     width: 70%;
 }
 
-.logo
+.link-content
 {
-    width: 100%;
+    position: fixed;
+    width: 116px;
+    margin: 0px 46%;
 }
 
 .nav-header
