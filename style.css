@@ -10,17 +10,23 @@ header
     width: 70%;
 }
 
-.link-content
+#link-content
 {
     position: fixed;
     width: 116px;
     margin: 0px 46%;
 }
 
-.hide
+.hide /* Cf scroll JS */
 {
-    opacity:0;
-    left:-100%;
+    opacity: 0;
+    /* left:-100%; */
+}
+
+.show /* Cf scroll JS */
+{
+    opacity: 1;
+    /* left:0; */
 }
 
 .nav-header
