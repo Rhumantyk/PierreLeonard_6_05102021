@@ -1,13 +1,18 @@
+/* General */
+/* Fin General */
+/* Body */
 body
 {
     margin: 0;
 }
 
+/* Header */
 header
 {
     display: flex;
     flex-direction: column;
     width: 70%;
+    float: left;
 }
 
 #link-content
@@ -29,9 +34,25 @@ header
     /* left:0; */
 }
 
+.logo-nav
+{
+    display: flex;
+    flex-direction: row;
+}
+
 .nav-header
 {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
 }
+/* Fin Header */
+
+/* Main */
+#main-title /* Il faut trouver autre chose */
+{
+    display: flex;
+    justify-content: space-around;
+}
+/* Fin Main */
+/* Fin Body */
