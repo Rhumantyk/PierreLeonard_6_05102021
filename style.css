@@ -1,0 +1,22 @@
+body
+{
+    margin: 0;
+}
+
+header
+{
+    display: flex;
+    width: 70%;
+}
+
+.logo
+{
+    width: 100%;
+}
+
+.nav-header
+{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
