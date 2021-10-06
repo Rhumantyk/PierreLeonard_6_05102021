@@ -44,6 +44,7 @@ h2
 body
 {
     margin: 0;
+    font-family: sans-serif;
 }
 
 /* Header */
@@ -59,6 +60,7 @@ header
     position: fixed;
     width: 116px;
     margin: 0px 46%;
+    color: #D3573C;
 }
 
 .hide /* Cf scroll JS */
