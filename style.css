@@ -1,4 +1,14 @@
 /* General */
+a
+{
+    text-decoration: none;
+}
+
+h2
+{
+    color: #D3573C;
+}
+
 .nav-filters /* Statique */
 {
     background-color: white;
