@@ -85,5 +85,33 @@ main
 {
     padding-right: 60px;
 }
+
+.photographers-link
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img-pictures
+{
+    max-width: 119.8px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.photographers-details
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tags-filtered
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
 /* Fin Main */
 /* Fin Body */
