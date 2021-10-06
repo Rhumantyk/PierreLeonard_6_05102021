@@ -1,6 +1,15 @@
 /* General */
+.nav-filters /* Statique */
+{
+    background-color: white;
+    color: #901C1C;
+    border: 1px solid grey;
+    border-radius: 40px;
+    height: 25px;
+    margin: 2px;
+}
 /* Fin General */
-/* Aria General */
+/* ARIA General */
 .screenreader-text
 {
     overflow: hidden;
@@ -11,7 +20,7 @@
     position: absolute;
     width: 1px;
 }
-/* Fin Aria General */
+/* Fin ARIA General */
 /* Body */
 body
 {
