@@ -65,7 +65,6 @@ main
 {
     display: grid;
     height: 100%;
-    grid-template-columns: repeat(6, 1fr);
 
     /* Pour placer h1 main à hauteur du header */
     margin-top: -95px;
@@ -74,11 +73,18 @@ main
 #main-title
 {
     display: flex;
-    justify-content: space-around;
-    grid-column: 7 / -1;
+    justify-content: flex-end;
 
     /* Permet de faire descendre le reste du main */
     margin-bottom: 51px;
+}
+
+#photographers
+{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .h1-main
