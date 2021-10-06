@@ -79,7 +79,12 @@ main
     margin-bottom: 51px;
 }
 
-#photographers
+.h1-main
+{
+    padding-right: 60px;
+}
+
+#photographers /* Main div photographes */
 {
     display: flex;
     flex-wrap: wrap;
@@ -91,11 +96,6 @@ main
 {
     margin-left: 10px;
     margin-right: 10px;
-}
-
-.h1-main
-{
-    padding-right: 60px;
 }
 
 .photographers-link
