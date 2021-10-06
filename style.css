@@ -51,6 +51,15 @@ body
 {
     margin: 0;
     font-family: sans-serif;
+
+    display: block;
+    flex-direction: unset;
+    align-items: unset;
+}
+
+body :nth-child(1) /* Test avec link-content --> Peu convaincant */
+{
+    align-items: center;
 }
 
 /* Header */
@@ -65,8 +74,16 @@ header
 {
     display: flex;
     justify-content: center;
+    position: fixed;
+    width: 150px;
+    margin: 0px 46%;
     background-color: #D3573C;
-    width: calc(100% + 43%);
+
+    /* Mieux mais ne fonctionne pas comme je veux */
+    /*display: flex;
+    justify-content: center;
+    background-color: #D3573C;
+    width: calc(51% + 43%);*/
 }
 
 .hide /* Cf scroll JS */
