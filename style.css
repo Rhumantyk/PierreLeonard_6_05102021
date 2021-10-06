@@ -1,5 +1,17 @@
 /* General */
 /* Fin General */
+/* Aria General */
+.screenreader-text
+{
+    overflow: hidden;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+/* Fin Aria General */
 /* Body */
 body
 {
