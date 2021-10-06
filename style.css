@@ -2,6 +2,7 @@
 a
 {
     text-decoration: none;
+    color: black;
 }
 
 h1
@@ -62,10 +63,10 @@ header
 
 #link-content
 {
-    position: fixed;
-    width: 116px;
-    margin: 0px 46%;
-    color: #D3573C;
+    display: flex;
+    justify-content: center;
+    background-color: #D3573C;
+    width: calc(100% + 43%);
 }
 
 .hide /* Cf scroll JS */
