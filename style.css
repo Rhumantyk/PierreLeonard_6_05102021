@@ -53,12 +53,14 @@ header
 
 .hide /* Cf scroll JS */
 {
+    display: none;
     opacity: 0;
     /* left:-100%; */
 }
 
 .show /* Cf scroll JS */
 {
+    display: inherit; /* Ou bien initial ? */
     opacity: 1;
     /* left:0; */
 }
@@ -85,13 +87,14 @@ main
     height: 100%;
 
     /* Pour placer h1 main à hauteur du header */
-    margin-top: -95px;
+    /* margin-top: -95px; */
 }
 
 #main-title /* Titre index */
 {
     display: flex;
     justify-content: flex-end;
+    margin-top: -93px;
 
     /* Permet de faire descendre le reste du main */
     margin-bottom: 51px;
@@ -133,6 +136,7 @@ main
     max-width: 119.8px;
     height: auto;
     border-radius: 50%;
+    padding-top: 10px;
 }
 
 .photographers-details
