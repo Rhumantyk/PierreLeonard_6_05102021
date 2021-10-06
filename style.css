@@ -157,6 +157,16 @@ main
     line-height: 0;
 }
 
+.photographers-details :nth-child(1)
+{
+    color: #901C1C;
+}
+
+.photographers-details :nth-child(3)
+{
+    color: grey;
+}
+
 .tags-filtered
 {
     display: flex;
