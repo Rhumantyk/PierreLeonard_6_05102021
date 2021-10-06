@@ -126,6 +126,7 @@ main
     flex-direction: row;
     flex-wrap: nowrap;
     margin-bottom: 10%;
+    justify-content: center;
 }
 /* Fin Main */
 /* Fin Body */
