@@ -12,7 +12,6 @@ header
     display: flex;
     flex-direction: column;
     width: 70%;
-    float: left;
 }
 
 #link-content
@@ -38,22 +37,41 @@ header
 {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .nav-header
 {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: center;
 }
 /* Fin Header */
 
 /* Main */
-#main-title /* Il faut trouver autre chose */
+main
+{
+    display: grid;
+    height: 100%;
+    grid-template-columns: repeat(6, 1fr);
+
+    /* Pour placer h1 main à hauteur du header */
+    margin-top: -95px;
+}
+
+#main-title
 {
     display: flex;
     justify-content: space-around;
-    padding-top: 11px;
+    grid-column: 7 / -1;
+
+    /* Permet de faire descendre le reste du main */
+    margin-bottom: 51px;
+}
+
+.h1-main
+{
+    padding-right: 60px;
 }
 /* Fin Main */
 /* Fin Body */
