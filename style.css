@@ -187,18 +187,18 @@ main
 .photographers-details :nth-child(1)
 {
     color: #901C1C;
-    font-size: 1em;
+    font-size: 0.8em;
 }
 
 .photographers-details :nth-child(2)
 {
-    font-size: 0.9em;
+    font-size: 0.7em;
 }
 
 .photographers-details :nth-child(3)
 {
     color: grey;
-    font-size: 0.8em;
+    font-size: 0.6em;
 }
 
 .tags-filtered
