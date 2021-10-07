@@ -112,6 +112,7 @@ header
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
 }
 /* Fin Header */
 
@@ -186,11 +187,18 @@ main
 .photographers-details :nth-child(1)
 {
     color: #901C1C;
+    font-size: 1em;
+}
+
+.photographers-details :nth-child(2)
+{
+    font-size: 0.9em;
 }
 
 .photographers-details :nth-child(3)
 {
     color: grey;
+    font-size: 0.8em;
 }
 
 .tags-filtered
