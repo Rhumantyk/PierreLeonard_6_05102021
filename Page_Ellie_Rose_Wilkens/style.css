@@ -11,5 +11,13 @@ a
 /* Header */
 /* Fin Header */
 /* Main */
+.tags-filtered
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-bottom: 10%;
+    justify-content: center;
+}
 /* Fin Main */
 /* Fin Body */
