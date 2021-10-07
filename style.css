@@ -26,6 +26,8 @@ h2
     display: flex;
     align-items: center;
     text-decoration: none;
+    font-size: 0.7em;
+    font-weight: 600;
 }
 
 .nav-filters:hover
@@ -192,13 +194,13 @@ main
 
 .photographers-details :nth-child(2)
 {
-    font-size: 0.7em;
+    font-size: 0.6em;
 }
 
 .photographers-details :nth-child(3)
 {
     color: grey;
-    font-size: 0.6em;
+    font-size: 0.52em;
 }
 
 .tags-filtered
