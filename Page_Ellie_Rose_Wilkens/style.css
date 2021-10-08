@@ -152,13 +152,6 @@ nav ul
     list-style-type: none;
 }
 
-/* nav ul li
-{
-    float: left;
-    width: 25%;
-    text-align: center;
-} */
-
 nav ul::after /* À quoi ça sert ? */
 {
     content: "";
@@ -178,6 +171,9 @@ nav a
     display: none;
     box-shadow: 0px, 1px, 2px green;
     background-color: #901C1C;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
 }
 
 nav > ul:hover .sous
