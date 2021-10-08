@@ -11,10 +11,11 @@ button
     background-color: #901C1C;
     border-radius: 6px;
     border-width: inherit;
-    height: 59.44px;
+    height: 35%;
+    width: 151px;
     font-weight: 700;
-    padding-left: 3%;
-    padding-right: 3%;
+    font-size: 1em;
+    margin-left: 20%;
 }
 
 button:hover
@@ -78,21 +79,11 @@ body
     flex-wrap: nowrap;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
-    margin-left: 2%;
-    margin-right: 2%;
+    align-items: flex-start;
+    margin-left: 4%;
+    margin-right: 4%;
     padding-top: 20px;
     padding-bottom: 20px;
-}
-
-/* #contact-details :nth-child(2)
-{
-    background-color: red;
-} */
-
-#contact-details :nth-child(2)
-{
-    flex-basis: 40%;
 }
 
 .photographers-details
@@ -101,6 +92,9 @@ body
     flex-direction: column;
     align-items: center;
     /* line-height: 0; */
+    flex-wrap: wrap;
+    height: 227px;
+    margin-right: 31.4%;
 }
 
 .photographers-details p:nth-child(2)
@@ -110,6 +104,8 @@ body
 
 .photographers-details p:nth-child(3)
 {
+    display: flex;
+    align-items: center;
     color: grey;
     font-size: 0.8em;
 }
@@ -125,13 +121,20 @@ body
 
 .contact-me
 {
-    height: 100%;
+    flex-basis: 29%;
+}
+
+.div-photo
+{
+    display: flex;
+    align-items: center;
+    height: 226px;
 }
 
 .img-pictures
 {
-    width: 120px;
-    height: 120px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     border-radius: 50%;
 }
