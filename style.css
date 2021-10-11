@@ -156,6 +156,8 @@ main
 {
     margin-left: 10px;
     margin-right: 10px;
+    max-width: 240px;
+    min-width: 240px;
 }
 
 .photographers-link
