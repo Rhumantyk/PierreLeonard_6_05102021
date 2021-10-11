@@ -226,6 +226,21 @@ nav > ul:hover .sous
     min-height: 230px;
 }
 
+.medias-work-details
+{
+    display: flex;
+}
+
+.medias-work-details :nth-child(1)
+{
+    padding-right: 10px;
+}
+
+.medias-work-details :nth-child(2)
+{
+    padding-right: 10px;
+}
+
 #like-price
 {
     position: fixed;
