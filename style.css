@@ -78,8 +78,12 @@ header
     justify-content: center;
     position: fixed;
     width: 150px;
+    height: 30px;
     margin: 0px 46%;
-    background-color: #D3573C;
+    background-color: #DB8876;
+    font-weight: 600;
+    margin-top: 0.3%;
+    border-radius: 5px;
 
     /* Mieux mais ne fonctionne pas comme je veux */
     /*display: flex;
