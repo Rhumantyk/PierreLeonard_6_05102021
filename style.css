@@ -84,12 +84,8 @@ header
     font-weight: 600;
     margin-top: 0.3%;
     border-radius: 5px;
-
-    /* Mieux mais ne fonctionne pas comme je veux */
-    /*display: flex;
-    justify-content: center;
-    background-color: #D3573C;
-    width: calc(51% + 43%);*/
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .hide /* Cf scroll JS */
