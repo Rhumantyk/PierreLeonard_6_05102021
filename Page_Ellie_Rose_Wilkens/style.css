@@ -200,12 +200,30 @@ nav > ul:hover .sous
 }
     /* Fin Partie tri + images */
 
+.photographers-images
+{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.photographers-images > div
+{
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
 .medias-work
 {
     object-fit: cover;
-    width: 250px;
-    height: 250px;
     border-radius: 6px;
+    margin-left: 10px;
+    margin-right: 10px;
+    max-width: 230px;
+    min-width: 230px;
+    max-height: 230px;
+    min-height: 230px;
 }
 
 #like-price
