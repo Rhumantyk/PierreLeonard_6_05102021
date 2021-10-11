@@ -198,6 +198,15 @@ nav > ul:hover .sous
 {
     content: " ▼";
 }
+    /* Fin Partie tri + images */
+
+.medias-work
+{
+    object-fit: cover;
+    width: 250px;
+    height: 250px;
+    border-radius: 6px;
+}
 
 #like-price
 {
@@ -208,8 +217,8 @@ nav > ul:hover .sous
     right: 0;
     margin-right: 2%;
     background-color: #DB8876;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 #like-price p
