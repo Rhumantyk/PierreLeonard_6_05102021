@@ -201,7 +201,7 @@ nav > ul:hover .sous
 
 #like-price
 {
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-wrap: nowrap;
     bottom: 0;
