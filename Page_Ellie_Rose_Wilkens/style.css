@@ -198,5 +198,24 @@ nav > ul:hover .sous
 {
     content: " ▼";
 }
+
+#like-price
+{
+    position: absolute;
+    display: flex;
+    flex-wrap: nowrap;
+    bottom: 0;
+    right: 0;
+    margin-right: 2%;
+    background-color: #D3573C;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+#like-price p
+{
+    padding-right: 25px;
+    padding-left: 25px;
+}
 /* Fin Main */
 /* Fin Body */
