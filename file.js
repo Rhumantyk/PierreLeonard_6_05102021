@@ -1,28 +1,10 @@
-
-// function myScrollFunc() // Scroll page
-// {
-//     myID = document.getElementById("#link-content"); 
-//     let y = window.scrollY;
-//     if (y >= 10)
-//     {
-//         myID.classList.add = "show";
-//         myID.classList.remove = "hide";
-//     }
-//     else
-//     {
-//         myID.classList.add = "hide";
-//         myID.classList.remove = "show";
-//     }
-// };
-
-// window.addEventListener("scroll", myScrollFunc);
-
-window.onscroll = function(e)
+window.onscroll = function(e) // L'élément scroll est déclenché quand l'utilisateur fait défiler le contenu.
 { 
+    // Renvoie le nbr de pixel que le document défile (pour les 2).
     var scrollY = window.pageYOffset || document.documentElement.scrollTop;
-    var content = document.querySelector('#link-content');
+    var content = document.querySelector('#link-content'); // #id ciblé
 
-    scrollY <= this.lastScroll 
+    scrollY <= this.lastScroll // Si nbr de pixels (de la page) défilés est <= (à) 0
       ? content.style.visibility = 'hidden'
       : content.style.visibility = 'visible';
 
