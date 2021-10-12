@@ -10,3 +10,15 @@ window.onscroll = function(e) // L'élément scroll est déclenché quand l'util
 
     this.lastScroll = scrollY ;
 }
+
+function tagsFilter()
+{
+    let sports = ["Ellie-Rose Wilkens", "Rhode Dubois"];
+    let portraits = ["Mimi Keel", "Nabeel Bradford", ];
+    let event = ["Mimi Keel", "Tracy Galindo", "Rhode Dubois"];
+    let travel = ["Mimi Keel", "Nabeel Bradford", "Marcel Nikolic"]
+    let animals = ["Mimi Keel", "Rhode Dubois"];
+    let architecture = ["Ellie-Rose Wilkens", "Marcel Nikolic"];
+    let art = ["Tracy Galindo"];
+    let fashion = ["Tracy Galindo", "Rhode Dubois"]
+}
