@@ -15,51 +15,8 @@ window.onscroll = function(e) // L'élément scroll est déclenché quand l'util
 
 
 
-// Clic sur tag = photographes ciblés apparaissent.
-// Div avec les classes associées soient spécifiées dans la function
+// Clic sur #Tag = photographes ciblés apparaissent.
 
-// function tagsFilter()
-// {
-//   // let sports = ["Ellie-Rose Wilkens", "Rhode Dubois"];
-//   // let portraits = ["Mimi Keel", "Nabeel Bradford", ];
-//   // let event = ["Mimi Keel", "Tracy Galindo", "Rhode Dubois"];
-//   // let travel = ["Mimi Keel", "Nabeel Bradford", "Marcel Nikolic"]
-//   // let animals = ["Mimi Keel", "Rhode Dubois"];
-//   // let architecture = ["Ellie-Rose Wilkens", "Marcel Nikolic"];
-//   // let art = ["Tracy Galindo"];
-//   // let fashion = ["Tracy Galindo", "Rhode Dubois"];
-
-//   // document.getElementsByClassName("nav-header").onclick = function tagsFilter(e)
-//   // {
-//   //   mimiKeelDiv = document.getElementsByClassName("mimi-keel");
-
-//   //   if(e.target = document.getElementsByClassName("portrait-tag"))
-//   //   {
-//   //     // Rien
-//   //           // display : none; pour les photographes non tagués.
-//   //           mimiKeelDiv.style.display = 'none';     
-//   //   }
-//   //   else
-//   //   {
-//   //   //   // display : none; pour les photographes non tagués.
-//   //   //   mimiKeelDiv.style.display = 'none';
-//   //   }
-
-
-
-
-//   // div 1 = text
-//   // <a> 2 = link
-
-//   document.getElementsByClassName("portrait-tag").addEventListener('click',function(e)
-//   {
-//     document.getElementById("mimi-keel").style.display = 'none';
-//   });
-// }
-
-
-
-// Test function 2
 // querySelectorAll("#mimi-keel, #nabeel-bradford", #etc ...);   --> Pourquoi ça ne fonctionne pas ?
 const ellieRoseWilkens = document.getElementById("ellie-rose-wilkens");
 const tracyGalindo = document.getElementById("tracy-galindo");
@@ -68,27 +25,8 @@ const marcelNikolic = document.getElementById("marcel-nikolic");
 const nabeelBradford = document.getElementById("nabeel-bradford");
 const mimiKeel = document.getElementById("mimi-keel");
 
-
-
-// const portraitTag = document.getElementById("portrait-tag"); // tagBtn#
-// portraitTag.onclick = function ()
-// {
-//   if (ellieRoseWilkens.style.display !== "none") // portraitTag.clicked == true
-//   {
-//     ellieRoseWilkens.style.display = "none";
-//     tracyGalindo.style.display = "none";
-//     rhodeDubois.style.display = "none";
-//     marcelNikolic.style.display = "none";
-//   }
-//   else
-//   {
-//     nabeelBradford.style.display = "block";
-//     mimiKeel.style.display = "block";
-//   }
-// };
-
-
-const portraitTag = document.getElementById("portrait-tag"); // tagBtn#
+// #Portraits
+const portraitTag = document.getElementById("portrait-tag");
 portraitTag.addEventListener("click", () =>
 {
   ellieRoseWilkens.style.display = "none";
@@ -99,12 +37,24 @@ portraitTag.addEventListener("click", () =>
   mimiKeel.style.display = "block";
 });
 
-
-const artTag = document.getElementById("art-tag"); // tagBtn#
+// #Art
+const artTag = document.getElementById("art-tag");
 artTag.addEventListener("click", () =>
 {
   ellieRoseWilkens.style.display = "none";
   rhodeDubois.style.display = "none";
+  marcelNikolic.style.display = "none";
+  nabeelBradford.style.display = "none";
+  mimiKeel.style.display = "none";
+  tracyGalindo.style.display = "block";
+});
+
+// #Fashion
+const fashionTag = document.getElementById("fashion-tag");
+fashionTag.addEventListener("click", () =>
+{
+  ellieRoseWilkens.style.display = "none";
+  rhodeDubois.style.display = "block";
   marcelNikolic.style.display = "none";
   nabeelBradford.style.display = "none";
   mimiKeel.style.display = "none";
@@ -126,18 +76,6 @@ artTag.addEventListener("click", () =>
 //   else
 //   {
 //     tracyGalindo.style.display = "block";
-//   }
-// };
-
-
-
-// const targetDiv = document.getElementById("third");
-// const btn = document.getElementById("toggle");
-// btn.onclick = function () {
-//   if (targetDiv.style.display !== "none") {
-//     targetDiv.style.display = "none";
-//   } else {
-//     targetDiv.style.display = "block";
 //   }
 // };
 
