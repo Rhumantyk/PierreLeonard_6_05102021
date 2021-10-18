@@ -61,6 +61,42 @@ fashionTag.addEventListener("click", () =>
   tracyGalindo.style.display = "block";
 });
 
+// #Architecture
+const architectureTag = document.getElementById("architecture-tag");
+architectureTag.addEventListener("click", () =>
+{
+  ellieRoseWilkens.style.display = "block";
+  rhodeDubois.style.display = "none";
+  marcelNikolic.style.display = "block";
+  nabeelBradford.style.display = "none";
+  mimiKeel.style.display = "none";
+  tracyGalindo.style.display = "none";
+});
+
+// #Travel
+const travelTag = document.getElementById("travel-tag");
+travelTag.addEventListener("click", () =>
+{
+  ellieRoseWilkens.style.display = "none";
+  rhodeDubois.style.display = "none";
+  marcelNikolic.style.display = "block";
+  nabeelBradford.style.display = "block";
+  mimiKeel.style.display = "block";
+  tracyGalindo.style.display = "none";
+});
+
+// #Sport
+const sportTag = document.getElementById("sport-tag");
+sportTag.addEventListener("click", () =>
+{
+  ellieRoseWilkens.style.display = "block";
+  rhodeDubois.style.display = "block";
+  marcelNikolic.style.display = "none";
+  nabeelBradford.style.display = "none";
+  mimiKeel.style.display = "none";
+  tracyGalindo.style.display = "none";
+});
+
 
 // const artTag = document.getElementById("art-tag"); // tagBtn#
 // artTag.onclick = function ()
