@@ -60,21 +60,33 @@ window.onscroll = function(e) // L'élément scroll est déclenché quand l'util
 
 
 // Test function 2
+// querySelectorAll("#mimi-keel, #nabeel-bradford", #etc ...);   --> Pourquoi ça ne fonctionne pas ?
+const targetPortrait1 = document.getElementById("ellie-rose-wilkens"); // Photographes n'ayant pas #Portrait
+const targetPortrait2 = document.getElementById("tracy-galindo"); // Photographes n'ayant pas #Portrait
+const targetPortrait3 = document.getElementById("rhode-dubois"); // Photographes n'ayant pas #Portrait
+const targetPortrait4 = document.getElementById("marcel-nikolic"); // Photographes n'ayant pas #Portrait
 
-const targetPortrait = [document.getElementById("mimi-keel"), document.getElementById("nabeel-bradford")]; // Photographes à hide
-// querySelectorAll("#mimi-keel, #nabeel-bradford");   --> Pourquoi ça ne fonctionne pas ?
+// const targetPortrait = document.getElementById("mimi-keel");
+// const targetPortrait = document.getElementById("mimi-keel");
+// const targetPortrait = document.getElementById("mimi-keel");
+// const targetPortrait = document.getElementById("mimi-keel");
+
 //getElementById("mimi-keel");
-const tag = document.getElementById("portrait-tag"); // tagBtn#
-tag.onclick = function ()
+const portraitTag = document.getElementById("portrait-tag"); // tagBtn#
+portraitTag.onclick = function ()
 {
-  if (targetPortrait.style.display !== "none")
+  if (targetPortrait1.style.display !== "none" & targetPortrait2.style.display !== "none")
   {
-    targetPortrait.style.display = "none";
+    targetPortrait1.style.display = "none";
+    targetPortrait2.style.display = "none";
+    targetPortrait3.style.display = "none";
+    targetPortrait4.style.display = "none";
   }
-  else
-  {
-    targetPortrait.style.display = "block";
-  }
+
+  // else
+  // {
+  //   targetPortrait.style.display = "block";
+  // }
 };
 
 
