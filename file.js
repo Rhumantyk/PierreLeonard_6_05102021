@@ -61,7 +61,9 @@ window.onscroll = function(e) // L'élément scroll est déclenché quand l'util
 
 // Test function 2
 
-const targetPortrait = document.getElementById("mimi-keel");
+const targetPortrait = [document.getElementById("mimi-keel"), document.getElementById("nabeel-bradford")]; // Photographes à hide
+// querySelectorAll("#mimi-keel, #nabeel-bradford");   --> Pourquoi ça ne fonctionne pas ?
+//getElementById("mimi-keel");
 const tag = document.getElementById("portrait-tag"); // tagBtn#
 tag.onclick = function ()
 {
@@ -69,10 +71,10 @@ tag.onclick = function ()
   {
     targetPortrait.style.display = "none";
   }
-  // else
-  // {
-  //   targetPortrait.style.display = "block";
-  // }
+  else
+  {
+    targetPortrait.style.display = "block";
+  }
 };
 
 
