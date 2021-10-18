@@ -61,33 +61,74 @@ window.onscroll = function(e) // L'élément scroll est déclenché quand l'util
 
 // Test function 2
 // querySelectorAll("#mimi-keel, #nabeel-bradford", #etc ...);   --> Pourquoi ça ne fonctionne pas ?
-const targetPortrait1 = document.getElementById("ellie-rose-wilkens"); // Photographes n'ayant pas #Portrait
-const targetPortrait2 = document.getElementById("tracy-galindo"); // Photographes n'ayant pas #Portrait
-const targetPortrait3 = document.getElementById("rhode-dubois"); // Photographes n'ayant pas #Portrait
-const targetPortrait4 = document.getElementById("marcel-nikolic"); // Photographes n'ayant pas #Portrait
+const ellieRoseWilkens = document.getElementById("ellie-rose-wilkens");
+const tracyGalindo = document.getElementById("tracy-galindo");
+const rhodeDubois = document.getElementById("rhode-dubois");
+const marcelNikolic = document.getElementById("marcel-nikolic");
+const nabeelBradford = document.getElementById("nabeel-bradford");
+const mimiKeel = document.getElementById("mimi-keel");
 
-// const targetPortrait = document.getElementById("mimi-keel");
-// const targetPortrait = document.getElementById("mimi-keel");
-// const targetPortrait = document.getElementById("mimi-keel");
-// const targetPortrait = document.getElementById("mimi-keel");
 
-//getElementById("mimi-keel");
+
+// const portraitTag = document.getElementById("portrait-tag"); // tagBtn#
+// portraitTag.onclick = function ()
+// {
+//   if (ellieRoseWilkens.style.display !== "none") // portraitTag.clicked == true
+//   {
+//     ellieRoseWilkens.style.display = "none";
+//     tracyGalindo.style.display = "none";
+//     rhodeDubois.style.display = "none";
+//     marcelNikolic.style.display = "none";
+//   }
+//   else
+//   {
+//     nabeelBradford.style.display = "block";
+//     mimiKeel.style.display = "block";
+//   }
+// };
+
+
 const portraitTag = document.getElementById("portrait-tag"); // tagBtn#
-portraitTag.onclick = function ()
+portraitTag.addEventListener("click", () =>
 {
-  if (targetPortrait1.style.display !== "none" & targetPortrait2.style.display !== "none")
-  {
-    targetPortrait1.style.display = "none";
-    targetPortrait2.style.display = "none";
-    targetPortrait3.style.display = "none";
-    targetPortrait4.style.display = "none";
-  }
+  ellieRoseWilkens.style.display = "none";
+  tracyGalindo.style.display = "none";
+  rhodeDubois.style.display = "none";
+  marcelNikolic.style.display = "none";
+  nabeelBradford.style.display = "block";
+  mimiKeel.style.display = "block";
+});
 
-  // else
-  // {
-  //   targetPortrait.style.display = "block";
-  // }
-};
+
+const artTag = document.getElementById("art-tag"); // tagBtn#
+artTag.addEventListener("click", () =>
+{
+  ellieRoseWilkens.style.display = "none";
+  rhodeDubois.style.display = "none";
+  marcelNikolic.style.display = "none";
+  nabeelBradford.style.display = "none";
+  mimiKeel.style.display = "none";
+  tracyGalindo.style.display = "block";
+});
+
+
+// const artTag = document.getElementById("art-tag"); // tagBtn#
+// artTag.onclick = function ()
+// {
+//   if (ellieRoseWilkens.style.display !== "none")
+//   {
+//     ellieRoseWilkens.style.display = "none";
+//     rhodeDubois.style.display = "none";
+//     marcelNikolic.style.display = "none";
+//     nabeelBradford.style.display = "none";
+//     mimiKeel.style.display = "none";
+//   }
+//   else
+//   {
+//     tracyGalindo.style.display = "block";
+//   }
+// };
+
 
 
 // const targetDiv = document.getElementById("third");
