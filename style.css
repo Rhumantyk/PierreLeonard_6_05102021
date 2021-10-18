@@ -119,6 +119,19 @@ header
     justify-content: space-between;
 }
 
+@media screen and (max-width: 768px) /* Test media queries */
+{
+    .logo-nav
+    {
+        width: 50%;
+    }
+    .fisheye-img
+    {
+        width: 100%;
+        height: auto;
+    }
+}
+
 @media screen and (max-width: 1153px) /* Test media queries */
 {
     .logo-nav :nth-child(2)
