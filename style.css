@@ -139,7 +139,7 @@ header
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        position: fixed;
+        position: absolute;
         width: 100%;
         margin-top: 170px;
     }
@@ -173,6 +173,10 @@ main
 
     /* Permet de faire descendre le reste du main */
     margin-bottom: 51px;
+
+    right: 0px;
+    width: 50%;
+    position: absolute;
 }
 
 .h1-main
