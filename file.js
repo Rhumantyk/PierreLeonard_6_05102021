@@ -5,8 +5,8 @@ window.onscroll = function(e) // L'élément scroll est déclenché quand l'util
     var content = document.querySelector('#link-content'); // #id ciblé
 
     scrollY <= this.lastScroll // Si nbr de pixels (de la page) défilés est <= (à) 0
-      ? content.style.visibility = 'hidden'
-      : content.style.visibility = 'visible';
+      ? content.style.visibility = 'hidden' // alors
+      : content.style.visibility = 'visible'; // (...) si non
 
     this.lastScroll = scrollY ;
 }
