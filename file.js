@@ -1,4 +1,4 @@
-window.onscroll = function(e) // L'élément scroll est déclenché quand l'utilisateur fait défiler le contenu.
+window.onscroll = function() // L'élément scroll est déclenché quand l'utilisateur fait défiler le contenu.
 { 
     // Renvoie le nbr de pixel que le document défile (pour les 2).
     var scrollY = window.pageYOffset || document.documentElement.scrollTop;
@@ -12,7 +12,10 @@ window.onscroll = function(e) // L'élément scroll est déclenché quand l'util
 }
 
 
-
+fetch('/FishEyeData.json')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.log(error));
 
 // // Version initiale manuelle à supprimer
 // // Clic sur #Tag = photographes ciblés apparaissent.
