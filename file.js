@@ -12,12 +12,170 @@ window.onscroll = function() // L'élément scroll est déclenché quand l'utili
 }
 
 
-fetch('/FishEyeData.json')
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.log(error));
 
-// // Version initiale manuelle à supprimer
+// const jsonFile = '/FishEyeData.json';
+
+
+
+// fetch('/FishEyeData.json')
+//   .then(response => response.json())
+//   .then(data => console.log(data))
+//   .catch(error => console.log(error))
+
+
+
+
+
+
+// let data = [];
+
+// fetch('/FishEyeData.json')
+//   .then(response => response.json())
+//   .then((value) => 
+// // tu affectes les données à la variable data  
+// data = value
+// // ou tu affectes les données à une fonction
+// // function deployFishEyeData(data) 
+// // ou tu mappes tes données (Une fonction qui appelle une classe qui crée un object js à partir du json - moins utile ici, mais en gros tu les réorganises en un nouvel objet javascript adapté à tes besoins)
+// // mapFishEyeData(data)
+// )
+
+
+  // if(data.length)
+  // {
+  //   let divPhotographers = document.getElementById("photographers");
+  //   divPhotographers.innerHTML = data.photographers[3];
+  //   console.log(data);
+  // }
+
+
+
+
+
+
+
+
+
+
+// let data = [];
+
+  fetch('/FishEyeData.json')
+  .then(response => response.json())
+  .then(function (data) {
+      appendData(data);
+    }) 
+  // data = value;
+
+  function appendData(data)
+  {
+    var mainContainer = document.getElementById("photographers");
+    for (var i = 0; i < data.length; i++)
+    {
+      var div = document.createElement("div");
+      div.innerHTML = 'Name: ' + data[i].firstName + ' ' + data[i].lastName;
+      mainContainer.appendChild(div);
+    }
+  }
+
+
+  
+
+// let divPhotographers = document.querySelector("photographers");
+// divPhotographers.innerHTML = data.photographers[3];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // Version initiale manuelle à supprimer plus tard
+
 // // Clic sur #Tag = photographes ciblés apparaissent.
 // const ellieRoseWilkens = document.getElementById("ellie-rose-wilkens");
 // const tracyGalindo = document.getElementById("tracy-galindo");
