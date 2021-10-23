@@ -94,12 +94,10 @@ window.onscroll = function() // L'élément scroll est déclenché quand l'utili
 
 const file = '/FishEyeData.json';
 
-
-
-fetch('/FishEyeData.json')
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.log(error))
+// fetch(file)
+//   .then(response => response.json())
+//   .then(data => console.log(data))
+//   .catch(error => console.log(error))
 
 // Récupération des données
 async function fetchData(file)
@@ -110,19 +108,18 @@ async function fetchData(file)
 }
 
 // Main Div 
-const divPhotographers = document.getElementById("photographers");
+const divPhotographers = document.getElementById('photographers');
 
 // Traitement des données
-const DATA = fetchData(file).then((data) => // Puisqu'async, .then sert à attendre la réponse.
+const data = fetchData(file).then((data) => // Puisqu'il y a une function async, .then sert à en attendre la réponse.
 {
-  data.photographers.ForEach((item) => // Boucle puisqu'il y a des tableaux dans le fichier JSON.
+  data.photographers.forEach((item) => // Boucle puisqu'il y a des tableaux dans le fichier JSON.
   {
     console.log(item);
-    const content = document.createElement('div');
-    content.innerHTML = `<div class = 'card'><h2>NAME :${item.name}</h2><h3>${item.city}</h3><h3>${item.price} €</h3></div>`;
-    divPhotographers.appendChild(content);
+    // const content = document.createElement('div');
+    divPhotographers.innerHTML = `<div class = 'card'><h2>NAME :${item.name}</h2><h3>${item.city}</h3><h3>${item.price} €</h3></div>`;
+    // divPhotographers.appendChild(content);
   });
-  return DATA;
 });
 
 
