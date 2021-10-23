@@ -116,9 +116,9 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
   data.photographers.forEach((item) => // Boucle puisqu'il y a des tableaux dans le fichier JSON.
   {
     console.log(item);
-    // const content = document.createElement('div');
+    const content = document.createElement('div');
     divPhotographers.innerHTML = `<div class = 'card'><h2>NAME :${item.name}</h2><h3>${item.city}</h3><h3>${item.price} €</h3></div>`;
-    // divPhotographers.appendChild(content);
+    divPhotographers.appendChild(content);
   });
 });
 
