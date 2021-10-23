@@ -41,12 +41,31 @@ window.onscroll = function() // L'élément scroll est déclenché quand l'utili
 // )
 
 
-  // if(data.length)
-  // {
-  //   let divPhotographers = document.getElementById("photographers");
-  //   divPhotographers.innerHTML = data.photographers[3];
-  //   console.log(data);
-  // }
+//   if(data.length)
+//   {
+//     let divPhotographers = document.getElementById("photographers");
+//     divPhotographers.innerHTML = data.photographers[3];
+//     console.log(data);
+//   }
+
+
+
+
+//   let data = [];
+
+// fetch('/FishEyeData.json')
+//   .then(response => response.json())
+//   .then((value) =>
+//   data = value
+//   )
+
+
+//   if(data.length)
+//   {
+//     let divPhotographers = document.getElementById("photographers");
+//     divPhotographers.innerHTML = data.photographers[3];
+//     console.log(data);
+//   }
 
 
 
@@ -56,26 +75,6 @@ window.onscroll = function() // L'élément scroll est déclenché quand l'utili
 
 
 
-
-// let data = [];
-
-  fetch('/FishEyeData.json')
-  .then(response => response.json())
-  .then(function (data) {
-      appendData(data);
-    }) 
-  // data = value;
-
-  function appendData(data)
-  {
-    var mainContainer = document.getElementById("photographers");
-    for (var i = 0; i < data.length; i++)
-    {
-      var div = document.createElement("div");
-      div.innerHTML = 'Name: ' + data[i].firstName + ' ' + data[i].lastName;
-      mainContainer.appendChild(div);
-    }
-  }
 
 
   
@@ -93,7 +92,38 @@ window.onscroll = function() // L'élément scroll est déclenché quand l'utili
 
 
 
+const file = '/FishEyeData.json';
 
+
+
+fetch('/FishEyeData.json')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.log(error))
+
+// Récupération des données
+async function fetchData(file)
+{
+  const getData = await fetch(file);
+  const json = await getData.json();
+  return json;
+}
+
+// Main Div 
+const divPhotographers = document.getElementById("photographers");
+
+// Traitement des données
+const DATA = fetchData(file).then((data) => // Puisqu'async, .then sert à attendre la réponse.
+{
+  data.photographers.ForEach((item) => // Boucle puisqu'il y a des tableaux dans le fichier JSON.
+  {
+    console.log(item);
+    const content = document.createElement('div');
+    content.innerHTML = `<div class = 'card'><h2>NAME :${item.name}</h2><h3>${item.city}</h3><h3>${item.price} €</h3></div>`;
+    divPhotographers.appendChild(content);
+  });
+  return DATA;
+});
 
 
 
