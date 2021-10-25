@@ -71,7 +71,7 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       photographersCard.appendChild(photographerLink); // Appartient à la div photographersCard.
       photographersCard.innerHTML =
       `<a href="/Page_Mimi_Keel/mimi_keel.html" class="photographers-link">
-          <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${item.portrait}" alt="Mimi Keel" class="img-pictures">
+          <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${item.portrait}" alt="${item.name}" class="img-pictures">
           <h2>${item.name}</h2>
           <span class="screenreader-text">Mimi Keel</span>
       </a>`; // Ajout HTML.  <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/MimiKeel.jpg" alt="Mimi Keel"
