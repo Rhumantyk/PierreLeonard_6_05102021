@@ -67,19 +67,24 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
     photographersCard.classList.add('photographers-card'); // Ajout de la classe correspondante.
     divPhotographers.appendChild(photographersCard); // Appartient à la div divPhotographers.
 
-    const photographerLink = document.createElement('div'); // Création de div contenant le lien du photographe.
-    photographersCard.appendChild(photographerLink); // Appartient à la div photographersCard.
-    photographersCard.innerHTML =
-    `<a href="/Page_Mimi_Keel/mimi_keel.html" class="photographers-link">
-        <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/MimiKeel.jpg" alt="Mimi Keel" class="img-pictures">
-        <h2>${item.name}</h2>
-        <span class="screenreader-text">Mimi Keel</span>
-    </a>`; // Ajout HTML.
+      const photographerLink = document.createElement('div'); // Création de div contenant le lien du photographe.
+      photographersCard.appendChild(photographerLink); // Appartient à la div photographersCard.
+      photographersCard.innerHTML =
+      `<a href="/Page_Mimi_Keel/mimi_keel.html" class="photographers-link">
+          <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${item.portrait}" alt="Mimi Keel" class="img-pictures">
+          <h2>${item.name}</h2>
+          <span class="screenreader-text">Mimi Keel</span>
+      </a>`; // Ajout HTML.  <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/MimiKeel.jpg" alt="Mimi Keel"
 
-    const photographersDetails = document.createElement('div'); // Création de div photographers-details.
-    photographersDetails.classList.add('photographers-details'); // Ajout de la classe correspondante.
-    photographersCard.appendChild(photographersDetails); // Appartient à la div photographersCard.
-    photographersDetails.innerHTML = `<p>${item.city}, ${item.country}</p><p>${item.tagline}</p><p>${item.price} €</p>`; // Ajout HTML.
+      const photographersDetails = document.createElement('div'); // Création de div photographers-details.
+      photographersDetails.classList.add('photographers-details'); // Ajout de la classe correspondante.
+      photographersCard.appendChild(photographersDetails); // Appartient à la div photographersCard.
+      photographersDetails.innerHTML = `<p>${item.city}, ${item.country}</p><p>${item.tagline}</p><p>${item.price} €</p>`; // Ajout HTML.
+
+      const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
+      tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
+      photographersCard.appendChild(tagsFiltered); // Appartient à la div photographersCard.
+      tagsFiltered.innerHTML = `<a>${item.tags}</a>`; // Ajout HTML.
   });
 });
 
