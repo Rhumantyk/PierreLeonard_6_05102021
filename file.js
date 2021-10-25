@@ -60,11 +60,10 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
       tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
       photographersCard.appendChild(tagsFiltered); // Appartient à la div photographersCard.
-      // tagsFiltered.innerHTML = `<a href="#" class="nav-filters">${photographers.tags}</a>`; // Ajout HTML. 
 
       photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
       {
-        tagsFiltered.innerHTML += `<a href="#" class="nav-filters">#${tag}</a>`; // Ajout HTML. ${tag} seul car c'est une string.
+        tagsFiltered.innerHTML += `<a href="#" class="nav-filters">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
       });
   });
 });
