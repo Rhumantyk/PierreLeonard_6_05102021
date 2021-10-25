@@ -54,15 +54,7 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
 {
   data.photographers.forEach((photographer) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
   {
-    console.log(photographer);
-    // const content = document.createElement('div');
-    // divPhotographers.appendChild(content);
-    // divPhotographers.innerHTML = `<div class = 'card'><h2>${photographers.name}</h2><h3>${photographers.city}</h3><h3>${photographers.price} €</h3></div>`;
-
-
-
     // Création de la main div des photographes //
-    // divPhotographers.innerHTML = `<div class = 'card'><h2>${photographers.name}</h2><h3>${photographers.city}</h3><h3>${photographers.price} €</h3></div>`;
     const photographersCard = document.createElement('div'); // Création de div photographers-card.
     photographersCard.classList.add('photographers-card'); // Ajout de la classe correspondante.
     divPhotographers.appendChild(photographersCard); // Appartient à la div divPhotographers.
