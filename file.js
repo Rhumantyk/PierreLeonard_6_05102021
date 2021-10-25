@@ -27,67 +27,6 @@ window.onscroll = function() // L'élément scroll est déclenché quand l'utili
 
 
 
-// let data = [];
-
-// fetch('/FishEyeData.json')
-//   .then(response => response.json())
-//   .then((value) => 
-// // tu affectes les données à la variable data  
-// data = value
-// // ou tu affectes les données à une fonction
-// // function deployFishEyeData(data) 
-// // ou tu mappes tes données (Une fonction qui appelle une classe qui crée un object js à partir du json - moins utile ici, mais en gros tu les réorganises en un nouvel objet javascript adapté à tes besoins)
-// // mapFishEyeData(data)
-// )
-
-
-//   if(data.length)
-//   {
-//     let divPhotographers = document.getElementById("photographers");
-//     divPhotographers.innerHTML = data.photographers[3];
-//     console.log(data);
-//   }
-
-
-
-
-//   let data = [];
-
-// fetch('/FishEyeData.json')
-//   .then(response => response.json())
-//   .then((value) =>
-//   data = value
-//   )
-
-
-//   if(data.length)
-//   {
-//     let divPhotographers = document.getElementById("photographers");
-//     divPhotographers.innerHTML = data.photographers[3];
-//     console.log(data);
-//   }
-
-
-
-
-
-
-
-
-
-
-
-  
-
-// let divPhotographers = document.querySelector("photographers");
-// divPhotographers.innerHTML = data.photographers[3];
-
-
-
-
-
-
-
 
 
 
@@ -107,18 +46,28 @@ async function fetchData(file)
   return json;
 }
 
-// Main Div 
+// Main div contenant les div des photographes.
 const divPhotographers = document.getElementById('photographers');
 
 // Traitement des données
 const data = fetchData(file).then((data) => // Puisqu'il y a une function async, .then sert à en attendre la réponse.
 {
-  data.photographers.forEach((item) => // Boucle puisqu'il y a des tableaux dans le fichier JSON.
+  data.photographers.forEach((item) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
   {
     console.log(item);
-    const content = document.createElement('div');
-    divPhotographers.innerHTML = `<div class = 'card'><h2>NAME :${item.name}</h2><h3>${item.city}</h3><h3>${item.price} €</h3></div>`;
-    divPhotographers.appendChild(content);
+    // const content = document.createElement('div');
+    // divPhotographers.appendChild(content);
+    // divPhotographers.innerHTML = `<div class = 'card'><h2>${item.name}</h2><h3>${item.city}</h3><h3>${item.price} €</h3></div>`;
+
+
+
+    // TEST création avec la div photographe Mimi-Keel //
+    // divPhotographers.innerHTML = `<div class = 'card'><h2>${item.name}</h2><h3>${item.city}</h3><h3>${item.price} €</h3></div>`;
+    const mimiKeel = document.createElement('mimi-keel'); // Div Photographe Mimi-Keel
+    divPhotographers.appendChild(mimiKeel);
+    const mimiKeelDiv = document.createElement('mimi-keel-div'); // Div Photographe Mimi-Keel
+    mimiKeel.appendChild(mimiKeelDiv);
+    mimiKeelDiv.innerHTML = `<div class = 'card'><h2>${item.name}</h2><h3>${item.city}</h3><h3>${item.price} €</h3></div>`;
   });
 });
 
