@@ -79,7 +79,7 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
     const photographersDetails = document.createElement('div'); // Création de div photographers-details.
     photographersDetails.classList.add('photographers-details'); // Ajout de la classe correspondante.
     photographersCard.appendChild(photographersDetails); // Appartient à la div photographersCard.
-    photographersDetails.innerHTML = `<h3>${item.city}</h3><h3>${item.price} €</h3>`; // Ajout HTML.
+    photographersDetails.innerHTML = `<p>${item.city}</p><p>${item.tagline}</p><p>${item.price} €</p>`; // Ajout HTML.
   });
 });
 
