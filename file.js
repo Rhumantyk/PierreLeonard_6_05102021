@@ -61,13 +61,15 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
 
 
 
-    // TEST création avec la div des photographes //
+    // TEST création avec la main div des photographes //
     // divPhotographers.innerHTML = `<div class = 'card'><h2>${item.name}</h2><h3>${item.city}</h3><h3>${item.price} €</h3></div>`;
-    const photographerCard = document.createElement('div'); // Div Photographe Mimi-Keel
-    photographerCard.classList.add('photographers-card');
-    divPhotographers.appendChild(photographerCard);
-    const photographersDetails = document.createElement('photographers-details'); // Div Photographers details
-    photographerCard.appendChild(photographersDetails);
+    const photographersCard = document.createElement('div'); // Création de div Photographe photographers-card.
+    photographersCard.classList.add('photographers-card'); // Ajout de la classe correspondante.
+    divPhotographers.appendChild(photographersCard); // Appartient à la div divPhotographers.
+
+    const photographersDetails = document.createElement('div'); // Création de div Photographe photographers-details.
+    photographersDetails.classList.add('photographers-details'); // Ajout de la classe correspondante.
+    photographersCard.appendChild(photographersDetails); // Appartient à la div photographersCard.
     photographersDetails.innerHTML = `<h2>${item.name}</h2><h3>${item.city}</h3><h3>${item.price} €</h3>`;
   });
 });
