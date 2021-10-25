@@ -74,19 +74,28 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
           <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${item.portrait}" alt="${item.name}" class="img-pictures">
           <h2>${item.name}</h2>
           <span class="screenreader-text">Mimi Keel</span>
-      </a>`; // Ajout HTML.  <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/MimiKeel.jpg" alt="Mimi Keel"
+      </a>`; // Ajout HTML.
 
       const photographersDetails = document.createElement('div'); // Création de div photographers-details.
       photographersDetails.classList.add('photographers-details'); // Ajout de la classe correspondante.
       photographersCard.appendChild(photographersDetails); // Appartient à la div photographersCard.
       photographersDetails.innerHTML = `<p>${item.city}, ${item.country}</p><p>${item.tagline}</p><p>${item.price} €</p>`; // Ajout HTML.
 
+
+
       const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
       tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
       photographersCard.appendChild(tagsFiltered); // Appartient à la div photographersCard.
       tagsFiltered.innerHTML = `<a>${item.tags}</a>`; // Ajout HTML.
+
+      // let comas = JSON.stringify({["photographers":{['"tags":"portrait", "events", "travel", "animals"']}]}); // Suppression des virgules pour les tags
+      // var stripped = comas.replace(/,(?!["{}[\]])/g, "");
+      // console.log(stripped);
+      data.forEach(item => item.tags = item.tags.replace(/,/, ''));
+
   });
 });
+console.log(data);
 
 
 
