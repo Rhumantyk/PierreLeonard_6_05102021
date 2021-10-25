@@ -92,23 +92,9 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       {
         tagsFiltered.innerHTML += `<a href="#" class="nav-filters">${tag}</a>`; // Ajout HTML. ${tag} seul car c'est une string.
       });
-
-      // let comas = JSON.stringify({["photographers":{['"tags":"portrait", "events", "travel", "animals"']}]}); // Suppression des virgules pour les tags
-      // var stripped = comas.replace(/,(?!["{}[\]])/g, "");
-      // console.log(stripped);
   });
 });
 console.log(data);
-
-
-
-// function noCommas()
-// {
-//   // data.forEach(photographers => photographers.tags = photographers.tags.replace(/,/, ''));
-//   // console.log(data);
-//   data = (photographers => photographers.tags = photographers.tags.replace(/,/, ''));
-// }
-// console.log(noCommas);
 
 
 
