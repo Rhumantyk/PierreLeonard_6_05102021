@@ -13,24 +13,6 @@ window.onscroll = function() // L'élément scroll est déclenché quand l'utili
 
 
 
-// const jsonFile = '/FishEyeData.json';
-
-
-
-// fetch('/FishEyeData.json')
-//   .then(response => response.json())
-//   .then(data => console.log(data))
-//   .catch(error => console.log(error))
-
-
-
-
-
-
-
-
-
-
 const file = '/FishEyeData.json';
 
 // fetch(file)
@@ -82,7 +64,7 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
 
       photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
       {
-        tagsFiltered.innerHTML += `<a href="#" class="nav-filters">${tag}</a>`; // Ajout HTML. ${tag} seul car c'est une string.
+        tagsFiltered.innerHTML += `<a href="#" class="nav-filters">#${tag}</a>`; // Ajout HTML. ${tag} seul car c'est une string.
       });
   });
 });
