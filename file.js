@@ -49,20 +49,20 @@ async function fetchData(file)
 // Main div contenant les div des photographes.
 const divPhotographers = document.getElementById('photographers');
 
-// Traitement des données
+// Traphotographersent des données
 const data = fetchData(file).then((data) => // Puisqu'il y a une function async, .then sert à en attendre la réponse.
 {
-  data.photographers.forEach((item) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
+  data.photographers.forEach((photographers) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
   {
-    console.log(item);
+    console.log(photographers);
     // const content = document.createElement('div');
     // divPhotographers.appendChild(content);
-    // divPhotographers.innerHTML = `<div class = 'card'><h2>${item.name}</h2><h3>${item.city}</h3><h3>${item.price} €</h3></div>`;
+    // divPhotographers.innerHTML = `<div class = 'card'><h2>${photographers.name}</h2><h3>${photographers.city}</h3><h3>${photographers.price} €</h3></div>`;
 
 
 
     // TEST création avec la main div des photographes //
-    // divPhotographers.innerHTML = `<div class = 'card'><h2>${item.name}</h2><h3>${item.city}</h3><h3>${item.price} €</h3></div>`;
+    // divPhotographers.innerHTML = `<div class = 'card'><h2>${photographers.name}</h2><h3>${photographers.city}</h3><h3>${photographers.price} €</h3></div>`;
     const photographersCard = document.createElement('div'); // Création de div photographers-card.
     photographersCard.classList.add('photographers-card'); // Ajout de la classe correspondante.
     divPhotographers.appendChild(photographersCard); // Appartient à la div divPhotographers.
@@ -71,22 +71,27 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       photographersCard.appendChild(photographerLink); // Appartient à la div photographersCard.
       photographersCard.innerHTML =
       `<a href="/Page_Mimi_Keel/mimi_keel.html" class="photographers-link">
-          <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${item.portrait}" alt="${item.name}" class="img-pictures">
-          <h2>${item.name}</h2>
+          <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${photographers.portrait}" alt="${photographers.name}" class="img-pictures">
+          <h2>${photographers.name}</h2>
           <span class="screenreader-text">Mimi Keel</span>
       </a>`; // Ajout HTML.
 
       const photographersDetails = document.createElement('div'); // Création de div photographers-details.
       photographersDetails.classList.add('photographers-details'); // Ajout de la classe correspondante.
       photographersCard.appendChild(photographersDetails); // Appartient à la div photographersCard.
-      photographersDetails.innerHTML = `<p>${item.city}, ${item.country}</p><p>${item.tagline}</p><p>${item.price}€</p>`; // Ajout HTML.
+      photographersDetails.innerHTML = `<p>${photographers.city}, ${photographers.country}</p><p>${photographers.tagline}</p><p>${photographers.price}€</p>`; // Ajout HTML.
 
 
-
+      // Tags + Suppression virgules
       const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
       tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
       photographersCard.appendChild(tagsFiltered); // Appartient à la div photographersCard.
-      tagsFiltered.innerHTML = `<a href="#" class="nav-filters">${item.tags}</a>`; // Ajout HTML.
+      // tagsFiltered.innerHTML = `<a href="#" class="nav-filters">${photographers.tags}</a>`; // Ajout HTML. 
+
+      photographers.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
+      {
+        tagsFiltered.innerHTML += `<a href="#" class="nav-filters">${tag}</a>`; // Ajout HTML. ${tag} seul car c'est une string.
+      });
 
       // let comas = JSON.stringify({["photographers":{['"tags":"portrait", "events", "travel", "animals"']}]}); // Suppression des virgules pour les tags
       // var stripped = comas.replace(/,(?!["{}[\]])/g, "");
@@ -99,9 +104,9 @@ console.log(data);
 
 // function noCommas()
 // {
-//   // data.forEach(item => item.tags = item.tags.replace(/,/, ''));
+//   // data.forEach(photographers => photographers.tags = photographers.tags.replace(/,/, ''));
 //   // console.log(data);
-//   data = (item => item.tags = item.tags.replace(/,/, ''));
+//   data = (photographers => photographers.tags = photographers.tags.replace(/,/, ''));
 // }
 // console.log(noCommas);
 
