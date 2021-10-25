@@ -61,7 +61,7 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
 
 
 
-    // TEST création avec la main div des photographes //
+    // Création de la main div des photographes //
     // divPhotographers.innerHTML = `<div class = 'card'><h2>${photographers.name}</h2><h3>${photographers.city}</h3><h3>${photographers.price} €</h3></div>`;
     const photographersCard = document.createElement('div'); // Création de div photographers-card.
     photographersCard.classList.add('photographers-card'); // Ajout de la classe correspondante.
