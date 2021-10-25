@@ -52,9 +52,9 @@ const divPhotographers = document.getElementById('photographers');
 // Traphotographersent des données
 const data = fetchData(file).then((data) => // Puisqu'il y a une function async, .then sert à en attendre la réponse.
 {
-  data.photographers.forEach((photographers) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
+  data.photographers.forEach((photographer) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
   {
-    console.log(photographers);
+    console.log(photographer);
     // const content = document.createElement('div');
     // divPhotographers.appendChild(content);
     // divPhotographers.innerHTML = `<div class = 'card'><h2>${photographers.name}</h2><h3>${photographers.city}</h3><h3>${photographers.price} €</h3></div>`;
@@ -70,16 +70,16 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       const photographerLink = document.createElement('div'); // Création de div contenant le lien du photographe.
       photographersCard.appendChild(photographerLink); // Appartient à la div photographersCard.
       photographersCard.innerHTML =
-      `<a href="/Page_Mimi_Keel/mimi_keel.html" class="photographers-link">
-          <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${photographers.portrait}" alt="${photographers.name}" class="img-pictures">
-          <h2>${photographers.name}</h2>
+      `<a href="/Page_Photographes/${photographer.name.replace(' ', '_')}.html" class="photographers-link">
+          <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${photographer.portrait}" alt="${photographer.name}" class="img-pictures">
+          <h2>${photographer.name}</h2>
           <span class="screenreader-text">Mimi Keel</span>
       </a>`; // Ajout HTML.
 
       const photographersDetails = document.createElement('div'); // Création de div photographers-details.
       photographersDetails.classList.add('photographers-details'); // Ajout de la classe correspondante.
       photographersCard.appendChild(photographersDetails); // Appartient à la div photographersCard.
-      photographersDetails.innerHTML = `<p>${photographers.city}, ${photographers.country}</p><p>${photographers.tagline}</p><p>${photographers.price}€</p>`; // Ajout HTML.
+      photographersDetails.innerHTML = `<p>${photographer.city}, ${photographer.country}</p><p>${photographer.tagline}</p><p>${photographer.price}€</p>`; // Ajout HTML.
 
 
       // Tags + Suppression virgules
@@ -88,7 +88,7 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       photographersCard.appendChild(tagsFiltered); // Appartient à la div photographersCard.
       // tagsFiltered.innerHTML = `<a href="#" class="nav-filters">${photographers.tags}</a>`; // Ajout HTML. 
 
-      photographers.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
+      photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
       {
         tagsFiltered.innerHTML += `<a href="#" class="nav-filters">${tag}</a>`; // Ajout HTML. ${tag} seul car c'est une string.
       });
