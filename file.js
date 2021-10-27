@@ -56,7 +56,7 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       photographersDetails.innerHTML = `<p>${photographer.city}, ${photographer.country}</p><p>${photographer.tagline}</p><p>${photographer.price}€</p>`; // Ajout HTML.
 
 
-      // Tags + Suppression virgules
+      // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] //
       const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
       tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
       photographersCard.appendChild(tagsFiltered); // Appartient à la div photographersCard.

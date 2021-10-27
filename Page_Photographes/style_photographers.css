@@ -128,11 +128,6 @@ body
     justify-content: center;
 }
 
-.contact-me
-{
-    flex-basis: 29%;
-}
-
 .div-photo
 {
     display: flex;
