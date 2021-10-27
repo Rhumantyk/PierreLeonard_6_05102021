@@ -39,22 +39,16 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
             <p>${data.photographers[1].tagline}</p>
             `
 
-            // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] //
+            // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach//
             const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
             tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
             contactDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
-            // data.photographers.forEach((photographer) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
-            // {
-                // photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
-                // {
+
                 tagsFiltered.innerHTML += `<a href="#" class="nav-filters">
                 #${data.photographers[1].tags[0]}</a>`
                 + `<a href="#" class="nav-filters">
                 #${data.photographers[1].tags[1]}</a>`; // Ajout HTML. ${tag} seul puisque string.
-                // });
-            // });
         }
-
 });
 console.log(data);
 
