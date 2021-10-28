@@ -59,9 +59,9 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
           
           // Ajout bouton "Contactez-moi".
           const btnContact = document.createElement('button'); // Création de button.
-          // btnContact.classList.add('button'); // Ajout de la classe correspondante.
+          btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant.
           photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
-          btnContact.innerHTML = `<button role="button">Contactez-moi</button>`;
+          btnContact.innerHTML = `Contactez-moi`;
 
       // Ajout photo photographe
       const picturePhotographer = document.createElement('div'); // Création de div div-photo.
