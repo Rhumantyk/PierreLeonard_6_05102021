@@ -71,27 +71,6 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       `
       <img src="/Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${data.photographers[1].portrait}" alt="${data.photographers[1].name}" class="img-pictures">
       `;
-
-
-      // `<div id="contact-details">
-      //     <div class="photographers-details">
-      //         <h1>${data.photographers[1].name}</h1>
-      //         <p>London, UK</p>
-      //         <p>Voir le beau dans le quotidien</p>
-      //         <div class="tags-filtered">
-      //             <a href="" class="nav-filters">#sports</a>
-      //             <span class="screenreader-text">#sport</span>
-      //             <a href="" class="nav-filters">#architecture</a>
-      //             <span class="screenreader-text">#architecture</span>
-      //         </div>
-      //         <button role="button">
-      //             Contactez-moi
-      //         </button>
-      //     </div>
-      //     <div class="div-photo">
-      //         <img src="/Photos_FishEye/Sample_Photos/Photographers_ID_Photos/EllieRoseWilkens.jpg" alt="Ellie-Rose Wilkens" class="img-pictures">
-      //     </div>
-      // </div>`
       }
 });
 console.log(data);
