@@ -14,7 +14,7 @@ async function fetchData(file)
 }
 
 // Main div contenant les div des photographes.
-const mainBody = document.getElementsByTagName('main')[0]; // Sans [0] = Rien ne s'affiche.
+const mainBody = document.getElementsByTagName('main')[0]; // Sans [0] --> Rien ne s'affiche.
 
 // Traphotographersent des données
 const data = fetchData(file).then((data) => // Puisqu'il y a une function async, .then sert à en attendre la réponse.
@@ -43,9 +43,11 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
             tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
             photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
             tagsFiltered.innerHTML += `<a href="#" class="nav-filters">
-            #${data.photographers[1].tags[0]}</a>`
+            #${data.photographers[1].tags[0]}</a>
+            <span class="screenreader-text">#${data.photographers[1].tags[0]}</span>`
             + `<a href="#" class="nav-filters">
-            #${data.photographers[1].tags[1]}</a>`;
+            #${data.photographers[1].tags[1]}</a>
+            <span class="screenreader-text">#${data.photographers[1].tags[1]}</span>`;
             
             // Ajout bouton "Contactez-moi".
             const btnContact = document.createElement('div'); // Création de div tags-filtered.
@@ -53,12 +55,14 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
             photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
             btnContact.innerHTML = `<button role="button">Contactez-moi</button>`;
 
-            // Ajout photo photographe
-            const picturePhotographer = document.createElement('div'); // Création de div tags-filtered.
-            picturePhotographer.classList.add('div-photo'); // Ajout de la classe correspondante.
-            contactDetails.appendChild(picturePhotographer); // Appartient à la div contactDetails.
-            btnContact.innerHTML =
-            `<img src="/Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${data.photographers[1].portrait}" alt="${data.photographers[1].name}" class="img-pictures">`;
+        // Ajout photo photographe
+        const picturePhotographer = document.createElement('div'); // Création de div tags-filtered.
+        picturePhotographer.classList.add('div-photo'); // Ajout de la classe correspondante.
+        contactDetails.appendChild(picturePhotographer); // Appartient à la div contactDetails.
+        picturePhotographer.innerHTML =
+        `
+        <img src="/Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${data.photographers[1].portrait}" alt="${data.photographers[1].name}" class="img-pictures">
+        `;
         }
 });
 console.log(data);
