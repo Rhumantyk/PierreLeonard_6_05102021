@@ -22,16 +22,16 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
 {
   // title tag name //
   const titlePage = document.createElement('title'); // Création de la balise title.
-  headTagName.appendChild(titlePage); // Appartient à headerTagName.
+  headTagName.appendChild(titlePage); // Appartient à Head.
   titlePage.innerHTML = `${data.photographers[1].name}`;
 
   // Création de la div contact-details //
   const contactDetails = document.createElement('div'); // Création de div contact-details.
-  contactDetails.classList.add('contact-details'); // Ajout de la classe correspondante.
+  contactDetails.setAttribute('id','contact-details'); // Ajout de l'ID correspondant.
   mainBody.appendChild(contactDetails); // Appartient à Main.
 
-      // Création de la class photographers-details
-      const photographersDetails = document.createElement('class'); // Création de class photographers-details.
+      // Création de la class photographers-details //
+      const photographersDetails = document.createElement('div'); // Création de class photographers-details.
       photographersDetails.classList.add('photographers-details'); // Ajout de la classe correspondante.
       contactDetails.appendChild(photographersDetails); // Appartient à la div contactDetails.
 
@@ -58,13 +58,13 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
             <span class="screenreader-text">#${data.photographers[1].tags[1]}</span>`;
           
           // Ajout bouton "Contactez-moi".
-          const btnContact = document.createElement('div'); // Création de div tags-filtered.
+          const btnContact = document.createElement('button'); // Création de button.
           // btnContact.classList.add('button'); // Ajout de la classe correspondante.
           photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
           btnContact.innerHTML = `<button role="button">Contactez-moi</button>`;
 
       // Ajout photo photographe
-      const picturePhotographer = document.createElement('div'); // Création de div tags-filtered.
+      const picturePhotographer = document.createElement('div'); // Création de div div-photo.
       picturePhotographer.classList.add('div-photo'); // Ajout de la classe correspondante.
       contactDetails.appendChild(picturePhotographer); // Appartient à la div contactDetails.
       picturePhotographer.innerHTML =
