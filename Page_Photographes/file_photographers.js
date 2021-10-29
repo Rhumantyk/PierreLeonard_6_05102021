@@ -20,11 +20,6 @@ const headTagName = document.getElementsByTagName('head')[0]; // Sans [0] --> Ri
 // Traphotographersent des données
 const data = fetchData(file).then((data) => // Puisqu'il y a une function async, .then sert à en attendre la réponse.
 {
-  // title tag name //
-  const titlePage = document.createElement('title'); // Création de la balise title.
-  headTagName.appendChild(titlePage); // Appartient à Head.
-  titlePage.innerHTML = `${data.photographers[1].name}`;
-
   // Création de la div contact-details //
   const contactDetails = document.createElement('div'); // Création de div contact-details.
   contactDetails.setAttribute('id','contact-details'); // Ajout de l'ID correspondant.
@@ -38,40 +33,45 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       // Page Mimi Keel
       if (window.location.pathname =='/Page_Photographes/Mimi_Keel.html') // Majuscules obligatoires pour l'URL si non le JS ne s'affiche pas
       {
-          photographersDetails.innerHTML = 
-          `
-          <h1>${data.photographers[0].name}</h1>
-          <p>${data.photographers[0].city}, ${data.photographers[0].country}</p>
-          <p>${data.photographers[0].tagline}</p>
-          `
+        // title tag name //
+        const titlePage = document.createElement('title'); // Création de la balise title.
+        headTagName.appendChild(titlePage); // Appartient à Head.
+        titlePage.innerHTML = `${data.photographers[0].name}`;
 
-          // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
-          const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
-          tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
-          photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
-          tagsFiltered.innerHTML +=
-            `<a href="#" class="nav-filters">
-            #${data.photographers[0].tags[0]}</a>
-            <span class="screenreader-text">#${data.photographers[0].tags[0]}</span>`
-            +
-            `<a href="#" class="nav-filters">
-            #${data.photographers[0].tags[1]}</a>
-            <span class="screenreader-text">#${data.photographers[0].tags[1]}</span>`
-            +
-            `<a href="#" class="nav-filters">
-            #${data.photographers[0].tags[2]}</a>
-            <span class="screenreader-text">#${data.photographers[0].tags[2]}</span>`
-            +
-            `<a href="#" class="nav-filters">
-            #${data.photographers[0].tags[3]}</a>
-            <span class="screenreader-text">#${data.photographers[0].tags[3]}</span>`
-            ;
-          
-          // Ajout bouton "Contactez-moi".
-          const btnContact = document.createElement('button'); // Création de button.
-          btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant.
-          photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
-          btnContact.innerHTML = `Contactez-moi`;
+        photographersDetails.innerHTML = 
+        `
+        <h1>${data.photographers[0].name}</h1>
+        <p>${data.photographers[0].city}, ${data.photographers[0].country}</p>
+        <p>${data.photographers[0].tagline}</p>
+        `
+
+        // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
+        const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
+        tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
+        photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
+        tagsFiltered.innerHTML +=
+          `<a href="#" class="nav-filters">
+          #${data.photographers[0].tags[0]}</a>
+          <span class="screenreader-text">#${data.photographers[0].tags[0]}</span>`
+          +
+          `<a href="#" class="nav-filters">
+          #${data.photographers[0].tags[1]}</a>
+          <span class="screenreader-text">#${data.photographers[0].tags[1]}</span>`
+          +
+          `<a href="#" class="nav-filters">
+          #${data.photographers[0].tags[2]}</a>
+          <span class="screenreader-text">#${data.photographers[0].tags[2]}</span>`
+          +
+          `<a href="#" class="nav-filters">
+          #${data.photographers[0].tags[3]}</a>
+          <span class="screenreader-text">#${data.photographers[0].tags[3]}</span>`
+          ;
+        
+        // Ajout bouton "Contactez-moi".
+        const btnContact = document.createElement('button'); // Création de button.
+        btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant.
+        photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
+        btnContact.innerHTML = `Contactez-moi`;
 
       // Ajout photo photographe
       const picturePhotographer = document.createElement('div'); // Création de div div-photo.
@@ -86,31 +86,36 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       // Page Ellie-Rose_Wilkens
       if (window.location.pathname =='/Page_Photographes/Ellie-Rose_Wilkens.html')
       {
-          photographersDetails.innerHTML = 
-          `
-          <h1>${data.photographers[1].name}</h1>
-          <p>${data.photographers[1].city}, ${data.photographers[1].country}</p>
-          <p>${data.photographers[1].tagline}</p>
-          `
+        // title tag name //
+        const titlePage = document.createElement('title'); // Création de la balise title.
+        headTagName.appendChild(titlePage); // Appartient à Head.
+        titlePage.innerHTML = `${data.photographers[1].name}`;
 
-          // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
-          const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
-          tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
-          photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
-          tagsFiltered.innerHTML +=
-            `<a href="#" class="nav-filters">
-            #${data.photographers[1].tags[0]}</a>
-            <span class="screenreader-text">#${data.photographers[1].tags[0]}</span>`
-            +
-            `<a href="#" class="nav-filters">
-            #${data.photographers[1].tags[1]}</a>
-            <span class="screenreader-text">#${data.photographers[1].tags[1]}</span>`;
-          
-          // Ajout bouton "Contactez-moi".
-          const btnContact = document.createElement('button'); // Création de button.
-          btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant.
-          photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
-          btnContact.innerHTML = `Contactez-moi`;
+        photographersDetails.innerHTML = 
+        `
+        <h1>${data.photographers[1].name}</h1>
+        <p>${data.photographers[1].city}, ${data.photographers[1].country}</p>
+        <p>${data.photographers[1].tagline}</p>
+        `
+
+        // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
+        const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
+        tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
+        photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
+        tagsFiltered.innerHTML +=
+          `<a href="#" class="nav-filters">
+          #${data.photographers[1].tags[0]}</a>
+          <span class="screenreader-text">#${data.photographers[1].tags[0]}</span>`
+          +
+          `<a href="#" class="nav-filters">
+          #${data.photographers[1].tags[1]}</a>
+          <span class="screenreader-text">#${data.photographers[1].tags[1]}</span>`;
+        
+        // Ajout bouton "Contactez-moi".
+        const btnContact = document.createElement('button'); // Création de button.
+        btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant.
+        photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
+        btnContact.innerHTML = `Contactez-moi`;
 
       // Ajout photo photographe
       const picturePhotographer = document.createElement('div'); // Création de div div-photo.
@@ -125,29 +130,34 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       // Page Tracy Galindo
       if (window.location.pathname =='/Page_Photographes/Tracy_Galindo.html')
       {
-          photographersDetails.innerHTML = 
-          `
-          <h1>${data.photographers[2].name}</h1>
-          <p>${data.photographers[2].city}, ${data.photographers[2].country}</p>
-          <p>${data.photographers[2].tagline}</p>
-          `
+        // title tag name //
+        const titlePage = document.createElement('title'); // Création de la balise title.
+        headTagName.appendChild(titlePage); // Appartient à Head.
+        titlePage.innerHTML = `${data.photographers[2].name}`;
 
-          // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
-          const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
-          tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
-          photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
-          tagsFiltered.innerHTML +=
-            `<a href="#" class="nav-filters">
-            #${data.photographers[2].tags[0]}</a>
-            <span class="screenreader-text">#${data.photographers[2].tags[0]}</span>`
-            +
-            `<a href="#" class="nav-filters">
-            #${data.photographers[2].tags[1]}</a>
-            <span class="screenreader-text">#${data.photographers[2].tags[1]}</span>`
-            +
-            `<a href="#" class="nav-filters">
-            #${data.photographers[2].tags[2]}</a>
-            <span class="screenreader-text">#${data.photographers[2].tags[2]}</span>`;
+        photographersDetails.innerHTML = 
+        `
+        <h1>${data.photographers[2].name}</h1>
+        <p>${data.photographers[2].city}, ${data.photographers[2].country}</p>
+        <p>${data.photographers[2].tagline}</p>
+        `
+
+        // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
+        const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
+        tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
+        photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
+        tagsFiltered.innerHTML +=
+          `<a href="#" class="nav-filters">
+          #${data.photographers[2].tags[0]}</a>
+          <span class="screenreader-text">#${data.photographers[2].tags[0]}</span>`
+          +
+          `<a href="#" class="nav-filters">
+          #${data.photographers[2].tags[1]}</a>
+          <span class="screenreader-text">#${data.photographers[2].tags[1]}</span>`
+          +
+          `<a href="#" class="nav-filters">
+          #${data.photographers[2].tags[2]}</a>
+          <span class="screenreader-text">#${data.photographers[2].tags[2]}</span>`;
           
           // Ajout bouton "Contactez-moi".
           const btnContact = document.createElement('button'); // Création de button.
@@ -168,31 +178,36 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       // Page Nabeel Bradford
       if (window.location.pathname =='/Page_Photographes/Nabeel_Bradford.html')
       {
-          photographersDetails.innerHTML = 
-          `
-          <h1>${data.photographers[3].name}</h1>
-          <p>${data.photographers[3].city}, ${data.photographers[3].country}</p>
-          <p>${data.photographers[3].tagline}</p>
-          `
+        // title tag name //
+        const titlePage = document.createElement('title'); // Création de la balise title.
+        headTagName.appendChild(titlePage); // Appartient à Head.
+        titlePage.innerHTML = `${data.photographers[3].name}`;
 
-          // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
-          const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
-          tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
-          photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
-          tagsFiltered.innerHTML +=
-            `<a href="#" class="nav-filters">
-            #${data.photographers[3].tags[0]}</a>
-            <span class="screenreader-text">#${data.photographers[3].tags[0]}</span>`
-            +
-            `<a href="#" class="nav-filters">
-            #${data.photographers[3].tags[1]}</a>
-            <span class="screenreader-text">#${data.photographers[3].tags[1]}</span>`;
-          
-          // Ajout bouton "Contactez-moi".
-          const btnContact = document.createElement('button'); // Création de button.
-          btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant.
-          photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
-          btnContact.innerHTML = `Contactez-moi`;
+        photographersDetails.innerHTML = 
+        `
+        <h1>${data.photographers[3].name}</h1>
+        <p>${data.photographers[3].city}, ${data.photographers[3].country}</p>
+        <p>${data.photographers[3].tagline}</p>
+        `
+
+        // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
+        const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
+        tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
+        photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
+        tagsFiltered.innerHTML +=
+          `<a href="#" class="nav-filters">
+          #${data.photographers[3].tags[0]}</a>
+          <span class="screenreader-text">#${data.photographers[3].tags[0]}</span>`
+          +
+          `<a href="#" class="nav-filters">
+          #${data.photographers[3].tags[1]}</a>
+          <span class="screenreader-text">#${data.photographers[3].tags[1]}</span>`;
+        
+        // Ajout bouton "Contactez-moi".
+        const btnContact = document.createElement('button'); // Création de button.
+        btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant.
+        photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
+        btnContact.innerHTML = `Contactez-moi`;
 
       // Ajout photo photographe
       const picturePhotographer = document.createElement('div'); // Création de div div-photo.
@@ -207,39 +222,44 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       // Page Rhode Dubois
       if (window.location.pathname =='/Page_Photographes/Rhode_Dubois.html')
       {
-          photographersDetails.innerHTML = 
-          `
-          <h1>${data.photographers[4].name}</h1>
-          <p>${data.photographers[4].city}, ${data.photographers[4].country}</p>
-          <p>${data.photographers[4].tagline}</p>
-          `
+        // title tag name //
+        const titlePage = document.createElement('title'); // Création de la balise title.
+        headTagName.appendChild(titlePage); // Appartient à Head.
+        titlePage.innerHTML = `${data.photographers[4].name}`;
 
-          // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
-          const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
-          tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
-          photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
-          tagsFiltered.innerHTML +=
-            `<a href="#" class="nav-filters">
-            #${data.photographers[4].tags[0]}</a>
-            <span class="screenreader-text">#${data.photographers[4].tags[0]}</span>`
-            +
-            `<a href="#" class="nav-filters">
-            #${data.photographers[4].tags[1]}</a>
-            <span class="screenreader-text">#${data.photographers[4].tags[1]}</span>`
-            +
-            `<a href="#" class="nav-filters">
-            #${data.photographers[4].tags[2]}</a>
-            <span class="screenreader-text">#${data.photographers[4].tags[2]}</span>`
-            +
-            `<a href="#" class="nav-filters">
-            #${data.photographers[4].tags[3]}</a>
-            <span class="screenreader-text">#${data.photographers[4].tags[3]}</span>`;
-          
-          // Ajout bouton "Contactez-moi".
-          const btnContact = document.createElement('button'); // Création de button.
-          btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant.
-          photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
-          btnContact.innerHTML = `Contactez-moi`;
+        photographersDetails.innerHTML = 
+        `
+        <h1>${data.photographers[4].name}</h1>
+        <p>${data.photographers[4].city}, ${data.photographers[4].country}</p>
+        <p>${data.photographers[4].tagline}</p>
+        `
+
+        // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
+        const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
+        tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
+        photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
+        tagsFiltered.innerHTML +=
+          `<a href="#" class="nav-filters">
+          #${data.photographers[4].tags[0]}</a>
+          <span class="screenreader-text">#${data.photographers[4].tags[0]}</span>`
+          +
+          `<a href="#" class="nav-filters">
+          #${data.photographers[4].tags[1]}</a>
+          <span class="screenreader-text">#${data.photographers[4].tags[1]}</span>`
+          +
+          `<a href="#" class="nav-filters">
+          #${data.photographers[4].tags[2]}</a>
+          <span class="screenreader-text">#${data.photographers[4].tags[2]}</span>`
+          +
+          `<a href="#" class="nav-filters">
+          #${data.photographers[4].tags[3]}</a>
+          <span class="screenreader-text">#${data.photographers[4].tags[3]}</span>`;
+        
+        // Ajout bouton "Contactez-moi".
+        const btnContact = document.createElement('button'); // Création de button.
+        btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant.
+        photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
+        btnContact.innerHTML = `Contactez-moi`;
 
       // Ajout photo photographe
       const picturePhotographer = document.createElement('div'); // Création de div div-photo.
@@ -254,31 +274,36 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       // Page Marcel Nikolic
       if (window.location.pathname =='/Page_Photographes/Marcel_Nikolic.html')
       {
-          photographersDetails.innerHTML = 
-          `
-          <h1>${data.photographers[5].name}</h1>
-          <p>${data.photographers[5].city}, ${data.photographers[5].country}</p>
-          <p>${data.photographers[5].tagline}</p>
-          `
+        // title tag name //
+        const titlePage = document.createElement('title'); // Création de la balise title.
+        headTagName.appendChild(titlePage); // Appartient à Head.
+        titlePage.innerHTML = `${data.photographers[5].name}`;
 
-          // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
-          const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
-          tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
-          photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
-          tagsFiltered.innerHTML +=
-            `<a href="#" class="nav-filters">
-            #${data.photographers[5].tags[0]}</a>
-            <span class="screenreader-text">#${data.photographers[5].tags[0]}</span>`
-            +
-            `<a href="#" class="nav-filters">
-            #${data.photographers[5].tags[1]}</a>
-            <span class="screenreader-text">#${data.photographers[5].tags[1]}</span>`;
-          
-          // Ajout bouton "Contactez-moi".
-          const btnContact = document.createElement('button'); // Création de button.
-          btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant.
-          photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
-          btnContact.innerHTML = `Contactez-moi`;
+        photographersDetails.innerHTML = 
+        `
+        <h1>${data.photographers[5].name}</h1>
+        <p>${data.photographers[5].city}, ${data.photographers[5].country}</p>
+        <p>${data.photographers[5].tagline}</p>
+        `
+
+        // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
+        const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
+        tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
+        photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
+        tagsFiltered.innerHTML +=
+          `<a href="#" class="nav-filters">
+          #${data.photographers[5].tags[0]}</a>
+          <span class="screenreader-text">#${data.photographers[5].tags[0]}</span>`
+          +
+          `<a href="#" class="nav-filters">
+          #${data.photographers[5].tags[1]}</a>
+          <span class="screenreader-text">#${data.photographers[5].tags[1]}</span>`;
+        
+        // Ajout bouton "Contactez-moi".
+        const btnContact = document.createElement('button'); // Création de button.
+        btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant.
+        photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
+        btnContact.innerHTML = `Contactez-moi`;
 
       // Ajout photo photographe
       const picturePhotographer = document.createElement('div'); // Création de div div-photo.
