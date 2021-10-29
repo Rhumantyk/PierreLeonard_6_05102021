@@ -121,8 +121,48 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       <img src="/Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${data.photographers[1].portrait}" alt="${data.photographers[1].name}" class="img-pictures">
       `;
       }
+
+      // Page Tracy Galindo
+      if (window.location.pathname =='/Page_Photographes/Tracy_Galindo.html')
+      {
+          photographersDetails.innerHTML = 
+          `
+          <h1>${data.photographers[2].name}</h1>
+          <p>${data.photographers[2].city}, ${data.photographers[2].country}</p>
+          <p>${data.photographers[2].tagline}</p>
+          `
+
+          // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
+          const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
+          tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
+          photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
+          tagsFiltered.innerHTML +=
+            `<a href="#" class="nav-filters">
+            #${data.photographers[2].tags[0]}</a>
+            <span class="screenreader-text">#${data.photographers[2].tags[0]}</span>`
+            +
+            `<a href="#" class="nav-filters">
+            #${data.photographers[1].tags[1]}</a>
+            <span class="screenreader-text">#${data.photographers[2].tags[1]}</span>`
+            +
+            `<a href="#" class="nav-filters">
+            #${data.photographers[1].tags[1]}</a>
+            <span class="screenreader-text">#${data.photographers[2].tags[2]}</span>`;
+          
+          // Ajout bouton "Contactez-moi".
+          const btnContact = document.createElement('button'); // Création de button.
+          btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant.
+          photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
+          btnContact.innerHTML = `Contactez-moi`;
+
+      // Ajout photo photographe
+      const picturePhotographer = document.createElement('div'); // Création de div div-photo.
+      picturePhotographer.classList.add('div-photo'); // Ajout de la classe correspondante.
+      contactDetails.appendChild(picturePhotographer); // Appartient à la div contactDetails.
+      picturePhotographer.innerHTML =
+      `
+      <img src="/Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${data.photographers[2].portrait}" alt="${data.photographers[2].name}" class="img-pictures">
+      `;
+      }
 });
 console.log(data);
-
-
-
