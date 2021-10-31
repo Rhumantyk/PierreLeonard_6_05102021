@@ -63,7 +63,7 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
 
       photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
       {
-        tagsFiltered.innerHTML += `<a href="#" class="nav-filters">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
+        tagsFiltered.innerHTML += `<a href="#" class="nav-filters ${photographer.tags}-tag">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
       });
   });
 
