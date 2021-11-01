@@ -63,7 +63,7 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
 
       photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
       {
-        tagsFiltered.innerHTML += `<a href="#" class="nav-filters ${photographer.tags}-tag">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
+        tagsFiltered.innerHTML += `<a href="#" class="nav-filters ${tag}-tag">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
       });
   });
 
@@ -76,8 +76,8 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
   const marcelNikolic = divPhotographers.children[5];
 
     // #Portraits
-  const portraitTag = document.getElementById("portrait-tag");
-  portraitTag.addEventListener("click", () =>
+  const portraitTag0 = document.getElementsByClassName("portrait-tag")[0];
+  portraitTag0.addEventListener("click", () =>
   {
     ellieRoseWilkens.style.display = "none";
     tracyGalindo.style.display = "none";
@@ -87,6 +87,17 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
     mimiKeel.style.display = "block";
   });
 
+  const portraitTag1 = document.getElementsByClassName("portrait-tag")[1];
+  portraitTag1.addEventListener("click", () =>
+  {
+    ellieRoseWilkens.style.display = "none";
+    tracyGalindo.style.display = "none";
+    rhodeDubois.style.display = "none";
+    marcelNikolic.style.display = "none";
+    nabeelBradford.style.display = "block";
+    mimiKeel.style.display = "block";
+  });
+  
     // #Art
   const artTag = document.getElementById("art-tag");
   artTag.addEventListener("click", () =>
