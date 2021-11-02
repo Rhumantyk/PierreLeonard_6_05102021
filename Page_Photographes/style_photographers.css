@@ -202,9 +202,21 @@ nav > ul:hover .sous
     content: " ▼";
 }
 
+    /* Fin Partie tri + images */
+
 .media
 {
-    width: 25%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.media > a
+{
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-bottom: 2.5%; 
 }
 
 .media img
@@ -223,49 +235,6 @@ nav > ul:hover .sous
 }
 
 .media p
-{
-    color: #901C1C;
-}
-
-    /* Fin Partie tri + images */
-
-.photographers-images
-{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-.photographers-images > div
-{
-    margin-left: 3%;
-    margin-right: 3%;
-    margin-bottom: 2.5%;
-}
-
-.medias-work
-{
-    object-fit: cover;
-    border-radius: 6px;
-    max-width: 310px;
-    min-width: 310px;
-    max-height: 310px;
-    min-height: 310px;
-}
-
-.medias-work-details
-{
-    display: flex;
-    justify-content: space-between;
-}
-
-.medias-work-details :nth-child(1)
-{
-    color: #901C1C;
-}
-
-.medias-work-details :nth-child(2)
 {
     color: #901C1C;
 }
