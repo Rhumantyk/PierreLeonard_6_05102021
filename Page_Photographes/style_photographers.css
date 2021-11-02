@@ -106,7 +106,7 @@ body
     margin-right: 31.4%;
 }
 
-.photographers-details p:nth-child(2)
+.photographers-details p:nth-child(2) /* Page photographe */
 {
     color: #901C1C;
 }
@@ -201,6 +201,32 @@ nav > ul:hover .sous
 {
     content: " ▼";
 }
+
+.media
+{
+    width: 25%;
+}
+
+.media img
+{
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 3%;
+}
+
+.media-details
+{
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+}
+
+.media p
+{
+    color: #901C1C;
+}
+
     /* Fin Partie tri + images */
 
 .photographers-images

@@ -11,7 +11,7 @@ async function fetchData(file)
 // Main div contenant les div des photographes.
 const mainBody = document.getElementsByTagName('main')[0]; // Sans [0] --> Rien ne s'affiche.
 const headTagName = document.getElementsByTagName('head')[0]; // Sans [0] --> Rien ne s'affiche.
-// const divPhotographers = document.getElementById('divPhotographers').window.location.href = '../index.html'; // TEST TRIAGE NON CONCLUANT
+// const divPhotographers = document.getElementById('divPhotographers').window.location.href = '../index.html'; // ********* TEST TRIAGE NON CONCLUANT **********
 
 // Récupération des données
 const data = fetchData(file).then((data) => // Puisqu'il y a une function async, .then sert à en attendre la réponse.
@@ -78,10 +78,31 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       <img src="/Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${data.photographers[0].portrait}" alt="${data.photographers[0].name}" class="img-pictures">
       `;
 
-      // Ajout menu déroulant
+      // Ajout menu déroulant ******** À COMPLÉTER PLUS TARD ********
       const menu = document.createElement('div');
       mainBody.appendChild(menu);
       menu.innerHTML = `<p>Trier par</p>`;
+
+      // Ajout de la div medias
+      const medias = document.createElement('div'); // Création de div media.
+      mainBody.appendChild(medias); // Ajout de la classe correspondante.
+      medias.setAttribute('id', 'medias-div'); // Ajout de la classe correspondante.
+
+        // data.media.forEach((element) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
+        // {
+          // Ajouts des différents médias
+          medias.innerHTML +=
+            `<div class="media">
+              <a href="#">
+                <img src="../Photos_FishEye/Sample_Photos/Mimi/${data.media[37].image}" alt="${data.media[37].title}" class="img-pictures">
+                <span class="screenreader-text">${data.media[37].title}</span>
+                <div class="media-details">
+                  <p>${data.media[37].title}</p>
+                  <p>${data.media[37].likes}<i class="fas fa-heart"></i></p>
+                </div>
+              </a>
+            </div>`; // Ajout HTML.
+        // });
       }
 
       // Page Ellie-Rose_Wilkens
