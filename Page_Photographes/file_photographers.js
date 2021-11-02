@@ -11,8 +11,9 @@ async function fetchData(file)
 // Main div contenant les div des photographes.
 const mainBody = document.getElementsByTagName('main')[0]; // Sans [0] --> Rien ne s'affiche.
 const headTagName = document.getElementsByTagName('head')[0]; // Sans [0] --> Rien ne s'affiche.
+// const divPhotographers = document.getElementById('divPhotographers').window.location.href = '../index.html'; // TEST TRIAGE NON CONCLUANT
 
-// Traphotographersent des données
+// Récupération des données
 const data = fetchData(file).then((data) => // Puisqu'il y a une function async, .then sert à en attendre la réponse.
 {
   // Création de la div contact-details //
@@ -26,7 +27,7 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       contactDetails.appendChild(photographersDetails); // Appartient à la div contactDetails.
 
       // Page Mimi Keel
-      if (window.location.pathname =='/Page_Photographes/Mimi_Keel.html') // Majuscules obligatoires pour l'URL si non le JS ne s'affiche pas
+      if (window.location.pathname =='/Page_Photographes/Mimi_Keel.html') // Majuscules obligatoires pour l'URL sinon le JS ne s'affiche pas
       {
         // title tag name //
         const titlePage = document.createElement('title'); // Création de la balise title.
@@ -76,6 +77,11 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       `
       <img src="/Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${data.photographers[0].portrait}" alt="${data.photographers[0].name}" class="img-pictures">
       `;
+
+      // Ajout menu déroulant
+      const menu = document.createElement('div');
+      mainBody.appendChild(menu);
+      menu.innerHTML = `<p>Trier par</p>`;
       }
 
       // Page Ellie-Rose_Wilkens
@@ -286,11 +292,11 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
         tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
         photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
         tagsFiltered.innerHTML +=
-          `<a href="#" class="nav-filters">
+          `<a href="/index.html" class="nav-filters ${data.photographers[5].tags[0]}-tag">
           #${data.photographers[5].tags[0]}</a>
           <span class="screenreader-text">#${data.photographers[5].tags[0]}</span>`
           +
-          `<a href="#" class="nav-filters">
+          `<a href="#" class="nav-filters ${data.photographers[5].tags[1]}-tag">
           #${data.photographers[5].tags[1]}</a>
           <span class="screenreader-text">#${data.photographers[5].tags[1]}</span>`;
         
@@ -309,5 +315,141 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       <img src="/Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${data.photographers[5].portrait}" alt="${data.photographers[5].name}" class="img-pictures">
       `;
       }
+
+// // TEST TRIAGE NON CONCLUANT
+// // Filtre des #Tags Page photographe
+// const mimiKeel = divPhotographers.children[0];
+// const ellieRoseWilkens = divPhotographers.children[1];
+// const tracyGalindo = divPhotographers.children[2];
+// const nabeelBradford = divPhotographers.children[3];
+// const rhodeDubois = divPhotographers.children[4];
+// const marcelNikolic = divPhotographers.children[5];
+
+// //   // #Portraits
+// // const portraitTag = document.querySelectorAll(".portrait-tag");
+// // portraitTag.forEach(tag =>
+// // {
+// //   tag.addEventListener("click", () =>
+// //   {
+// //     ellieRoseWilkens.style.display = "none";
+// //     tracyGalindo.style.display = "none";
+// //     rhodeDubois.style.display = "none";
+// //     marcelNikolic.style.display = "none";
+// //     nabeelBradford.style.display = "block";
+// //     mimiKeel.style.display = "block";
+// //   })
+// // });
+
+// //   // #Art
+// // const artTag = document.querySelectorAll(".art-tag");
+// // artTag.forEach(tag =>
+// //   {
+// //     tag.addEventListener("click", () =>
+// //   {
+// //     ellieRoseWilkens.style.display = "none";
+// //     rhodeDubois.style.display = "none";
+// //     marcelNikolic.style.display = "none";
+// //     nabeelBradford.style.display = "none";
+// //     mimiKeel.style.display = "none";
+// //     tracyGalindo.style.display = "block";
+// //   })
+// // });
+
+// //   // #Fashion
+// // const fashionTag = document.querySelectorAll(".fashion-tag");
+// // fashionTag.forEach(tag =>
+// //   {
+// //     tag.addEventListener("click", () =>
+// //   {
+// //     ellieRoseWilkens.style.display = "none";
+// //     rhodeDubois.style.display = "block";
+// //     marcelNikolic.style.display = "none";
+// //     nabeelBradford.style.display = "none";
+// //     mimiKeel.style.display = "none";
+// //     tracyGalindo.style.display = "block";
+// //   })
+// // });
+
+// //   // #Architecture
+// // const architectureTag = document.querySelectorAll(".architecture-tag");
+// // architectureTag.forEach(tag =>
+// //   {
+// //     tag.addEventListener("click", () =>
+// //   {
+// //     ellieRoseWilkens.style.display = "block";
+// //     rhodeDubois.style.display = "none";
+// //     marcelNikolic.style.display = "block";
+// //     nabeelBradford.style.display = "none";
+// //     mimiKeel.style.display = "none";
+// //     tracyGalindo.style.display = "none";
+// //   })
+// // });
+
+//   // #Travel
+// const travelTag = document.querySelectorAll(".travel-tag");
+// travelTag.forEach(tag =>
+//   {
+//     tag.addEventListener("click", () =>
+//   {
+//     ellieRoseWilkens.style.display = "none";
+//     rhodeDubois.style.display = "none";
+//     marcelNikolic.style.display = "block";
+//     nabeelBradford.style.display = "block";
+//     mimiKeel.style.display = "block";
+//     tracyGalindo.style.display = "none";
+//   })
+// });
+
+//   // #Sport
+// const sportTag = document.querySelectorAll(".sport-tag");
+// sportTag.forEach(tag =>
+//   {
+//     tag.addEventListener("click", () =>
+//   {
+//     ellieRoseWilkens.style.display = "block";
+//     rhodeDubois.style.display = "block";
+//     marcelNikolic.style.display = "none";
+//     nabeelBradford.style.display = "none";
+//     mimiKeel.style.display = "none";
+//     tracyGalindo.style.display = "none";
+//   })
+// });
+
+//   // #Animals
+// const animalsTag = document.querySelectorAll(".animals-tag");
+// animalsTag.forEach(tag =>
+//   {
+//     tag.addEventListener("click", () =>
+//   {
+//     ellieRoseWilkens.style.display = "none";
+//     rhodeDubois.style.display = "block";
+//     marcelNikolic.style.display = "none";
+//     nabeelBradford.style.display = "none";
+//     mimiKeel.style.display = "block";
+//     tracyGalindo.style.display = "none";
+//   })
+// });
+
+//   // #Events
+// const eventsTag = document.querySelectorAll(".events-tag");
+// eventsTag.forEach(tag =>
+//   {
+//     tag.addEventListener("click", () =>
+//   {
+//     ellieRoseWilkens.style.display = "none";
+//     rhodeDubois.style.display = "block";
+//     marcelNikolic.style.display = "none";
+//     nabeelBradford.style.display = "none";
+//     mimiKeel.style.display = "block";
+//     tracyGalindo.style.display = "block";
+//   })
+// });
+
+
+
+
+
+
+      
 });
 console.log(data);
