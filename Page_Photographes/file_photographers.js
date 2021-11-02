@@ -85,7 +85,7 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
 
       // Ajout de la div medias
       const medias = document.createElement('div'); // Création de div media.
-      mainBody.appendChild(medias); // Ajout de la classe correspondante.
+      mainBody.appendChild(medias); // Appartenance à la div medias.
       medias.setAttribute('id', 'medias-div'); // Ajout de la classe correspondante.
 
         // data.media.forEach((element) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
@@ -94,7 +94,7 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
           medias.innerHTML +=
             `<div class="media">
               <a href="#">
-                <img src="../Photos_FishEye/Sample_Photos/Mimi/${data.media[37].image}" alt="${data.media[37].title}" class="img-pictures">
+                <img src="../Photos_FishEye/Sample_Photos/Mimi/${data.media[37].image}" alt="${data.media[37].title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
                 <span class="screenreader-text">${data.media[37].title}</span>
                 <div class="media-details">
                   <p>${data.media[37].title}</p>
@@ -108,7 +108,7 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
                   <video controls width="300">
 
                   <source src="../Photos_FishEye/Sample_Photos/Mimi/${data.media[36].video}"
-                          type="video/mp4" alt="${data.media[36].title}" class="img-pictures">              
+                          type="video/mp4" alt="${data.media[36].title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
                   Sorry, your browser doesn't support embedded videos.
                 </video>
                 <span class="screenreader-text">${data.media[36].title}</span>
@@ -120,19 +120,62 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
             </div>`; // Ajout HTML.
         // });
 
-        // Ajout lightbox
+        // Ajout lightbox (Avec 2 estampes pour le moment)
+        const modal = document.createElement('div'); // Création de la div modal.
+        mainBody.appendChild(modal);
+        modal.setAttribute('id', 'modal');
+        modal.classList.add('modalClass')
+        modal.innerHTML +=
+        `
+        <!-- The Modal/Lightbox -->
+        <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+
+    <div class="mySlides">
+      <div class="numbertext">1 / 4</div>
+      <img src="../Photos_FishEye/Sample_Photos/Mimi/${data.media[37].image}" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">2 / 4</div>
+      <video src="../Photos_FishEye/Sample_Photos/Mimi/${data.media[36].video}" style="width:100%"></video>
+    </div>
+
+    <!-- Next/previous controls -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <!-- Caption text -->
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+
+    <!-- Thumbnail image controls -->
+    <div class="column">
+      <img class="demo" src="../Photos_FishEye/Sample_Photos/Mimi/${data.media[37].image}" onclick="currentSlide(1)" alt="${data.media[37].title}">
+    </div>
+
+    <div class="column">
+      <img class="demo" src="../Photos_FishEye/Sample_Photos/Mimi/${data.media[36].video}" onclick="currentSlide(2)" alt="${data.media[36].title}">
+    </div>
+  </div>
+        `
+
+        
 
 
         // Ajout like-price (sticky bas-droite)
-        const likePrice = document.createElement('div');
-        mainBody.appendChild(likePrice);
-        likePrice.setAttribute('id', 'like-price');
+        const likePrice = document.createElement('div'); // Création de div like-price
+        mainBody.appendChild(likePrice); // Appartenance à mainBody
+        likePrice.setAttribute('id', 'like-price'); // Attribution d'id et son identifiant.
         likePrice.innerHTML +=
         `
         <p>${data.media[36].likes}(Trouver le calcul correct)<i class="fas fa-heart"></i></p>
         <p>${data.photographers[0].price}€</p>
         `
       }
+
+      
 
       // Page Ellie-Rose_Wilkens
       if (window.location.pathname =='/Page_Photographes/Ellie-Rose_Wilkens.html')
@@ -365,6 +408,69 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       <img src="/Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${data.photographers[5].portrait}" alt="${data.photographers[5].name}" class="img-pictures">
       `;
       }
+
+
+
+
+
+
+// Script pour Lightbix
+
+// Ouverture Modal
+function openModal()
+{
+  document.getElementById("modal").style.display = "block";
+}
+
+// Close the Modal
+function closeModal() {
+  document.getElementById("Modal").style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // // TEST TRIAGE NON CONCLUANT
 // // Filtre des #Tags Page photographe
