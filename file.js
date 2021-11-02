@@ -99,8 +99,19 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
   });
   
     // #Art
-  const artTag = document.getElementById("art-tag");
-  artTag.addEventListener("click", () =>
+  const artTag0 = document.getElementsByClassName("art-tag")[0];
+  artTag0.addEventListener("click", () =>
+  {
+    ellieRoseWilkens.style.display = "none";
+    rhodeDubois.style.display = "none";
+    marcelNikolic.style.display = "none";
+    nabeelBradford.style.display = "none";
+    mimiKeel.style.display = "none";
+    tracyGalindo.style.display = "block";
+  });
+
+  const artTag1 = document.getElementsByClassName("art-tag")[1];
+  artTag1.addEventListener("click", () =>
   {
     ellieRoseWilkens.style.display = "none";
     rhodeDubois.style.display = "none";
@@ -111,8 +122,19 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
   });
 
     // #Fashion
-  const fashionTag = document.getElementById("fashion-tag");
-  fashionTag.addEventListener("click", () =>
+  const fashionTag0 = document.getElementsByClassName("fashion-tag")[0];
+  fashionTag0.addEventListener("click", () =>
+  {
+    ellieRoseWilkens.style.display = "none";
+    rhodeDubois.style.display = "block";
+    marcelNikolic.style.display = "none";
+    nabeelBradford.style.display = "none";
+    mimiKeel.style.display = "none";
+    tracyGalindo.style.display = "block";
+  });
+
+  const fashionTag1 = document.getElementsByClassName("fashion-tag")[1];
+  fashionTag1.addEventListener("click", () =>
   {
     ellieRoseWilkens.style.display = "none";
     rhodeDubois.style.display = "block";
@@ -123,8 +145,19 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
   });
 
     // #Architecture
-  const architectureTag = document.getElementById("architecture-tag");
-  architectureTag.addEventListener("click", () =>
+  const architectureTag0 = document.getElementsByClassName("architecture-tag")[0];
+  architectureTag0.addEventListener("click", () =>
+  {
+    ellieRoseWilkens.style.display = "block";
+    rhodeDubois.style.display = "none";
+    marcelNikolic.style.display = "block";
+    nabeelBradford.style.display = "none";
+    mimiKeel.style.display = "none";
+    tracyGalindo.style.display = "none";
+  });
+
+  const architectureTag1 = document.getElementsByClassName("architecture-tag")[1];
+  architectureTag1.addEventListener("click", () =>
   {
     ellieRoseWilkens.style.display = "block";
     rhodeDubois.style.display = "none";
@@ -135,8 +168,19 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
   });
 
     // #Travel
-  const travelTag = document.getElementById("travel-tag");
-  travelTag.addEventListener("click", () =>
+  const travelTag0 = document.getElementsByClassName("travel-tag")[0];
+  travelTag0.addEventListener("click", () =>
+  {
+    ellieRoseWilkens.style.display = "none";
+    rhodeDubois.style.display = "none";
+    marcelNikolic.style.display = "block";
+    nabeelBradford.style.display = "block";
+    mimiKeel.style.display = "block";
+    tracyGalindo.style.display = "none";
+  });
+
+  const travelTag1 = document.getElementsByClassName("travel-tag")[1];
+  travelTag1.addEventListener("click", () =>
   {
     ellieRoseWilkens.style.display = "none";
     rhodeDubois.style.display = "none";
@@ -147,8 +191,19 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
   });
 
     // #Sport
-  const sportTag = document.getElementById("sport-tag");
-  sportTag.addEventListener("click", () =>
+  const sportTag0 = document.getElementsByClassName("sport-tag")[0];
+  sportTag0.addEventListener("click", () =>
+  {
+    ellieRoseWilkens.style.display = "block";
+    rhodeDubois.style.display = "block";
+    marcelNikolic.style.display = "none";
+    nabeelBradford.style.display = "none";
+    mimiKeel.style.display = "none";
+    tracyGalindo.style.display = "none";
+  });
+
+  const sportTag1 = document.getElementsByClassName("sport-tag")[1];
+  sportTag1.addEventListener("click", () =>
   {
     ellieRoseWilkens.style.display = "block";
     rhodeDubois.style.display = "block";
@@ -159,8 +214,19 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
   });
 
     // #Animals
-  const animalsTag = document.getElementById("animals-tag");
-  animalsTag.addEventListener("click", () =>
+  const animalsTag0 = document.getElementsByClassName("animals-tag")[0];
+  animalsTag0.addEventListener("click", () =>
+  {
+    ellieRoseWilkens.style.display = "none";
+    rhodeDubois.style.display = "block";
+    marcelNikolic.style.display = "none";
+    nabeelBradford.style.display = "none";
+    mimiKeel.style.display = "block";
+    tracyGalindo.style.display = "none";
+  });
+
+  const animalsTag1 = document.getElementsByClassName("animals-tag")[1];
+  animalsTag1.addEventListener("click", () =>
   {
     ellieRoseWilkens.style.display = "none";
     rhodeDubois.style.display = "block";
@@ -171,8 +237,19 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
   });
 
     // #Events
-  const eventsTag = document.getElementById("events-tag");
-  eventsTag.addEventListener("click", () =>
+  const eventsTag0 = document.getElementsByClassName("events-tag")[0];
+  eventsTag0.addEventListener("click", () =>
+  {
+    ellieRoseWilkens.style.display = "none";
+    rhodeDubois.style.display = "block";
+    marcelNikolic.style.display = "none";
+    nabeelBradford.style.display = "none";
+    mimiKeel.style.display = "block";
+    tracyGalindo.style.display = "block";
+  });
+
+  const eventsTag1 = document.getElementsByClassName("events-tag")[1];
+  eventsTag1.addEventListener("click", () =>
   {
     ellieRoseWilkens.style.display = "none";
     rhodeDubois.style.display = "block";
