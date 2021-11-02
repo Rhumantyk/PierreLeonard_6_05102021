@@ -101,6 +101,24 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
                   <p>${data.media[37].likes}<i class="fas fa-heart"></i></p>
                 </div>
               </a>
+            </div>
+
+            <div class="media">
+              <a href="#">
+                  <video controls width="300">
+
+                  <source src="../Photos_FishEye/Sample_Photos/Mimi/${data.media[36].video}"
+                          type="video/mp4" alt="${data.media[36].title}" class="img-pictures">              
+                  Sorry, your browser doesn't support embedded videos.
+                </video>
+
+
+                <span class="screenreader-text">${data.media[36].title}</span>
+                <div class="media-details">
+                  <p>${data.media[36].title}</p>
+                  <p>${data.media[36].likes}<i class="fas fa-heart"></i></p>
+                </div>
+              </a>
             </div>`; // Ajout HTML.
         // });
       }

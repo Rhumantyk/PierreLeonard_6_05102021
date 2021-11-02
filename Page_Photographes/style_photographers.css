@@ -203,6 +203,10 @@ nav > ul:hover .sous
 }
 
     /* Fin Partie tri + images */
+.media-div
+{
+    display: flex;
+}
 
 .media
 {
