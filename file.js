@@ -68,195 +68,208 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
   });
 
   // Filtre des #Tags balise header
-  const ellieRoseWilkens = divPhotographers.children[0];
-  const mimiKeel = divPhotographers.children[1];
+  const mimiKeel = divPhotographers.children[0];
+  const ellieRoseWilkens = divPhotographers.children[1];
   const tracyGalindo = divPhotographers.children[2];
   const nabeelBradford = divPhotographers.children[3];
   const rhodeDubois = divPhotographers.children[4];
   const marcelNikolic = divPhotographers.children[5];
 
     // #Portraits
-  const portraitTag0 = document.getElementsByClassName("portrait-tag")[0];
-  portraitTag0.addEventListener("click", () =>
+  const portraitTag0 = document.querySelectorAll(".portrait-tag");
+  portraitTag0.forEach(tag =>
   {
-    ellieRoseWilkens.style.display = "none";
-    tracyGalindo.style.display = "none";
-    rhodeDubois.style.display = "none";
-    marcelNikolic.style.display = "none";
-    nabeelBradford.style.display = "block";
-    mimiKeel.style.display = "block";
+    tag.addEventListener("click", () =>
+    {
+      ellieRoseWilkens.style.display = "none";
+      tracyGalindo.style.display = "none";
+      rhodeDubois.style.display = "none";
+      marcelNikolic.style.display = "none";
+      nabeelBradford.style.display = "block";
+      mimiKeel.style.display = "block";
+    })
   });
 
-  const portraitTag1 = document.getElementsByClassName("portrait-tag")[1];
-  portraitTag1.addEventListener("click", () =>
-  {
-    ellieRoseWilkens.style.display = "none";
-    tracyGalindo.style.display = "none";
-    rhodeDubois.style.display = "none";
-    marcelNikolic.style.display = "none";
-    nabeelBradford.style.display = "block";
-    mimiKeel.style.display = "block";
-  });
+  // portraitTag0.addEventListener("click", () =>
+  // {
+  //   ellieRoseWilkens.style.display = "none";
+  //   tracyGalindo.style.display = "none";
+  //   rhodeDubois.style.display = "none";
+  //   marcelNikolic.style.display = "none";
+  //   nabeelBradford.style.display = "block";
+  //   mimiKeel.style.display = "block";
+  // });
+
+  // const portraitTag1 = document.getElementsByClassName("portrait-tag")[1];
+  // portraitTag1.addEventListener("click", () =>
+  // {
+  //   ellieRoseWilkens.style.display = "none";
+  //   tracyGalindo.style.display = "none";
+  //   rhodeDubois.style.display = "none";
+  //   marcelNikolic.style.display = "none";
+  //   nabeelBradford.style.display = "block";
+  //   mimiKeel.style.display = "block";
+  // });
   
-    // #Art
-  const artTag0 = document.getElementsByClassName("art-tag")[0];
-  artTag0.addEventListener("click", () =>
-  {
-    ellieRoseWilkens.style.display = "none";
-    rhodeDubois.style.display = "none";
-    marcelNikolic.style.display = "none";
-    nabeelBradford.style.display = "none";
-    mimiKeel.style.display = "none";
-    tracyGalindo.style.display = "block";
-  });
+  //   // #Art
+  // const artTag0 = document.getElementsByClassName("art-tag")[0];
+  // artTag0.addEventListener("click", () =>
+  // {
+  //   ellieRoseWilkens.style.display = "none";
+  //   rhodeDubois.style.display = "none";
+  //   marcelNikolic.style.display = "none";
+  //   nabeelBradford.style.display = "none";
+  //   mimiKeel.style.display = "none";
+  //   tracyGalindo.style.display = "block";
+  // });
 
-  const artTag1 = document.getElementsByClassName("art-tag")[1];
-  artTag1.addEventListener("click", () =>
-  {
-    ellieRoseWilkens.style.display = "none";
-    rhodeDubois.style.display = "none";
-    marcelNikolic.style.display = "none";
-    nabeelBradford.style.display = "none";
-    mimiKeel.style.display = "none";
-    tracyGalindo.style.display = "block";
-  });
+  // const artTag1 = document.getElementsByClassName("art-tag")[1];
+  // artTag1.addEventListener("click", () =>
+  // {
+  //   ellieRoseWilkens.style.display = "none";
+  //   rhodeDubois.style.display = "none";
+  //   marcelNikolic.style.display = "none";
+  //   nabeelBradford.style.display = "none";
+  //   mimiKeel.style.display = "none";
+  //   tracyGalindo.style.display = "block";
+  // });
 
-    // #Fashion
-  const fashionTag0 = document.getElementsByClassName("fashion-tag")[0];
-  fashionTag0.addEventListener("click", () =>
-  {
-    ellieRoseWilkens.style.display = "none";
-    rhodeDubois.style.display = "block";
-    marcelNikolic.style.display = "none";
-    nabeelBradford.style.display = "none";
-    mimiKeel.style.display = "none";
-    tracyGalindo.style.display = "block";
-  });
+  //   // #Fashion
+  // const fashionTag0 = document.getElementsByClassName("fashion-tag")[0];
+  // fashionTag0.addEventListener("click", () =>
+  // {
+  //   ellieRoseWilkens.style.display = "none";
+  //   rhodeDubois.style.display = "block";
+  //   marcelNikolic.style.display = "none";
+  //   nabeelBradford.style.display = "none";
+  //   mimiKeel.style.display = "none";
+  //   tracyGalindo.style.display = "block";
+  // });
 
-  const fashionTag1 = document.getElementsByClassName("fashion-tag")[1];
-  fashionTag1.addEventListener("click", () =>
-  {
-    ellieRoseWilkens.style.display = "none";
-    rhodeDubois.style.display = "block";
-    marcelNikolic.style.display = "none";
-    nabeelBradford.style.display = "none";
-    mimiKeel.style.display = "none";
-    tracyGalindo.style.display = "block";
-  });
+  // const fashionTag1 = document.getElementsByClassName("fashion-tag")[1];
+  // fashionTag1.addEventListener("click", () =>
+  // {
+  //   ellieRoseWilkens.style.display = "none";
+  //   rhodeDubois.style.display = "block";
+  //   marcelNikolic.style.display = "none";
+  //   nabeelBradford.style.display = "none";
+  //   mimiKeel.style.display = "none";
+  //   tracyGalindo.style.display = "block";
+  // });
 
-    // #Architecture
-  const architectureTag0 = document.getElementsByClassName("architecture-tag")[0];
-  architectureTag0.addEventListener("click", () =>
-  {
-    ellieRoseWilkens.style.display = "block";
-    rhodeDubois.style.display = "none";
-    marcelNikolic.style.display = "block";
-    nabeelBradford.style.display = "none";
-    mimiKeel.style.display = "none";
-    tracyGalindo.style.display = "none";
-  });
+  //   // #Architecture
+  // const architectureTag0 = document.getElementsByClassName("architecture-tag")[0];
+  // architectureTag0.addEventListener("click", () =>
+  // {
+  //   ellieRoseWilkens.style.display = "block";
+  //   rhodeDubois.style.display = "none";
+  //   marcelNikolic.style.display = "block";
+  //   nabeelBradford.style.display = "none";
+  //   mimiKeel.style.display = "none";
+  //   tracyGalindo.style.display = "none";
+  // });
 
-  const architectureTag1 = document.getElementsByClassName("architecture-tag")[1];
-  architectureTag1.addEventListener("click", () =>
-  {
-    ellieRoseWilkens.style.display = "block";
-    rhodeDubois.style.display = "none";
-    marcelNikolic.style.display = "block";
-    nabeelBradford.style.display = "none";
-    mimiKeel.style.display = "none";
-    tracyGalindo.style.display = "none";
-  });
+  // const architectureTag1 = document.getElementsByClassName("architecture-tag")[1];
+  // architectureTag1.addEventListener("click", () =>
+  // {
+  //   ellieRoseWilkens.style.display = "block";
+  //   rhodeDubois.style.display = "none";
+  //   marcelNikolic.style.display = "block";
+  //   nabeelBradford.style.display = "none";
+  //   mimiKeel.style.display = "none";
+  //   tracyGalindo.style.display = "none";
+  // });
 
-    // #Travel
-  const travelTag0 = document.getElementsByClassName("travel-tag")[0];
-  travelTag0.addEventListener("click", () =>
-  {
-    ellieRoseWilkens.style.display = "none";
-    rhodeDubois.style.display = "none";
-    marcelNikolic.style.display = "block";
-    nabeelBradford.style.display = "block";
-    mimiKeel.style.display = "block";
-    tracyGalindo.style.display = "none";
-  });
+  //   // #Travel
+  // const travelTag0 = document.getElementsByClassName("travel-tag")[0];
+  // travelTag0.addEventListener("click", () =>
+  // {
+  //   ellieRoseWilkens.style.display = "none";
+  //   rhodeDubois.style.display = "none";
+  //   marcelNikolic.style.display = "block";
+  //   nabeelBradford.style.display = "block";
+  //   mimiKeel.style.display = "block";
+  //   tracyGalindo.style.display = "none";
+  // });
 
-  const travelTag1 = document.getElementsByClassName("travel-tag")[1];
-  travelTag1.addEventListener("click", () =>
-  {
-    ellieRoseWilkens.style.display = "none";
-    rhodeDubois.style.display = "none";
-    marcelNikolic.style.display = "block";
-    nabeelBradford.style.display = "block";
-    mimiKeel.style.display = "block";
-    tracyGalindo.style.display = "none";
-  });
+  // const travelTag1 = document.getElementsByClassName("travel-tag")[1];
+  // travelTag1.addEventListener("click", () =>
+  // {
+  //   ellieRoseWilkens.style.display = "none";
+  //   rhodeDubois.style.display = "none";
+  //   marcelNikolic.style.display = "block";
+  //   nabeelBradford.style.display = "block";
+  //   mimiKeel.style.display = "block";
+  //   tracyGalindo.style.display = "none";
+  // });
 
-    // #Sport
-  const sportTag0 = document.getElementsByClassName("sport-tag")[0];
-  sportTag0.addEventListener("click", () =>
-  {
-    ellieRoseWilkens.style.display = "block";
-    rhodeDubois.style.display = "block";
-    marcelNikolic.style.display = "none";
-    nabeelBradford.style.display = "none";
-    mimiKeel.style.display = "none";
-    tracyGalindo.style.display = "none";
-  });
+  //   // #Sport
+  // const sportTag0 = document.getElementsByClassName("sport-tag")[0];
+  // sportTag0.addEventListener("click", () =>
+  // {
+  //   ellieRoseWilkens.style.display = "block";
+  //   rhodeDubois.style.display = "block";
+  //   marcelNikolic.style.display = "none";
+  //   nabeelBradford.style.display = "none";
+  //   mimiKeel.style.display = "none";
+  //   tracyGalindo.style.display = "none";
+  // });
 
-  const sportTag1 = document.getElementsByClassName("sport-tag")[1];
-  sportTag1.addEventListener("click", () =>
-  {
-    ellieRoseWilkens.style.display = "block";
-    rhodeDubois.style.display = "block";
-    marcelNikolic.style.display = "none";
-    nabeelBradford.style.display = "none";
-    mimiKeel.style.display = "none";
-    tracyGalindo.style.display = "none";
-  });
+  // const sportTag1 = document.getElementsByClassName("sport-tag")[1];
+  // sportTag1.addEventListener("click", () =>
+  // {
+  //   ellieRoseWilkens.style.display = "block";
+  //   rhodeDubois.style.display = "block";
+  //   marcelNikolic.style.display = "none";
+  //   nabeelBradford.style.display = "none";
+  //   mimiKeel.style.display = "none";
+  //   tracyGalindo.style.display = "none";
+  // });
 
-    // #Animals
-  const animalsTag0 = document.getElementsByClassName("animals-tag")[0];
-  animalsTag0.addEventListener("click", () =>
-  {
-    ellieRoseWilkens.style.display = "none";
-    rhodeDubois.style.display = "block";
-    marcelNikolic.style.display = "none";
-    nabeelBradford.style.display = "none";
-    mimiKeel.style.display = "block";
-    tracyGalindo.style.display = "none";
-  });
+  //   // #Animals
+  // const animalsTag0 = document.getElementsByClassName("animals-tag")[0];
+  // animalsTag0.addEventListener("click", () =>
+  // {
+  //   ellieRoseWilkens.style.display = "none";
+  //   rhodeDubois.style.display = "block";
+  //   marcelNikolic.style.display = "none";
+  //   nabeelBradford.style.display = "none";
+  //   mimiKeel.style.display = "block";
+  //   tracyGalindo.style.display = "none";
+  // });
 
-  const animalsTag1 = document.getElementsByClassName("animals-tag")[1];
-  animalsTag1.addEventListener("click", () =>
-  {
-    ellieRoseWilkens.style.display = "none";
-    rhodeDubois.style.display = "block";
-    marcelNikolic.style.display = "none";
-    nabeelBradford.style.display = "none";
-    mimiKeel.style.display = "block";
-    tracyGalindo.style.display = "none";
-  });
+  // const animalsTag1 = document.getElementsByClassName("animals-tag")[1];
+  // animalsTag1.addEventListener("click", () =>
+  // {
+  //   ellieRoseWilkens.style.display = "none";
+  //   rhodeDubois.style.display = "block";
+  //   marcelNikolic.style.display = "none";
+  //   nabeelBradford.style.display = "none";
+  //   mimiKeel.style.display = "block";
+  //   tracyGalindo.style.display = "none";
+  // });
 
-    // #Events
-  const eventsTag0 = document.getElementsByClassName("events-tag")[0];
-  eventsTag0.addEventListener("click", () =>
-  {
-    ellieRoseWilkens.style.display = "none";
-    rhodeDubois.style.display = "block";
-    marcelNikolic.style.display = "none";
-    nabeelBradford.style.display = "none";
-    mimiKeel.style.display = "block";
-    tracyGalindo.style.display = "block";
-  });
+  //   // #Events
+  // const eventsTag0 = document.getElementsByClassName("events-tag")[0];
+  // eventsTag0.addEventListener("click", () =>
+  // {
+  //   ellieRoseWilkens.style.display = "none";
+  //   rhodeDubois.style.display = "block";
+  //   marcelNikolic.style.display = "none";
+  //   nabeelBradford.style.display = "none";
+  //   mimiKeel.style.display = "block";
+  //   tracyGalindo.style.display = "block";
+  // });
 
-  const eventsTag1 = document.getElementsByClassName("events-tag")[1];
-  eventsTag1.addEventListener("click", () =>
-  {
-    ellieRoseWilkens.style.display = "none";
-    rhodeDubois.style.display = "block";
-    marcelNikolic.style.display = "none";
-    nabeelBradford.style.display = "none";
-    mimiKeel.style.display = "block";
-    tracyGalindo.style.display = "block";
-  });
+  // const eventsTag1 = document.getElementsByClassName("events-tag")[1];
+  // eventsTag1.addEventListener("click", () =>
+  // {
+  //   ellieRoseWilkens.style.display = "none";
+  //   rhodeDubois.style.display = "block";
+  //   marcelNikolic.style.display = "none";
+  //   nabeelBradford.style.display = "none";
+  //   mimiKeel.style.display = "block";
+  //   tracyGalindo.style.display = "block";
+  // });
 });
 console.log(data);
