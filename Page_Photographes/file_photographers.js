@@ -119,6 +119,19 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
               </a>
             </div>`; // Ajout HTML.
         // });
+
+        // Ajout lightbox
+
+
+        // Ajout like-price (sticky bas-droite)
+        const likePrice = document.createElement('div');
+        mainBody.appendChild(likePrice);
+        likePrice.setAttribute('id', 'like-price');
+        likePrice.innerHTML +=
+        `
+        <p>${data.media[36].likes}(Trouver le calcul correct)<i class="fas fa-heart"></i></p>
+        <p>${data.photographers[0].price}€</p>
+        `
       }
 
       // Page Ellie-Rose_Wilkens
