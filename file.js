@@ -76,8 +76,8 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
   const marcelNikolic = divPhotographers.children[5];
 
     // #Portraits
-  const portraitTag0 = document.querySelectorAll(".portrait-tag");
-  portraitTag0.forEach(tag =>
+  const portraitTag = document.querySelectorAll(".portrait-tag");
+  portraitTag.forEach(tag =>
   {
     tag.addEventListener("click", () =>
     {
@@ -89,187 +89,110 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       mimiKeel.style.display = "block";
     })
   });
-
-  // portraitTag0.addEventListener("click", () =>
-  // {
-  //   ellieRoseWilkens.style.display = "none";
-  //   tracyGalindo.style.display = "none";
-  //   rhodeDubois.style.display = "none";
-  //   marcelNikolic.style.display = "none";
-  //   nabeelBradford.style.display = "block";
-  //   mimiKeel.style.display = "block";
-  // });
-
-  // const portraitTag1 = document.getElementsByClassName("portrait-tag")[1];
-  // portraitTag1.addEventListener("click", () =>
-  // {
-  //   ellieRoseWilkens.style.display = "none";
-  //   tracyGalindo.style.display = "none";
-  //   rhodeDubois.style.display = "none";
-  //   marcelNikolic.style.display = "none";
-  //   nabeelBradford.style.display = "block";
-  //   mimiKeel.style.display = "block";
-  // });
   
-  //   // #Art
-  // const artTag0 = document.getElementsByClassName("art-tag")[0];
-  // artTag0.addEventListener("click", () =>
-  // {
-  //   ellieRoseWilkens.style.display = "none";
-  //   rhodeDubois.style.display = "none";
-  //   marcelNikolic.style.display = "none";
-  //   nabeelBradford.style.display = "none";
-  //   mimiKeel.style.display = "none";
-  //   tracyGalindo.style.display = "block";
-  // });
+    // #Art
+  const artTag = document.querySelectorAll(".art-tag");
+  artTag.forEach(tag =>
+    {
+      tag.addEventListener("click", () =>
+    {
+      ellieRoseWilkens.style.display = "none";
+      rhodeDubois.style.display = "none";
+      marcelNikolic.style.display = "none";
+      nabeelBradford.style.display = "none";
+      mimiKeel.style.display = "none";
+      tracyGalindo.style.display = "block";
+    })
+  });
 
-  // const artTag1 = document.getElementsByClassName("art-tag")[1];
-  // artTag1.addEventListener("click", () =>
-  // {
-  //   ellieRoseWilkens.style.display = "none";
-  //   rhodeDubois.style.display = "none";
-  //   marcelNikolic.style.display = "none";
-  //   nabeelBradford.style.display = "none";
-  //   mimiKeel.style.display = "none";
-  //   tracyGalindo.style.display = "block";
-  // });
+    // #Fashion
+  const fashionTag = document.querySelectorAll(".fashion-tag");
+  fashionTag.forEach(tag =>
+    {
+      tag.addEventListener("click", () =>
+    {
+      ellieRoseWilkens.style.display = "none";
+      rhodeDubois.style.display = "block";
+      marcelNikolic.style.display = "none";
+      nabeelBradford.style.display = "none";
+      mimiKeel.style.display = "none";
+      tracyGalindo.style.display = "block";
+    })
+  });
 
-  //   // #Fashion
-  // const fashionTag0 = document.getElementsByClassName("fashion-tag")[0];
-  // fashionTag0.addEventListener("click", () =>
-  // {
-  //   ellieRoseWilkens.style.display = "none";
-  //   rhodeDubois.style.display = "block";
-  //   marcelNikolic.style.display = "none";
-  //   nabeelBradford.style.display = "none";
-  //   mimiKeel.style.display = "none";
-  //   tracyGalindo.style.display = "block";
-  // });
+    // #Architecture
+  const architectureTag = document.querySelectorAll(".architecture-tag");
+  architectureTag.forEach(tag =>
+    {
+      tag.addEventListener("click", () =>
+    {
+      ellieRoseWilkens.style.display = "block";
+      rhodeDubois.style.display = "none";
+      marcelNikolic.style.display = "block";
+      nabeelBradford.style.display = "none";
+      mimiKeel.style.display = "none";
+      tracyGalindo.style.display = "none";
+    })
+  });
 
-  // const fashionTag1 = document.getElementsByClassName("fashion-tag")[1];
-  // fashionTag1.addEventListener("click", () =>
-  // {
-  //   ellieRoseWilkens.style.display = "none";
-  //   rhodeDubois.style.display = "block";
-  //   marcelNikolic.style.display = "none";
-  //   nabeelBradford.style.display = "none";
-  //   mimiKeel.style.display = "none";
-  //   tracyGalindo.style.display = "block";
-  // });
+    // #Travel
+  const travelTag = document.querySelectorAll(".travel-tag");
+  travelTag.forEach(tag =>
+    {
+      tag.addEventListener("click", () =>
+    {
+      ellieRoseWilkens.style.display = "none";
+      rhodeDubois.style.display = "none";
+      marcelNikolic.style.display = "block";
+      nabeelBradford.style.display = "block";
+      mimiKeel.style.display = "block";
+      tracyGalindo.style.display = "none";
+    })
+  });
 
-  //   // #Architecture
-  // const architectureTag0 = document.getElementsByClassName("architecture-tag")[0];
-  // architectureTag0.addEventListener("click", () =>
-  // {
-  //   ellieRoseWilkens.style.display = "block";
-  //   rhodeDubois.style.display = "none";
-  //   marcelNikolic.style.display = "block";
-  //   nabeelBradford.style.display = "none";
-  //   mimiKeel.style.display = "none";
-  //   tracyGalindo.style.display = "none";
-  // });
+    // #Sport
+  const sportTag = document.querySelectorAll(".sport-tag");
+  sportTag.forEach(tag =>
+    {
+      tag.addEventListener("click", () =>
+    {
+      ellieRoseWilkens.style.display = "block";
+      rhodeDubois.style.display = "block";
+      marcelNikolic.style.display = "none";
+      nabeelBradford.style.display = "none";
+      mimiKeel.style.display = "none";
+      tracyGalindo.style.display = "none";
+    })
+  });
 
-  // const architectureTag1 = document.getElementsByClassName("architecture-tag")[1];
-  // architectureTag1.addEventListener("click", () =>
-  // {
-  //   ellieRoseWilkens.style.display = "block";
-  //   rhodeDubois.style.display = "none";
-  //   marcelNikolic.style.display = "block";
-  //   nabeelBradford.style.display = "none";
-  //   mimiKeel.style.display = "none";
-  //   tracyGalindo.style.display = "none";
-  // });
+    // #Animals
+  const animalsTag = document.querySelectorAll(".animals-tag");
+  animalsTag.forEach(tag =>
+    {
+      tag.addEventListener("click", () =>
+    {
+      ellieRoseWilkens.style.display = "none";
+      rhodeDubois.style.display = "block";
+      marcelNikolic.style.display = "none";
+      nabeelBradford.style.display = "none";
+      mimiKeel.style.display = "block";
+      tracyGalindo.style.display = "none";
+    })
+  });
 
-  //   // #Travel
-  // const travelTag0 = document.getElementsByClassName("travel-tag")[0];
-  // travelTag0.addEventListener("click", () =>
-  // {
-  //   ellieRoseWilkens.style.display = "none";
-  //   rhodeDubois.style.display = "none";
-  //   marcelNikolic.style.display = "block";
-  //   nabeelBradford.style.display = "block";
-  //   mimiKeel.style.display = "block";
-  //   tracyGalindo.style.display = "none";
-  // });
-
-  // const travelTag1 = document.getElementsByClassName("travel-tag")[1];
-  // travelTag1.addEventListener("click", () =>
-  // {
-  //   ellieRoseWilkens.style.display = "none";
-  //   rhodeDubois.style.display = "none";
-  //   marcelNikolic.style.display = "block";
-  //   nabeelBradford.style.display = "block";
-  //   mimiKeel.style.display = "block";
-  //   tracyGalindo.style.display = "none";
-  // });
-
-  //   // #Sport
-  // const sportTag0 = document.getElementsByClassName("sport-tag")[0];
-  // sportTag0.addEventListener("click", () =>
-  // {
-  //   ellieRoseWilkens.style.display = "block";
-  //   rhodeDubois.style.display = "block";
-  //   marcelNikolic.style.display = "none";
-  //   nabeelBradford.style.display = "none";
-  //   mimiKeel.style.display = "none";
-  //   tracyGalindo.style.display = "none";
-  // });
-
-  // const sportTag1 = document.getElementsByClassName("sport-tag")[1];
-  // sportTag1.addEventListener("click", () =>
-  // {
-  //   ellieRoseWilkens.style.display = "block";
-  //   rhodeDubois.style.display = "block";
-  //   marcelNikolic.style.display = "none";
-  //   nabeelBradford.style.display = "none";
-  //   mimiKeel.style.display = "none";
-  //   tracyGalindo.style.display = "none";
-  // });
-
-  //   // #Animals
-  // const animalsTag0 = document.getElementsByClassName("animals-tag")[0];
-  // animalsTag0.addEventListener("click", () =>
-  // {
-  //   ellieRoseWilkens.style.display = "none";
-  //   rhodeDubois.style.display = "block";
-  //   marcelNikolic.style.display = "none";
-  //   nabeelBradford.style.display = "none";
-  //   mimiKeel.style.display = "block";
-  //   tracyGalindo.style.display = "none";
-  // });
-
-  // const animalsTag1 = document.getElementsByClassName("animals-tag")[1];
-  // animalsTag1.addEventListener("click", () =>
-  // {
-  //   ellieRoseWilkens.style.display = "none";
-  //   rhodeDubois.style.display = "block";
-  //   marcelNikolic.style.display = "none";
-  //   nabeelBradford.style.display = "none";
-  //   mimiKeel.style.display = "block";
-  //   tracyGalindo.style.display = "none";
-  // });
-
-  //   // #Events
-  // const eventsTag0 = document.getElementsByClassName("events-tag")[0];
-  // eventsTag0.addEventListener("click", () =>
-  // {
-  //   ellieRoseWilkens.style.display = "none";
-  //   rhodeDubois.style.display = "block";
-  //   marcelNikolic.style.display = "none";
-  //   nabeelBradford.style.display = "none";
-  //   mimiKeel.style.display = "block";
-  //   tracyGalindo.style.display = "block";
-  // });
-
-  // const eventsTag1 = document.getElementsByClassName("events-tag")[1];
-  // eventsTag1.addEventListener("click", () =>
-  // {
-  //   ellieRoseWilkens.style.display = "none";
-  //   rhodeDubois.style.display = "block";
-  //   marcelNikolic.style.display = "none";
-  //   nabeelBradford.style.display = "none";
-  //   mimiKeel.style.display = "block";
-  //   tracyGalindo.style.display = "block";
-  // });
+    // #Events
+  const eventsTag = document.querySelectorAll(".events-tag");
+  eventsTag.forEach(tag =>
+    {
+      tag.addEventListener("click", () =>
+    {
+      ellieRoseWilkens.style.display = "none";
+      rhodeDubois.style.display = "block";
+      marcelNikolic.style.display = "none";
+      nabeelBradford.style.display = "none";
+      mimiKeel.style.display = "block";
+      tracyGalindo.style.display = "block";
+    })
+  });
 });
 console.log(data);
