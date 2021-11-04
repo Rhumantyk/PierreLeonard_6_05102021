@@ -15,6 +15,14 @@ window.onscroll = function() // L'élément scroll est déclenché quand l'utili
 
 const file = '/FishEyeData.json';
 
+
+
+
+
+
+
+
+
 // fetch(file)
 //   .then(response => response.json())
 //   .then(data => console.log(data))
@@ -29,6 +37,19 @@ async function fetchData(file)
 }
 
 let Photographers = [];
+
+
+// const data = fetchData(file).then((data) => // Puisqu'il y a une function async, .then sert à en attendre la réponse.
+// {
+//   data.photographers.forEach((photographer) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
+//   {
+//     // console.log(photographer);
+//     let Nb = Photographers.push(photographer.name);
+//     console.log(Nb);
+//     console.log(Photographers[0]);
+
+//   })
+
 const data = fetchData(file).then((data) => // Puisqu'il y a une function async, .then sert à en attendre la réponse.
 {
   data.photographers.forEach((photographer) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
@@ -37,15 +58,42 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
     let Nb = Photographers.push(photographer.name);
     console.log(Nb);
     console.log(Photographers[0]);
+
+
+
+
+    // // Main div contenant les div des photographes.
+// const divPhotographers = document.getElementById('photographers');
+
+// // Traphotographersent des données
+// const data = fetchData(file).then((data) => // Puisqu'il y a une function async, .then sert à en attendre la réponse.
+// {
+//   data.photographers.forEach((photographer) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
+//   {
+    // // Création de la main div des photographes //
+    // const photographersCard = document.createElement('div'); // Création de div photographers-card.
+    // photographersCard.classList.add('photographers-card'); // Ajout de la classe correspondante.
+    // divPhotographers.appendChild(photographersCard); // Appartient à la div divPhotographers.
+
+    // const photographerLink = document.createElement('div'); // Création de div contenant le lien du photographe.
+    // photographersCard.appendChild(photographerLink); // Appartient à la div photographersCard.
+    // photographersCard.innerHTML =
+    // `<a href="/Page_Photographes/${photographer.name.replace(' ', '_')}.html" class="photographers-link">
+    //     <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${photographer.portrait}" alt="${photographer.name}" class="img-pictures">
+    //     <h2>${photographer.name}</h2>
+    //     <span class="screenreader-text">Mimi Keel</span>
+    // </a>`; // Ajout HTML.
   });
-  console.log(Photographers[1]);
+  console.log("Photographe 1 : " + Photographers[1]);
 });
 alert("stop");
 
+console.log("Data [1]= " + data.photographers[1]);
 
-
-console.log(Photographers[2]);
+console.log("Photographe 2 : " + Photographers[2]);
 alert("stop 2");
+
+
 
 // // Main div contenant les div des photographes.
 // const divPhotographers = document.getElementById('photographers');
