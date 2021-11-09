@@ -61,7 +61,7 @@ function addPhotographersToHTML(tagFilter=null)
       const photographerLink = document.createElement('div'); // Création de div contenant le lien du photographe.
       photographersCard.appendChild(photographerLink); // Appartient à la div photographersCard.
       photographersCard.innerHTML =
-      `<a href="/Page_Photographes.html?${photographer.id}" class="photographers-link">
+      `<a href="/Page_Photographes/${photographer.id}.html" class="photographers-link">
           <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${photographer.portrait}" alt="${photographer.name}" class="img-pictures">
           <h2>${photographer.name}</h2>
           <span class="screenreader-text">Mimi Keel</span>
