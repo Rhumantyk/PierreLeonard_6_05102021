@@ -27,7 +27,7 @@ const data = fetchData(file).then((data) => // Puisqu'il y a une function async,
       contactDetails.appendChild(photographersDetails); // Appartient à la div contactDetails.
 
       // Page Mimi Keel
-      if (window.location.pathname =='/Page_Photographes/930.html') // Majuscules obligatoires pour l'URL sinon le JS ne s'affiche pas
+      if (window.location.pathname =='/Page_Photographes/243.html') // Majuscules obligatoires pour l'URL sinon le JS ne s'affiche pas
       {
         // title tag name //
         const titlePage = document.createElement('title'); // Création de la balise title.
