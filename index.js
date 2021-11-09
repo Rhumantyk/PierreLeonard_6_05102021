@@ -17,11 +17,13 @@ const file = '/FishEyeData.json';
 let photographers = []
 
 fetch(file)
-  .then(function(response) {
+  .then(function(response)
+  {
     return response.json();
   })
-  .then(function(json) {
-    photographers = json["photographers"];
+  .then(function(json)
+  {
+    photographers = json["photographers"]; // Renvoie à la variable "let photographers = []".
     addPhotographersToHTML();
   });
   // .catch(function(err) {
@@ -29,12 +31,15 @@ fetch(file)
   // });
   
 
-function addPhotographersToHTML(tagFilter=null) {
-
+function addPhotographersToHTML(tagFilter=null)
+{
   // get tag filter
   let filter = "";
-  if(tagFilter != null) {
+  if(tagFilter != null) 
+  {
     filter = tagFilter.id.substr(tagFilter.id.indexOf(";")+1);
+    // substr() retourne une sous-chaîne de la chaîne courante, entre un indice de début et un indice de fin.
+    // indexOf() renvoie le premier indice d'un élément dans un tableau
   }
 
   // Main div contenant les div des photographes.
@@ -45,9 +50,9 @@ function addPhotographersToHTML(tagFilter=null) {
   photographers.forEach((photographer) =>
   {
 
-    // si on a un filtre actif, on vérifie que le photographe possède ce filtre dans ses tags
-    if(filter == "" || photographer.tags.includes(filter)) {
-
+    // Si on a un filtre actif, on vérifie que le photographe possède ce filtre dans ses tags
+    if(filter == "" || photographer.tags.includes(filter))
+    {
       // Création de la main div des photographes //
       const photographersCard = document.createElement('div'); // Création de div photographers-card.
       photographersCard.classList.add('photographers-card'); // Ajout de la classe correspondante.
@@ -75,8 +80,6 @@ function addPhotographersToHTML(tagFilter=null) {
       photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
       {
         tagsFiltered.innerHTML += `<a href="#" id="${photographer.name};${tag}" class="nav-filters" onclick="addPhotographersToHTML(this);">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
-        // const currentTag = document.getElementById("${photographer.name}-${tag}-tag");
-        // currentTag.addEventListener("click", filterPhotographers(this));
       });
     }
 
