@@ -24,7 +24,6 @@ async function fetchData(file)
 // Main div contenant les div des photographes.
 const mainBody = document.getElementsByTagName('main')[0]; // Sans [0] --> Rien ne s'affiche.
 const headTagName = document.getElementsByTagName('head')[0]; // Sans [0] --> Rien ne s'affiche.
-// const divPhotographers = document.getElementById('divPhotographers').window.location.href = '../index.html'; // ********* TEST TRIAGE NON CONCLUANT **********
 
 // Récupération des données
 const data = fetchData(file).then((data) => // Puisqu'il y a une function async, .then sert à en attendre la réponse.

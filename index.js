@@ -38,8 +38,9 @@ function addPhotographersToHTML(tagFilter=null)
   if(tagFilter != null) 
   {
     filter = tagFilter.id.substr(tagFilter.id.indexOf(";")+1);
-    // substr() retourne une sous-chaîne de la chaîne courante, entre un indice de début et un indice de fin.
-    // indexOf() renvoie le premier indice d'un élément dans un tableau
+    // substr() retourne une sous-chaîne de la chaîne courante, entre un indice de début et un indice de fin (prend un morceau 
+    // du tableau. sous-morceau d'un tableau défini ci-dessous).
+    // indexOf() renvoie le premier indice d'un élément dans un tableau de caractères.
   }
 
   // Main div contenant les div des photographes.
