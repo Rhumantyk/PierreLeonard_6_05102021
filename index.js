@@ -24,11 +24,16 @@ fetch(file)
   })
   .then(function(json)
   {
-    medias = json["media"]; // Renvoie à la variable "let media = []".
-    addPhotographersToHTML();
     photographers = json["photographers"]; // Renvoie à la variable "let photographers = []".
     addPhotographersToHTML();
+    medias = json["media"]; // Renvoie à la variable "let media = []".
+    addPhotographersToHTML();
   });
+
+  // local storage pour "page_photographers"
+  let objLinea = JSON.stringify(photographers); // Récupération de la variable photographers. 
+  localStorage.setItem("photographers",objLinea); // Transformation de l'objet, serialisation/linearisation en chaîne de caractères.
+
   // .catch(function(err) {
   //   console.log("Error while fetching " + err.message);
   // });
@@ -107,7 +112,7 @@ function addPhotographersToHTML(tagFilter=null)
 
   medias.forEach(() =>
   {
-    // Cf. Page_photographers.js
+    // Ajout uniquement pour Page_photographers.js
   });
 
 }
