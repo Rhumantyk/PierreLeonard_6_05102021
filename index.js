@@ -31,8 +31,8 @@ fetch(file)
   });
 
   // local storage pour "page_photographers"
-  let objLinea = JSON.stringify(photographers); // Récupération de la variable photographers. 
-  localStorage.setItem("photographers",objLinea); // Transformation de l'objet, serialisation/linearisation en chaîne de caractères.
+  let photographersLinea = JSON.stringify(photographers); // Récupération de la variable photographers. 
+  localStorage.setItem("photographers",photographersLinea); // Serialisation/linearisation = Transformation en chaîne de caractères.
 
   // .catch(function(err) {
   //   console.log("Error while fetching " + err.message);
