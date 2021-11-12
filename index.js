@@ -14,7 +14,8 @@ window.onscroll = function() // L'élément scroll est déclenché quand l'utili
 
 
 const file = '/FishEyeData.json';
-let photographers = []
+let photographers = [];
+let medias = [];
 
 fetch(file)
   .then(function(response)
@@ -23,12 +24,30 @@ fetch(file)
   })
   .then(function(json)
   {
+    medias = json["media"]; // Renvoie à la variable "let media = []".
+    addPhotographersToHTML();
     photographers = json["photographers"]; // Renvoie à la variable "let photographers = []".
     addPhotographersToHTML();
   });
   // .catch(function(err) {
   //   console.log("Error while fetching " + err.message);
   // });
+
+  // fetch(file)
+  // .then(function(response)
+  // {
+  //   return response.json();
+  // })
+  // .then(function(json)
+  // {
+  //   medias = json["media"]; // Renvoie à la variable "let media = []".
+  //   addPhotographersToHTML();
+  // });
+  // .catch(function(err) {
+  //   console.log("Error while fetching " + err.message);
+  // });
+
+
   
 
 function addPhotographersToHTML(tagFilter=null)
@@ -84,6 +103,11 @@ function addPhotographersToHTML(tagFilter=null)
       });
     }
 
+  });
+
+  medias.forEach(() =>
+  {
+    // Cf. Page_photographers.js
   });
 
 }
