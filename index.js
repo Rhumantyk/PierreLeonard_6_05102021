@@ -12,7 +12,6 @@ window.onscroll = function() // L'élément scroll est déclenché quand l'utili
 }
 
 
-
 const file = '/FishEyeData.json';
 let photographers = [];
 let medias = [];
@@ -33,6 +32,8 @@ fetch(file)
   // local storage pour "page_photographers"
   let photographersLinea = JSON.stringify(photographers); // Récupération de la variable photographers. 
   localStorage.setItem("photographers",photographersLinea); // Serialisation/linearisation = Transformation en chaîne de caractères.
+  let mediasLinea = JSON.stringify(medias); // Récupération de la variable medias.
+  localStorage.setItem("media",mediasLinea); // Serialisation/linearisation = Transformation en chaîne de caractères.
 
   // .catch(function(err) {
   //   console.log("Error while fetching " + err.message);
@@ -71,7 +72,7 @@ function addPhotographersToHTML(tagFilter=null)
   const divPhotographers = document.getElementById('photographers');
   divPhotographers.innerHTML = "";
 
-  console.clear();
+  // console.clear();
   photographers.forEach((photographer) =>
   {
 
@@ -86,7 +87,7 @@ function addPhotographersToHTML(tagFilter=null)
       const photographerLink = document.createElement('div'); // Création de div contenant le lien du photographe.
       photographersCard.appendChild(photographerLink); // Appartient à la div photographersCard.
       photographersCard.innerHTML =
-      `<a href="/Page_Photographes/${photographer.id}.html" class="photographers-link">
+      `<a href="/Page_Photographes/page_photographers${photographer.id}.html" class="photographers-link">
           <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${photographer.portrait}" alt="${photographer.name}" class="img-pictures">
           <h2>${photographer.name}</h2>
           <span class="screenreader-text">Mimi Keel</span>

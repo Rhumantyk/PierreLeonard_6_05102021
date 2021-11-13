@@ -14,8 +14,13 @@
   // let dataFilter = photographers.filter(data.photographers.id == '930');
 
 
-  const queryString = window.location.search;
-  console.log(queryString);
+const queryString = window.location.search;
+console.log(queryString);
+
+const urlParams = new URLSearchParams(queryString);
+
+const idNumber = urlParams.get('${photographer.id}');
+console.log(idNumber);
 
 
 
@@ -24,7 +29,10 @@
 // Récupération JSON via localStorage
 let photographersLinea = localStorage.getItem("photographers");
 let photographers = JSON.parse(photographersLinea);
-alert(photographers.id)
+alert(photographers.id);
+let mediasLinea = localStorage.getItem("media");
+let medias = JSON.parse(mediasLinea);
+alert(medias.id);
 
 
 
