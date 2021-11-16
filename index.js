@@ -26,35 +26,23 @@ fetch(file)
     photographers = json["photographers"]; // Renvoie à la variable "let photographers = []".
     addPhotographersToHTML();
     medias = json["media"]; // Renvoie à la variable "let media = []".
-    addPhotographersToHTML();
+
+    // local storage pour "page_photographers"
+    let photographersLinea = JSON.stringify(photographers); // Récupération de la variable photographers. 
+    console.log("photographers L " + photographersLinea);
+    localStorage.setItem("photographers", photographersLinea); // Serialisation/linearisation = Transformation en chaîne de caractères.
+    let mediasLinea = JSON.stringify(medias); // Récupération de la variable medias.
+    console.log("medias L " + mediasLinea);
+    localStorage.setItem("media", mediasLinea); // Serialisation/linearisation = Transformation en chaîne de caractères.
+  
+    // addPhotographersToHTML();
   });
 
-  // local storage pour "page_photographers"
-  let photographersLinea = JSON.stringify(photographers); // Récupération de la variable photographers. 
-  localStorage.setItem("photographers",photographersLinea); // Serialisation/linearisation = Transformation en chaîne de caractères.
-  let mediasLinea = JSON.stringify(medias); // Récupération de la variable medias.
-  localStorage.setItem("media",mediasLinea); // Serialisation/linearisation = Transformation en chaîne de caractères.
 
   // .catch(function(err) {
   //   console.log("Error while fetching " + err.message);
   // });
 
-  // fetch(file)
-  // .then(function(response)
-  // {
-  //   return response.json();
-  // })
-  // .then(function(json)
-  // {
-  //   medias = json["media"]; // Renvoie à la variable "let media = []".
-  //   addPhotographersToHTML();
-  // });
-  // .catch(function(err) {
-  //   console.log("Error while fetching " + err.message);
-  // });
-
-
-  
 
 function addPhotographersToHTML(tagFilter=null)
 {
@@ -72,7 +60,7 @@ function addPhotographersToHTML(tagFilter=null)
   const divPhotographers = document.getElementById('photographers');
   divPhotographers.innerHTML = "";
 
-  console.clear();
+  // console.clear();
   photographers.forEach((photographer) =>
   {
 
@@ -86,8 +74,8 @@ function addPhotographersToHTML(tagFilter=null)
 
       const photographerLink = document.createElement('div'); // Création de div contenant le lien du photographe.
       photographersCard.appendChild(photographerLink); // Appartient à la div photographersCard.
-      photographersCard.innerHTML = // ${photographer.id}
-      `<a href="/Page_Photographes/page_photographers.html?${photographer.id}" class="photographers-link">
+      photographersCard.innerHTML = // Que veut dire : ?${photographer.id}
+      `<a href="/Page_Photographes/page_photographers.html?id=${photographer.id}" class="photographers-link">
           <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${photographer.portrait}" alt="${photographer.name}" class="img-pictures">
           <h2>${photographer.name}</h2>
           <span class="screenreader-text">Mimi Keel</span>
@@ -111,9 +99,8 @@ function addPhotographersToHTML(tagFilter=null)
 
   });
 
-  medias.forEach(() =>
-  {
-    // Ajout uniquement pour Page_photographers.js
-  });
-
+  // medias.forEach(() =>
+  // {
+  //   // Ajout uniquement pour Page_photographers.js
+  // });
 }

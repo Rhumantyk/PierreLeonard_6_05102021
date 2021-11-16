@@ -1,48 +1,153 @@
-// // ******* Fetching originel **********
-// const file = '/FishEyeData.json';
 
-// // Récupération des données
-// async function fetchData(file)
-// {
-//   const getData = await fetch(file);
-//   const json = await getData.json();
-//   return json;
-// }
+let photographers = [];
+let medias = [];
+// let photographersId = [];
 
+console.clear();
 
-
-  // let dataFilter = photographers.filter(data.photographers.id == '930');
-
-// Récupération JSON via localStorage
-let photographersLinea = localStorage.getItem("photographers");
-let photographers = JSON.parse(photographersLinea);
-alert(photographers.id);
-let mediasLinea = localStorage.getItem("media");
-let medias = JSON.parse(mediasLinea);
-alert(medias.id);
-
-
-
-
-
-const queryString = 'http://127.0.0.1:5500/index.html'; // window.location.search
-console.log(queryString);
-
+// // Récupération de l'id du photographe sur l'URL
+const queryString = window.location.search; // http://127.0.0.1:5500/index.html
+// console.log(queryString); // Donne donc le ?${photographer.id}
 const urlParams = new URLSearchParams(queryString);
-
-const idNumber = urlParams.get('${photographer.id}');
-console.log(idNumber);
-
+const idNumber = urlParams.get('id'); 
+// console.log(idNumber);
 
 
+// Récupération JSON via localStorage *******Echec ********
+photographers = localStorage.getItem("photographers");
+photographers = JSON.parse(photographers);
+// console.log('photographers ' + photographers);
+medias = localStorage.getItem("media");
+medias = JSON.parse(medias);
+// console.log('media ' + medias);
 
 
-// Main div contenant les div des photographes.
-const mainBody = document.getElementsByTagName('main')[0]; // Sans [0] --> Rien ne s'affiche.
+// var heroes = [
+//   {name: "Batman", franchise: "DC"},
+//   {name: "Ironman", franchise: "Marvel"},
+//   {name: "Thor", franchise: "Marvel"},
+//   {name: "Superman", franchise: "DC"}
+// ];
+
+// var marvelHeroes =  heroes.filter(function(hero) {
+//   return hero.franchise == "Marvel";
+// });
+// marvelHeroes.forEach(hero => {
+//   console.log(hero.name + " (" + hero.franchise + ")");
+// });
+
+// get photographer
+// photographers.forEach(photo => {
+//   console.log(photo.name);
+// })
+let Photographer = photographers.filter(function(photographer) {
+    return photographer.id === parseInt(idNumber);
+  }
+)[0];
+console.log("Photographer - " + Photographer.name);
+
+
+
+
+// // Main div contenant les div des photographes.
+// const mainBody = document.getElementsByTagName('main')[0]; // Sans [0] --> Rien ne s'affiche.
 // const headTagName = document.getElementsByTagName('head')[0]; // Sans [0] --> Rien ne s'affiche.
 
+// function addPhotographersToHTML(tagFilter=null)
+// {
+//   // get tag filter
+//   let filter = "";
+//   if(tagFilter != null) 
+//   {
+//     filter = tagFilter.id.substr(tagFilter.id.indexOf(";")+1);
+//     // substr() retourne une sous-chaîne de la chaîne courante, entre un indice de début et un indice de fin (prend un morceau 
+//     // du tableau. sous-morceau d'un tableau défini ci-dessous).
+//     // indexOf() renvoie le premier indice d'un élément dans un tableau de caractères.
+//   }
 
+//   // Création de la div contact-details //
+//   const contactDetails = document.createElement('div'); // Création de div contact-details.
+//   contactDetails.setAttribute('id','contact-details'); // Ajout de l'ID correspondant.
+//   mainBody.appendChild(contactDetails); // Appartient à Main.
 
+//     // Création de la class photographers-details //
+//     const photographersDetails = document.createElement('div'); // Création de class photographers-details.
+//     photographersDetails.classList.add('photographers-details'); // Ajout de la classe correspondante.
+//     contactDetails.appendChild(photographersDetails); // Appartient à la div contactDetails.
+
+//     photographers.forEach((photographer) =>
+//     {
+//         // Si on a un filtre actif, on vérifie que le photographe possède ce filtre dans ses tags
+//         if(filter == "" || photographer.tags.includes(filter))
+//         {
+//           // title tag name //
+//           const titlePage = document.createElement('title'); // Création de la balise title.
+//           headTagName.appendChild(titlePage); // Appartient à Head.
+//           titlePage.innerHTML = `${photographers.name}`;
+
+//           photographersDetails.innerHTML = 
+//           `
+//           <h1>${photographers.name}</h1>
+//           <p>${photographers[0].city}, ${photographers[0].country}</p>
+//           <p>${photographers[0].tagline}</p>
+//           `;
+
+//           // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
+//           const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
+//           tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
+//           photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
+//           tagsFiltered.innerHTML +=
+//             `<a href="#" class="nav-filters">
+//             #${photographers[0].tags[0]}</a>
+//             <span class="screenreader-text">#${photographers[0].tags[0]}</span>`
+//             +
+//             `<a href="#" class="nav-filters">
+//             #${photographers[0].tags[1]}</a>
+//             <span class="screenreader-text">#${photographers[0].tags[1]}</span>`
+//             +
+//             `<a href="#" class="nav-filters">
+//             #${photographers[0].tags[2]}</a>
+//             <span class="screenreader-text">#${photographers[0].tags[2]}</span>`
+//             +
+//             `<a href="#" class="nav-filters">
+//             #${photographers[0].tags[3]}</a>
+//             <span class="screenreader-text">#${photographers[0].tags[3]}</span>`
+//             ;
+          
+//           // Ajout bouton "Contactez-moi".
+//           const btnContact = document.createElement('button'); // Création de button.
+//           btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant.
+//           photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
+//           btnContact.innerHTML = `Contactez-moi`;
+
+//           // Ajout photo photographe
+//           const picturePhotographer = document.createElement('div'); // Création de div div-photo.
+//           picturePhotographer.classList.add('div-photo'); // Ajout de la classe correspondante.
+//           contactDetails.appendChild(picturePhotographer); // Appartient à la div contactDetails.
+//           picturePhotographer.innerHTML =
+//           `
+//           <img src="/Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${photographers.portrait}" alt="${photographers.name}" class="img-pictures">
+//           `;
+
+//           photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
+//           {
+//             tagsFiltered.innerHTML += `<a href="#" id="${photographer.name};${tag}" class="nav-filters" onclick="addPhotographersToHTML(this);">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
+//           });
+//           // console.log(photographers["id"]);
+//         }   
+//     });
+
+//   medias.forEach(() =>
+//   {
+//     // console.log(photographers[3].id);
+//   });
+
+//     let ids = photographers.filter(function(number)
+//   {
+//     return number.photographers == photographers.id;
+//   });
+//   console.log(ids);
+// }
 
 
 
@@ -65,15 +170,15 @@ const mainBody = document.getElementsByTagName('main')[0]; // Sans [0] --> Rien 
 // Récupération des données
 // const data = fetchData(file).then((data) => // Puisqu'il y a une function async, .then sert à en attendre la réponse.
 // {
-  // Création de la div contact-details //
-  const contactDetails = document.createElement('div'); // Création de div contact-details.
-  contactDetails.setAttribute('id','contact-details'); // Ajout de l'ID correspondant.
-  mainBody.appendChild(contactDetails); // Appartient à Main.
+  // // Création de la div contact-details //
+  // const contactDetails = document.createElement('div'); // Création de div contact-details.
+  // contactDetails.setAttribute('id','contact-details'); // Ajout de l'ID correspondant.
+  // mainBody.appendChild(contactDetails); // Appartient à Main.
 
-      // Création de la class photographers-details //
-      const photographersDetails = document.createElement('div'); // Création de class photographers-details.
-      photographersDetails.classList.add('photographers-details'); // Ajout de la classe correspondante.
-      contactDetails.appendChild(photographersDetails); // Appartient à la div contactDetails.
+  //     // Création de la class photographers-details //
+  //     const photographersDetails = document.createElement('div'); // Création de class photographers-details.
+  //     photographersDetails.classList.add('photographers-details'); // Ajout de la classe correspondante.
+  //     contactDetails.appendChild(photographersDetails); // Appartient à la div contactDetails.
 
   //     // Page Mimi Keel
   //     if (window.location.pathname =='/Page_Photographes/243.html') // Majuscules obligatoires pour l'URL sinon le JS ne s'affiche pas
