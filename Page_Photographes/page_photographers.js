@@ -45,6 +45,14 @@ console.log("Photographer - " + Photographer.name);
 console.log(Photographer); // Photographer à utiliser boucle map****
 
 
+let filterOutput = document.createElement('p');
+filterOutput.innerHTML = JSON.stringify(Photographer)
+document.querySelector('#filtered').appendChild(filterOutput);
+
+
+
+
+
 
 // Photographer.map() // Regarder la vidéo sur Array Map.
 
@@ -59,11 +67,19 @@ console.log(Photographer); // Photographer à utiliser boucle map****
 // `
 // )
 
-let addPhotographerDetails = photographers.map(function(photographer)
-{
-  return photographer.id;
-});
-console.log(addPhotographerDetails);
+
+
+
+
+// let addPhotographerDetails = photographers.map(function(photographer)
+// {
+//   return photographer.Photographer;
+// });
+// console.log(addPhotographerDetails);
+
+
+
+
 
 // document.main.innerHTML = Photographer.map((photographer) =>
 // `
