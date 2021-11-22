@@ -34,8 +34,6 @@ fetch(file)
     let mediasLinea = JSON.stringify(medias); // Récupération de la variable medias.
     console.log("medias L " + mediasLinea);
     localStorage.setItem("media", mediasLinea); // Serialisation/linearisation = Transformation en chaîne de caractères.
-  
-    // addPhotographersToHTML();
   });
 
 

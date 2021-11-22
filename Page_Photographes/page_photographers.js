@@ -1,9 +1,6 @@
 
 let photographers = [];
 let medias = [];
-// let photographersId = [];
-
-console.clear();
 
 // // Récupération de l'id du photographe sur l'URL
 const queryString = window.location.search; // http://127.0.0.1:5500/index.html
@@ -13,13 +10,12 @@ const idNumber = urlParams.get('id');
 // console.log(idNumber);
 
 
-// Récupération JSON via localStorage *******Echec ********
+// Récupération JSON via localStorage
 photographers = localStorage.getItem("photographers");
 photographers = JSON.parse(photographers);
 // console.log('photographers ' + photographers);
 medias = localStorage.getItem("media");
 medias = JSON.parse(medias);
-// console.log('media ' + medias);
 
 
 // var heroes = [
@@ -40,11 +36,66 @@ medias = JSON.parse(medias);
 // photographers.forEach(photo => {
 //   console.log(photo.name);
 // })
-let Photographer = photographers.filter(function(photographer) {
+let Photographer = photographers.filter(function(photographer) 
+  {
     return photographer.id === parseInt(idNumber);
   }
 )[0];
 console.log("Photographer - " + Photographer.name);
+console.log(Photographer); // Photographer à utiliser boucle map****
+
+
+
+// Photographer.map() // Regarder la vidéo sur Array Map.
+
+// Main div contenant les div des photographes.
+// const mainBody = document.getElementsByTagName('main')[0]; // Sans [0] --> Rien ne s'affiche.
+// const headTagName = document.getElementsByTagName('head')[0]; // Sans [0] --> Rien ne s'affiche.
+
+// Photographer.map((photographer) =>
+// headTagName.innerHTML =
+// `
+// <h3>${photographer.name}</h3>
+// `
+// )
+
+let addPhotographerDetails = photographers.map(function(photographer)
+{
+  return photographer.id;
+});
+console.log(addPhotographerDetails);
+
+// document.main.innerHTML = Photographer.map((photographer) =>
+// `
+// <h3>${photographer.name}</h3>
+// `
+// )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -136,18 +187,12 @@ console.log("Photographer - " + Photographer.name);
 //           // console.log(photographers["id"]);
 //         }   
 //     });
-
 //   medias.forEach(() =>
 //   {
 //     // console.log(photographers[3].id);
 //   });
-
-//     let ids = photographers.filter(function(number)
-//   {
-//     return number.photographers == photographers.id;
-//   });
-//   console.log(ids);
 // }
+// console.log(addPhotographersToHTML);
 
 
 
