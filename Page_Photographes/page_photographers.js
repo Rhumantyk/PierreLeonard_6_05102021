@@ -31,20 +31,9 @@ let Medias = medias.filter(function(media)
   {
     return media.photographerId === parseInt(idNumber);
   }
-)[0];
+);
 console.log("Medias - " + Medias.photographerId);
 console.log(Medias);
-
-
-// let filterOutput = document.createElement('p');
-// filterOutput.innerHTML = JSON.stringify(Photographer);
-// document.querySelector('#filtered').appendChild(filterOutput);
-
-
-
-// Main div contenant les div des photographes.
-// const mainHtml = document.getElementsByTagName('main')[0]; // Sans [0] --> Rien ne s'affiche.
-// const headTagName = document.getElementsByTagName('head')[0]; // Sans [0] --> Rien ne s'affiche.
 
 
 
@@ -69,11 +58,11 @@ document.body.appendChild(mainHtml); // Appartient à body. 2 jours pour trouver
       titlePage.innerHTML = Photographer.name;
 
       photographersDetails.innerHTML =
-      `
-      <h1>${Photographer.name}</h1>
-      <p>${Photographer.city}, ${Photographer.country}</p>
-      <p>${Photographer.tagline}</p>
-      `;
+        `
+          <h1>${Photographer.name}</h1>
+          <p>${Photographer.city}, ${Photographer.country}</p>
+          <p>${Photographer.tagline}</p>
+        `;
 
       // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
       const tagsFiltered = document.createElement("div"); // Création de div tags-filtered.
@@ -103,262 +92,109 @@ document.body.appendChild(mainHtml); // Appartient à body. 2 jours pour trouver
       const menu = document.createElement("div");
       mainHtml.appendChild(menu);
       menu.innerHTML = `<p>Trier par</p>`;
+      //
 
       // Ajout de la div medias
       const mediasDiv = document.createElement("div"); // Création de div media.
       mediasDiv.setAttribute("id", "medias-div"); // Ajout de l'id correspondant.
       mainHtml.appendChild(mediasDiv); // Appartenance à la div medias.
 
-      // Medias.tags.forEach(() => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
-      // {
-      //   // Ajouts des différents médias
-      //   mediasDiv.innerHTML +=
-      //       `
-      //       <div class="media">
-      //         <a href="#">
-      //           <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.image}" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
-      //           <span class="screenreader-text">${Medias.title}</span>
-      //           <div class="media-details">
-      //             <p>${Medias.title}</p>
-      //             <p>${Medias.likes}<i class="fas fa-heart"></i></p>
-      //           </div>
-      //         </a>
-      //         <a href="#">
-      //           <video controls width="300">
-      //             <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.video}"
-      //                     type="video/mp4" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
-      //             Sorry, your browser doesn't support embedded videos.
-      //           </video>
-      //         <span class="screenreader-text">${Medias.title}</span>
-      //         <div class="media-details">
-      //           <p>${Medias.title}</p>
-      //           <p>${Medias.likes}<i class="fas fa-heart"></i></p>
-      //         </div>
-      //       </a>
-      //       </div>
-      //       `
-      // });
-
-
-      for (var key in Medias)
+      Medias.forEach((Media) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
       {
+        // appeler la factory method en lui passant Media en argument
+        // elle va retourner un nouvel objet FormattedMedia
+        // utiliser FormatedMedia pour créer le contenu de mediasDIV et de la lightbox
+
+
+        // Pattern Factory
+        class MediasFactory
+        {
+          constructor(Media)
+          {
+            this.showsMediaElements = function(type)
+            {
+              let element;
+              // if Media.image ou id Media.video -> true si le tag existe dans l'objet Media
+              if (type === '.jpg') element = new ImageMedia();
+              else if (type === '.mp4') element = new VideoMedia();
+
+              return element;
+            };
+          }
+        }
+
+        class ImageMedia
+        {
+          constructor()
+          {
+            this._type = '.jpg';
+            this.img = function()
+            {
+              return 'This media is an image';
+            };
+          }
+        }
+
+        class VideoMedia
+        {
+          constructor()
+          {
+            this._type = '.mp4';
+            this.video = function()
+            {
+              return 'This media is a video';
+            };
+          }
+        }
+
+        // creating objects
+        const factory = new MediasFactory();
+
+        const imgMedia = factory.showsMediaElements('.jpg');
+        const videoMedia = factory.showsMediaElements('.mp4');
+
+        console.log(imgMedia.img()); // This media is an image
+        console.log(videoMedia.video()); // This media is a video
+
+
         // Ajouts des différents médias
         mediasDiv.innerHTML +=
-            `
+          `
             <div class="media">
               <a href="#">
-                <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.image}" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
-                <span class="screenreader-text">${Medias.title}</span>
+                <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Media.image}" alt="${Media.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
+                <span class="screenreader-text">${Media.title}</span>
                 <div class="media-details">
-                  <p>${Medias.title}</p>
-                  <p>${Medias.likes}<i class="fas fa-heart"></i></p>
+                  <p>${Media.title}</p>
+                  <p>${Media.likes}<i class="fas fa-heart"></i></p>
                 </div>
               </a>
-              <a href="#">
-                <video controls width="300">
-                  <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.video}"
-                          type="video/mp4" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
-                  Sorry, your browser doesn't support embedded videos.
-                </video>
-              <span class="screenreader-text">${Medias.title}</span>
-              <div class="media-details">
-                <p>${Medias.title}</p>
-                <p>${Medias.likes}<i class="fas fa-heart"></i></p>
-              </div>
-            </a>
             </div>
-            `
+          `
+          //   <a href="#">
+          //   <video controls width="300">
+          //     <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Media.video}"
+          //             type="video/mp4" alt="${Media.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
+          //     Sorry, your browser doesn't support embedded videos.
+          //   </video>
+          //   <span class="screenreader-text">${Media.title}</span>
+          //   <div class="media-details">
+          //     <p>${Media.title}</p>
+          //     <p>${Media.likes}<i class="fas fa-heart"></i></p>
+          //   </div>
+          // </a>
 
-        console.log(key);
-        console.log(Medias);
-      }
-
-      // for (var key of Object.keys(Medias))
-      // {
-      //   // Ajouts des différents médias
-      //   mediasDiv.innerHTML +=
-      //       `
-      //       <div class="media">
-      //         <a href="#">
-      //           <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.image}" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
-      //           <span class="screenreader-text">${Medias.title}</span>
-      //           <div class="media-details">
-      //             <p>${Medias.title}</p>
-      //             <p>${Medias.likes}<i class="fas fa-heart"></i></p>
-      //           </div>
-      //         </a>
-      //         <a href="#">
-      //           <video controls width="300">
-      //             <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.video}"
-      //                     type="video/mp4" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
-      //             Sorry, your browser doesn't support embedded videos.
-      //           </video>
-      //         <span class="screenreader-text">${Medias.title}</span>
-      //         <div class="media-details">
-      //           <p>${Medias.title}</p>
-      //           <p>${Medias.likes}<i class="fas fa-heart"></i></p>
-      //         </div>
-      //       </a>
-      //       </div>
-      //       `
-
-      //   console.log(key);
-      //   console.log(Medias);
-      // }
-
-      // Medias.forEach((media) => // Ne fonctionne pas
-      // {
-      //   // Ajouts des différents médias
-      //   mediasDiv.innerHTML +=
-      //     `
-      //     <div class="media">
-      //       <a href="#">
-      //         <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
-      //         <span class="screenreader-text">${media.title}</span>
-      //         <div class="media-details">
-      //           <p>${media.title}</p>
-      //           <p>${media.likes}<i class="fas fa-heart"></i></p>
-      //         </div>
-      //       </a>
-      //       <a href="#">
-      //         <video controls width="300">
-      //           <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.video}"
-      //                   type="video/mp4" alt="${media.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
-      //           Sorry, your browser doesn't support embedded videos.
-      //         </video>
-      //       <span class="screenreader-text">${media.title}</span>
-      //       <div class="media-details">
-      //         <p>${media.title}</p>
-      //         <p>${media.likes}<i class="fas fa-heart"></i></p>
-      //       </div>
-      //     </a>
-      //     </div>
-      //     `
-      // });
+      });
 
 
-      // for (const child of medias)
-      // {
-      //   // Ajouts des différents médias
-      //   mediasDiv.innerHTML +=
-      //     `
-      //     <div class="media">
-      //       <a href="#">
-      //         <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${medias.image}" alt="${medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
-      //         <span class="screenreader-text">${medias.title}</span>
-      //         <div class="media-details">
-      //           <p>${medias.title}</p>
-      //           <p>${medias.likes}<i class="fas fa-heart"></i></p>
-      //         </div>
-      //       </a>
-      //       <a href="#">
-      //         <video controls width="300">
-      //           <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${medias.video}"
-      //                   type="video/mp4" alt="${medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
-      //           Sorry, your browser doesn't support embedded videos.
-      //         </video>
-      //       <span class="screenreader-text">${medias.title}</span>
-      //       <div class="media-details">
-      //         <p>${medias.title}</p>
-      //         <p>${medias.likes}<i class="fas fa-heart"></i></p>
-      //       </div>
-      //     </a>
-      //     </div>
-      //     `
-      //   console.log(child);
-      // }
 
-      // for([key, val] of Object.entries(Medias))
-      // {
-      //           // Ajouts des différents médias
-      //   mediasDiv.innerHTML +=
-      //       `
-      //       <div class="media">
-      //         <a href="#">
-      //           <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.image}" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
-      //           <span class="screenreader-text">${Medias.title}</span>
-      //           <div class="media-details">
-      //             <p>${Medias.title}</p>
-      //             <p>${Medias.likes}<i class="fas fa-heart"></i></p>
-      //           </div>
-      //         </a>
-      //         <a href="#">
-      //           <video controls width="300">
-      //             <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.video}"
-      //                     type="video/mp4" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
-      //             Sorry, your browser doesn't support embedded videos.
-      //           </video>
-      //         <span class="screenreader-text">${Medias.title}</span>
-      //         <div class="media-details">
-      //           <p>${Medias.title}</p>
-      //           <p>${Medias.likes}<i class="fas fa-heart"></i></p>
-      //         </div>
-      //       </a>
-      //       </div>
-      //       `
-      //   console.log(key, val);
-      // }
+  
 
 
 
 
 
 
-
-
-
-
-
-
-
-// Pattern Factory
-class MediasFactory
-{
-  constructor()
-  {
-    this.showsMediaElements = function(type)
-    {
-      let element;
-      if (type === '.jpg') element = new ImageMedia();
-      else if (type === '.mp4') element = new VideoMedia();
-
-      return element;
-    };
-  }
-}
-
-class ImageMedia
-{
-  constructor()
-  {
-    this._type = '.jpg';
-    this.img = function()
-    {
-      return 'This media is an image';
-    };
-  }
-}
-
-class VideoMedia
-{
-  constructor()
-  {
-    this._type = '.mp4';
-    this.video = function()
-    {
-      return 'This media is a video';
-    };
-  }
-}
-
-// creating objects
-const factory = new MediasFactory();
-
-const imgMedia = factory.showsMediaElements('.jpg');
-const videoMedia = factory.showsMediaElements('.mp4');
-
-console.log(imgMedia.img()); // This media is an image
-console.log(videoMedia.video()); // This media is a video
 
 
 
@@ -415,111 +251,7 @@ console.log(videoMedia.video()); // This media is a video
     <img class="demo" src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.video}" onclick="currentSlide(2)" alt="${Medias.title}">
   </div>
 </div>
-      `
-
-        
-
-
-// Ajout like-price (sticky bas-droite)
-const likePrice = document.createElement('div'); // Création de div like-price
-mainHtml.appendChild(likePrice); // Appartenance à mainHtml
-likePrice.setAttribute('id', 'like-price'); // Attribution d'id et son identifiant.
-likePrice.innerHTML +=
 `
-<p>${Medias.likes}(Afficher le calcul correct)<i class="fas fa-heart"></i></p>
-<p>${Photographer.price}€</p>
-`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function addPhotographersToHTML(tagFilter=null)
-// {
-//   // get tag filter
-//   let filter = "";
-//   if(tagFilter != null) 
-//   {
-//     filter = tagFilter.id.substr(tagFilter.id.indexOf(";")+1);
-//     // substr() retourne une sous-chaîne de la chaîne courante, entre un indice de début et un indice de fin (prend un morceau 
-//     // du tableau. sous-morceau d'un tableau défini ci-dessous).
-//     // indexOf() renvoie le premier indice d'un élément dans un tableau de caractères.
-//   }
-
-//       // ********** Dans le if à l'origine ************** //
-//       Photographer.forEach((photographer) =>
-//       {
-//         // Si on a un filtre actif, on vérifie que le photographe possède ce filtre dans ses tags
-//         if(filter == "" || photographer.tags.includes(filter))
-//         {
-
-//         }
-//       });
-//       // ********** Dans le if à l'origine ************** //
-//   medias.forEach(() =>
-//   {
-//     console.log(photographers[3].id);
-//   });
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-
-
-
-
-
 
 // Script pour Lightbox
 
@@ -568,3 +300,52 @@ function showSlides(n)
   dots[slideIndex-1].className += " active";
   captionText.innerHTML = dots[slideIndex-1].alt;
 }  
+
+
+
+
+
+
+
+// Ajout like-price (sticky bas-droite)
+const likePrice = document.createElement('div'); // Création de div like-price
+mainHtml.appendChild(likePrice); // Appartenance à mainHtml
+likePrice.setAttribute('id', 'like-price'); // Attribution d'id et son identifiant.
+likePrice.innerHTML +=
+`
+<p>${Medias.likes}(Afficher le calcul correct)<i class="fas fa-heart"></i></p>
+<p>${Photographer.price}€</p>
+`
+
+
+
+
+
+
+
+// function addPhotographersToHTML(tagFilter=null)
+// {
+//   // get tag filter
+//   let filter = "";
+//   if(tagFilter != null) 
+//   {
+//     filter = tagFilter.id.substr(tagFilter.id.indexOf(";")+1);
+//     // substr() retourne une sous-chaîne de la chaîne courante, entre un indice de début et un indice de fin (prend un morceau 
+//     // du tableau. sous-morceau d'un tableau défini ci-dessous).
+//     // indexOf() renvoie le premier indice d'un élément dans un tableau de caractères.
+//   }
+
+//       // ********** Dans le if à l'origine ************** //
+//       Photographer.forEach((photographer) =>
+//       {
+//         // Si on a un filtre actif, on vérifie que le photographe possède ce filtre dans ses tags
+//         if(filter == "" || photographer.tags.includes(filter))
+//         {
+
+//         }
+//       });
+//       // ********** Dans le if à l'origine ************** //
+//   medias.forEach(() =>
+//   {
+//   });
+// }
