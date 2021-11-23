@@ -163,10 +163,22 @@ document.body.appendChild(mainHtml); // Appartient à body.
                   <p>${Medias.likes}<i class="fas fa-heart"></i></p>
                 </div>
               </a>
+              <a href="#">
+                <video controls width="300">
+                  <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.video}"
+                          type="video/mp4" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
+                  Sorry, your browser doesn't support embedded videos.
+                </video>
+              <span class="screenreader-text">${Medias.title}</span>
+              <div class="media-details">
+                <p>${Medias.title}</p>
+                <p>${Medias.likes}<i class="fas fa-heart"></i></p>
+              </div>
+            </a>
             </div>
             `
 
-        console.log(key);
+        // console.log(key);
         // console.log(Medias);
       }
 
