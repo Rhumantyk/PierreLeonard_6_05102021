@@ -107,26 +107,68 @@ document.body.appendChild(mainHtml); // Appartient à body.
 
       // Ajout de la div medias
       const mediasDiv = document.createElement("div"); // Création de div media.
-      mainHtml.appendChild(mediasDiv); // Appartenance à la div medias.
       mediasDiv.setAttribute("id", "medias-div"); // Ajout de l'id correspondant.
+      mainHtml.appendChild(mediasDiv); // Appartenance à la div medias.
 
-      Medias.forEach((element) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
+      // Medias.tags.forEach(() => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
+      // {
+      //   // Ajouts des différents médias
+      //   mediasDiv.innerHTML +=
+      //       `
+      //       <div class="media">
+      //         <a href="#">
+      //           <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.image}" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
+      //           <span class="screenreader-text">${Medias.title}</span>
+      //           <div class="media-details">
+      //             <p>${Medias.title}</p>
+      //             <p>${Medias.likes}<i class="fas fa-heart"></i></p>
+      //           </div>
+      //         </a>
+      //       </div>
+      //       `
+      // });
+
+      // for (var key in Medias)
+      // {
+      //   //  Ajouts des différents médias
+      //   mediasDiv.innerHTML +=
+      //       `
+      //       <div class="media">
+      //         <a href="#">
+      //           <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.image}" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
+      //           <span class="screenreader-text">${Medias.title}</span>
+      //           <div class="media-details">
+      //             <p>${Medias.title}</p>
+      //             <p>${Medias.likes}<i class="fas fa-heart"></i></p>
+      //           </div>
+      //         </a>
+      //       </div>
+      //       `
+
+      //   console.log(key);
+      //   console.log(Medias);
+      // }
+
+      for (var key of Object.keys(Medias))
       {
         // Ajouts des différents médias
         mediasDiv.innerHTML +=
             `
             <div class="media">
               <a href="#">
-                <img src="../Photos_FishEye/Sample_Photos/Mimi/${medias.image}" alt="${medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
-                <span class="screenreader-text">$medias.title}</span>
+                <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.image}" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
+                <span class="screenreader-text">${Medias.title}</span>
                 <div class="media-details">
-                  <p>${medias.title}</p>
-                  <p>${medias.likes}<i class="fas fa-heart"></i></p>
+                  <p>${Medias.title}</p>
+                  <p>${Medias.likes}<i class="fas fa-heart"></i></p>
                 </div>
               </a>
             </div>
             `
-      });
+
+        console.log(key);
+        // console.log(Medias);
+      }
 
 
 
