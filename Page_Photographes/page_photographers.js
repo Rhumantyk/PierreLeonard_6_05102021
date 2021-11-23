@@ -48,20 +48,91 @@ document.body.appendChild(mainHtml); // Appartient à body.
   // Création de la div contact-details //
   const contactDetails = document.createElement("div"); // Création de div contact-details.
   contactDetails.setAttribute("id","contact-details"); // Ajout de l'ID correspondant.
-  document.getElementsByTagName("main")[0].appendChild(contactDetails); // Appartient à mainHtml.
+  document.getElementsByTagName("main")[0].appendChild(contactDetails); // Appartient à mainHtml. Sans [0] --> Rien ne s'affiche.
 
-function addPhotographersToHTML(tagFilter=null)
-{
-  // get tag filter
-  let filter = "";
-  if(tagFilter != null) 
-  {
-    filter = tagFilter.id.substr(tagFilter.id.indexOf(";")+1);
-    // substr() retourne une sous-chaîne de la chaîne courante, entre un indice de début et un indice de fin (prend un morceau 
-    // du tableau. sous-morceau d'un tableau défini ci-dessous).
-    // indexOf() renvoie le premier indice d'un élément dans un tableau de caractères.
-  }
-}
+    // Création de la class photographers-details //
+    const photographersDetails = document.createElement("div"); // Création de class photographers-details.
+    photographersDetails.classList.add('photographers-details'); // Ajout de la classe correspondante.
+    contactDetails.appendChild(photographersDetails); // Appartient à la div contactDetails.
+
+      // title tag name //
+      const titlePage = document.createElement('title'); // Création de la balise title.
+      headTagName.appendChild(titlePage); // Appartient à Head.
+      titlePage.innerHTML = Photographer.name;
+
+      photographersDetails.innerHTML =
+      `
+      <h1>${Photographer.name}</h1>
+      <p>${Photographer.city}, ${Photographer.country}</p>
+      <p>${Photographer.tagline}</p>
+      `;
+
+//           // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
+//           const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
+//           tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
+//           photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
+//           tagsFiltered.innerHTML +=
+//             `<a href="#" class="nav-filters">
+//             #${photographers[0].tags[0]}</a>
+//             <span class="screenreader-text">#${photographers[0].tags[0]}</span>`
+//             +
+//             `<a href="#" class="nav-filters">
+//             #${photographers[0].tags[1]}</a>
+//             <span class="screenreader-text">#${photographers[0].tags[1]}</span>`
+//             +
+//             `<a href="#" class="nav-filters">
+//             #${photographers[0].tags[2]}</a>
+//             <span class="screenreader-text">#${photographers[0].tags[2]}</span>`
+//             +
+//             `<a href="#" class="nav-filters">
+//             #${photographers[0].tags[3]}</a>
+//             <span class="screenreader-text">#${photographers[0].tags[3]}</span>`
+//             ;
+          
+//           // Ajout bouton "Contactez-moi".
+//           const btnContact = document.createElement('button'); // Création de button.
+//           btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant.
+//           photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
+//           btnContact.innerHTML = `Contactez-moi`;
+
+//           // Ajout photo photographe
+//           const picturePhotographer = document.createElement('div'); // Création de div div-photo.
+//           picturePhotographer.classList.add('div-photo'); // Ajout de la classe correspondante.
+//           contactDetails.appendChild(picturePhotographer); // Appartient à la div contactDetails.
+//           picturePhotographer.innerHTML =
+//           `
+//           <img src="/Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${photographers.portrait}" alt="${photographers.name}" class="img-pictures">
+//           `;
+
+
+
+
+
+
+
+// function addPhotographersToHTML(tagFilter=null)
+// {
+//   // get tag filter
+//   let filter = "";
+//   if(tagFilter != null) 
+//   {
+//     filter = tagFilter.id.substr(tagFilter.id.indexOf(";")+1);
+//     // substr() retourne une sous-chaîne de la chaîne courante, entre un indice de début et un indice de fin (prend un morceau 
+//     // du tableau. sous-morceau d'un tableau défini ci-dessous).
+//     // indexOf() renvoie le premier indice d'un élément dans un tableau de caractères.
+//   }
+
+//       // ********** Dans le if à l'origine ************** //
+//       Photographer.forEach((photographer) =>
+//       {
+//         // Si on a un filtre actif, on vérifie que le photographe possède ce filtre dans ses tags
+//         if(filter == "" || photographer.tags.includes(filter))
+//         {
+
+//         }
+//       });
+//       // ********** Dans le if à l'origine ************** //
+// }
 
 
 
