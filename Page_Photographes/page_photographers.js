@@ -111,37 +111,6 @@ document.body.appendChild(mainHtml); // Appartient à body. 2 jours pour trouver
 
       // Medias.tags.forEach(() => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
       // {
-        // Ajouts des différents médias
-        // mediasDiv.innerHTML +=
-        //     `
-        //     <div class="media">
-        //       <a href="#">
-        //         <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.image}" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
-        //         <span class="screenreader-text">${Medias.title}</span>
-        //         <div class="media-details">
-        //           <p>${Medias.title}</p>
-        //           <p>${Medias.likes}<i class="fas fa-heart"></i></p>
-        //         </div>
-        //       </a>
-        //       <a href="#">
-        //         <video controls width="300">
-        //           <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.video}"
-        //                   type="video/mp4" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
-        //           Sorry, your browser doesn't support embedded videos.
-        //         </video>
-        //       <span class="screenreader-text">${Medias.title}</span>
-        //       <div class="media-details">
-        //         <p>${Medias.title}</p>
-        //         <p>${Medias.likes}<i class="fas fa-heart"></i></p>
-        //       </div>
-        //     </a>
-        //     </div>
-        //     `
-      // });
-
-
-      // for (var key in Medias)
-      // {
       //   // Ajouts des différents médias
       //   mediasDiv.innerHTML +=
       //       `
@@ -168,10 +137,41 @@ document.body.appendChild(mainHtml); // Appartient à body. 2 jours pour trouver
       //       </a>
       //       </div>
       //       `
+      // });
 
-      //   console.log(key);
-      //   console.log(Medias);
-      // }
+
+      for (var key in Medias)
+      {
+        // Ajouts des différents médias
+        mediasDiv.innerHTML +=
+            `
+            <div class="media">
+              <a href="#">
+                <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.image}" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
+                <span class="screenreader-text">${Medias.title}</span>
+                <div class="media-details">
+                  <p>${Medias.title}</p>
+                  <p>${Medias.likes}<i class="fas fa-heart"></i></p>
+                </div>
+              </a>
+              <a href="#">
+                <video controls width="300">
+                  <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.video}"
+                          type="video/mp4" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
+                  Sorry, your browser doesn't support embedded videos.
+                </video>
+              <span class="screenreader-text">${Medias.title}</span>
+              <div class="media-details">
+                <p>${Medias.title}</p>
+                <p>${Medias.likes}<i class="fas fa-heart"></i></p>
+              </div>
+            </a>
+            </div>
+            `
+
+        console.log(key);
+        console.log(Medias);
+      }
 
       // for (var key of Object.keys(Medias))
       // {
@@ -268,36 +268,36 @@ document.body.appendChild(mainHtml); // Appartient à body. 2 jours pour trouver
       //   console.log(child);
       // }
 
-      for([key, val] of Object.entries(Medias))
-      {
-                // Ajouts des différents médias
-        mediasDiv.innerHTML +=
-            `
-            <div class="media">
-              <a href="#">
-                <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.image}" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
-                <span class="screenreader-text">${Medias.title}</span>
-                <div class="media-details">
-                  <p>${Medias.title}</p>
-                  <p>${Medias.likes}<i class="fas fa-heart"></i></p>
-                </div>
-              </a>
-              <a href="#">
-                <video controls width="300">
-                  <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.video}"
-                          type="video/mp4" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
-                  Sorry, your browser doesn't support embedded videos.
-                </video>
-              <span class="screenreader-text">${Medias.title}</span>
-              <div class="media-details">
-                <p>${Medias.title}</p>
-                <p>${Medias.likes}<i class="fas fa-heart"></i></p>
-              </div>
-            </a>
-            </div>
-            `
-        console.log(key, val);
-      }
+      // for([key, val] of Object.entries(Medias))
+      // {
+      //           // Ajouts des différents médias
+      //   mediasDiv.innerHTML +=
+      //       `
+      //       <div class="media">
+      //         <a href="#">
+      //           <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.image}" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
+      //           <span class="screenreader-text">${Medias.title}</span>
+      //           <div class="media-details">
+      //             <p>${Medias.title}</p>
+      //             <p>${Medias.likes}<i class="fas fa-heart"></i></p>
+      //           </div>
+      //         </a>
+      //         <a href="#">
+      //           <video controls width="300">
+      //             <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.video}"
+      //                     type="video/mp4" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
+      //             Sorry, your browser doesn't support embedded videos.
+      //           </video>
+      //         <span class="screenreader-text">${Medias.title}</span>
+      //         <div class="media-details">
+      //           <p>${Medias.title}</p>
+      //           <p>${Medias.likes}<i class="fas fa-heart"></i></p>
+      //         </div>
+      //       </a>
+      //       </div>
+      //       `
+      //   console.log(key, val);
+      // }
 
 
 
@@ -357,8 +357,8 @@ const factory = new MediasFactory();
 const imgMedia = factory.showsMediaElements('.jpg');
 const videoMedia = factory.showsMediaElements('.mp4');
 
-console.log(imgMedia.img()); // You kicked the football.
-console.log(videoMedia.video()); // You bounced the basketball.
+console.log(imgMedia.img()); // This media is an image
+console.log(videoMedia.video()); // This media is a video
 
 
 
@@ -376,10 +376,92 @@ console.log(videoMedia.video()); // You bounced the basketball.
 
 
 
+// Ajout lightbox (Avec 2 estampes pour le moment)
+        const modal = document.createElement("div"); // Création de la div modal.
+        mainHtml.appendChild(modal);
+        modal.setAttribute("id", "modal");
+        modal.classList.add('modalClass')
+        modal.innerHTML +=
+        `
+        <!-- The Modal/Lightbox -->
+        <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+
+    <div class="mySlides">
+      <div class="numbertext">1 / 4</div>
+      <img src="../Photos_FishEye/Sample_Photos/Mimi/${Medias.image}" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">2 / 4</div>
+      <video src="../Photos_FishEye/Sample_Photos/Mimi/${Medias.video}" style="width:100%"></video>
+    </div>
+
+    <!-- Next/previous controls -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <!-- Caption text -->
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+
+    <!-- Thumbnail image controls -->
+    <div class="column">
+      <img class="demo" src="../Photos_FishEye/Sample_Photos/Mimi/${Medias.image}" onclick="currentSlide(1)" alt="${Medias.title}">
+    </div>
+
+    <div class="column">
+      <img class="demo" src="../Photos_FishEye/Sample_Photos/Mimi/${Medias.video}" onclick="currentSlide(2)" alt="${Medias.title}">
+    </div>
+  </div>
+        `
+
+        
 
 
-
+        // Ajout like-price (sticky bas-droite)
+        const likePrice = document.createElement('div'); // Création de div like-price
+        mainHtml.appendChild(likePrice); // Appartenance à mainHtml
+        likePrice.setAttribute('id', 'like-price'); // Attribution d'id et son identifiant.
+        likePrice.innerHTML +=
+        `
+        <p>${Medias.likes}(Afficher le calcul correct)<i class="fas fa-heart"></i></p>
+        <p>${Photographer.price}€</p>
+        `
       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -413,6 +495,21 @@ console.log(videoMedia.video()); // You bounced the basketball.
 //     console.log(photographers[3].id);
 //   });
 // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -556,48 +653,47 @@ console.log(videoMedia.video()); // You bounced the basketball.
 
 
 
-// // Script pour Lightbox
+// Script pour Lightbox
 
-// // Ouverture Modal
-// function openModal()
-// {
-//   document.getElementById("modal").style.display = "block";
-// }
+// Ouverture Modal
+function openModal()
+{
+  document.getElementById("modal").style.display = "block";
+}
 
-// // Close the Modal
-// function closeModal() {
-//   document.getElementById("Modal").style.display = "none";
-// }
+// Close the Modal
+function closeModal() {
+  document.getElementById("Modal").style.display = "none";
+}
 
-// var slideIndex = 1;
-// showSlides(slideIndex);
+var slideIndex = 1;
+showSlides(slideIndex);
 
-// // Next/previous controls
-// function plusSlides(n) {
-//   showSlides(slideIndex += n);
-// }
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
 
-// // Thumbnail image controls
-// function currentSlide(n) {
-//   showSlides(slideIndex = n);
-// }
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
 
-// function showSlides(n) {
-//   var i;
-//   var slides = document.getElementsByClassName("mySlides");
-//   var dots = document.getElementsByClassName("demo");
-//   var captionText = document.getElementById("caption");
-//   if (n > slides.length) {slideIndex = 1}
-//   if (n < 1) {slideIndex = slides.length}
-//   for (i = 0; i < slides.length; i++) {
-//     slides[i].style.display = "none";
-//   }
-//   for (i = 0; i < dots.length; i++) {
-//     dots[i].className = dots[i].className.replace(" active", "");
-//   }
-//   slides[slideIndex-1].style.display = "block";
-//   dots[slideIndex-1].className += " active";
-//   captionText.innerHTML = dots[slideIndex-1].alt;
-// }  
-// });
-// console.log(data);
+function showSlides(n)
+{
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}  
