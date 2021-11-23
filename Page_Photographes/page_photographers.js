@@ -377,59 +377,59 @@ console.log(videoMedia.video()); // This media is a video
 
 
 // Ajout lightbox (Avec 2 estampes pour le moment)
-        const modal = document.createElement("div"); // Création de la div modal.
-        mainHtml.appendChild(modal);
-        modal.setAttribute("id", "modal");
-        modal.classList.add('modalClass')
-        modal.innerHTML +=
-        `
-        <!-- The Modal/Lightbox -->
-        <span class="close cursor" onclick="closeModal()">&times;</span>
-  <div class="modal-content">
+      const modal = document.createElement("div"); // Création de la div modal.
+      mainHtml.appendChild(modal);
+      modal.setAttribute("id", "modal");
+      modal.classList.add('modalClass')
+      modal.innerHTML +=
+      `
+      <!-- The Modal/Lightbox -->
+      <span class="close cursor" onclick="closeModal()">&times;</span>
+<div class="modal-content">
 
-    <div class="mySlides">
-      <div class="numbertext">1 / 4</div>
-      <img src="../Photos_FishEye/Sample_Photos/Mimi/${Medias.image}" style="width:100%">
-    </div>
-
-    <div class="mySlides">
-      <div class="numbertext">2 / 4</div>
-      <video src="../Photos_FishEye/Sample_Photos/Mimi/${Medias.video}" style="width:100%"></video>
-    </div>
-
-    <!-- Next/previous controls -->
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-    <!-- Caption text -->
-    <div class="caption-container">
-      <p id="caption"></p>
-    </div>
-
-    <!-- Thumbnail image controls -->
-    <div class="column">
-      <img class="demo" src="../Photos_FishEye/Sample_Photos/Mimi/${Medias.image}" onclick="currentSlide(1)" alt="${Medias.title}">
-    </div>
-
-    <div class="column">
-      <img class="demo" src="../Photos_FishEye/Sample_Photos/Mimi/${Medias.video}" onclick="currentSlide(2)" alt="${Medias.title}">
-    </div>
+  <div class="mySlides">
+    <div class="numbertext">1 / 4</div>
+    <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.image}" style="width:100%">
   </div>
-        `
+
+  <div class="mySlides">
+    <div class="numbertext">2 / 4</div>
+    <video src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.video}" style="width:100%"></video>
+  </div>
+
+  <!-- Next/previous controls -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+  <!-- Caption text -->
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <!-- Thumbnail image controls -->
+  <div class="column">
+    <img class="demo" src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.image}" onclick="currentSlide(1)" alt="${Medias.title}">
+  </div>
+
+  <div class="column">
+    <img class="demo" src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.video}" onclick="currentSlide(2)" alt="${Medias.title}">
+  </div>
+</div>
+      `
 
         
 
 
-        // Ajout like-price (sticky bas-droite)
-        const likePrice = document.createElement('div'); // Création de div like-price
-        mainHtml.appendChild(likePrice); // Appartenance à mainHtml
-        likePrice.setAttribute('id', 'like-price'); // Attribution d'id et son identifiant.
-        likePrice.innerHTML +=
-        `
-        <p>${Medias.likes}(Afficher le calcul correct)<i class="fas fa-heart"></i></p>
-        <p>${Photographer.price}€</p>
-        `
-      
+// Ajout like-price (sticky bas-droite)
+const likePrice = document.createElement('div'); // Création de div like-price
+mainHtml.appendChild(likePrice); // Appartenance à mainHtml
+likePrice.setAttribute('id', 'like-price'); // Attribution d'id et son identifiant.
+likePrice.innerHTML +=
+`
+<p>${Medias.likes}(Afficher le calcul correct)<i class="fas fa-heart"></i></p>
+<p>${Photographer.price}€</p>
+`
+
 
 
 
@@ -512,141 +512,9 @@ console.log(videoMedia.video()); // This media is a video
 
 
 
-
-
-
-  //       // data.media.forEach((element) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
-  //       // {
-  //         // Ajouts des différents médias
-  //         medias.innerHTML +=
-  //           `<div class="media">
-  //             <a href="#">
-  //               <img src="../Photos_FishEye/Sample_Photos/Mimi/${data.media[37].image}" alt="${data.media[37].title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
-  //               <span class="screenreader-text">${data.media[37].title}</span>
-  //               <div class="media-details">
-  //                 <p>${data.media[37].title}</p>
-  //                 <p>${data.media[37].likes}<i class="fas fa-heart"></i></p>
-  //               </div>
-  //             </a>
-  //           </div>
-
-  //           <div class="media">
-  //             <a href="#">
-  //                 <video controls width="300">
-
-  //                 <source src="../Photos_FishEye/Sample_Photos/Mimi/${data.media[36].video}"
-  //                         type="video/mp4" alt="${data.media[36].title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
-  //                 Sorry, your browser doesn't support embedded videos.
-  //               </video>
-  //               <span class="screenreader-text">${data.media[36].title}</span>
-  //               <div class="media-details">
-  //                 <p>${data.media[36].title}</p>
-  //                 <p>${data.media[36].likes}<i class="fas fa-heart"></i></p>
-  //               </div>
-  //             </a>
-  //           </div>`; // Ajout HTML.
-  //       // });
-
-  //       // Ajout lightbox (Avec 2 estampes pour le moment)
-  //       const modal = document.createElement('div'); // Création de la div modal.
-  //       mainHtml.appendChild(modal);
-  //       modal.setAttribute('id', 'modal');
-  //       modal.classList.add('modalClass')
-  //       modal.innerHTML +=
-  //       `
-  //       <!-- The Modal/Lightbox -->
-  //       <span class="close cursor" onclick="closeModal()">&times;</span>
-  // <div class="modal-content">
-
-  //   <div class="mySlides">
-  //     <div class="numbertext">1 / 4</div>
-  //     <img src="../Photos_FishEye/Sample_Photos/Mimi/${data.media[37].image}" style="width:100%">
-  //   </div>
-
-  //   <div class="mySlides">
-  //     <div class="numbertext">2 / 4</div>
-  //     <video src="../Photos_FishEye/Sample_Photos/Mimi/${data.media[36].video}" style="width:100%"></video>
-  //   </div>
-
-  //   <!-- Next/previous controls -->
-  //   <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  //   <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-  //   <!-- Caption text -->
-  //   <div class="caption-container">
-  //     <p id="caption"></p>
-  //   </div>
-
-  //   <!-- Thumbnail image controls -->
-  //   <div class="column">
-  //     <img class="demo" src="../Photos_FishEye/Sample_Photos/Mimi/${data.media[37].image}" onclick="currentSlide(1)" alt="${data.media[37].title}">
-  //   </div>
-
-  //   <div class="column">
-  //     <img class="demo" src="../Photos_FishEye/Sample_Photos/Mimi/${data.media[36].video}" onclick="currentSlide(2)" alt="${data.media[36].title}">
-  //   </div>
-  // </div>
-  //       `
-
         
 
 
-  //       // Ajout like-price (sticky bas-droite)
-  //       const likePrice = document.createElement('div'); // Création de div like-price
-  //       mainHtml.appendChild(likePrice); // Appartenance à mainHtml
-  //       likePrice.setAttribute('id', 'like-price'); // Attribution d'id et son identifiant.
-  //       likePrice.innerHTML +=
-  //       `
-  //       <p>${data.media[36].likes}(Trouver le calcul correct)<i class="fas fa-heart"></i></p>
-  //       <p>${data.photographers[0].price}€</p>
-  //       `
-  //     }
-
-      
-
-  //     // Page Ellie-Rose_Wilkens
-  //     if (window.location.pathname =='/Page_Photographes/930.html')
-  //     {
-  //       // title tag name //
-  //       const titlePage = document.createElement('title'); // Création de la balise title.
-  //       headTagName.appendChild(titlePage); // Appartient à Head.
-  //       titlePage.innerHTML = `${data.photographers[1].name}`;
-
-  //       photographersDetails.innerHTML = 
-  //       `
-  //       <h1>${data.photographers[1].name}</h1>
-  //       <p>${data.photographers[1].city}, ${data.photographers[1].country}</p>
-  //       <p>${data.photographers[1].tagline}</p>
-  //       `
-
-  //       // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
-  //       const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
-  //       tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
-  //       photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
-  //       tagsFiltered.innerHTML +=
-  //         `<a href="#" class="nav-filters">
-  //         #${data.photographers[1].tags[0]}</a>
-  //         <span class="screenreader-text">#${data.photographers[1].tags[0]}</span>`
-  //         +
-  //         `<a href="#" class="nav-filters">
-  //         #${data.photographers[1].tags[1]}</a>
-  //         <span class="screenreader-text">#${data.photographers[1].tags[1]}</span>`;
-        
-  //       // Ajout bouton "Contactez-moi".
-  //       const btnContact = document.createElement('button'); // Création de button.
-  //       btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant.
-  //       photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
-  //       btnContact.innerHTML = `Contactez-moi`;
-
-  //     // Ajout photo photographe
-  //     const picturePhotographer = document.createElement('div'); // Création de div div-photo.
-  //     picturePhotographer.classList.add('div-photo'); // Ajout de la classe correspondante.
-  //     contactDetails.appendChild(picturePhotographer); // Appartient à la div contactDetails.
-  //     picturePhotographer.innerHTML =
-  //     `
-  //     <img src="/Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${data.photographers[1].portrait}" alt="${data.photographers[1].name}" class="img-pictures">
-  //     `;
-  //     }
 
 
 
@@ -662,20 +530,23 @@ function openModal()
 }
 
 // Close the Modal
-function closeModal() {
-  document.getElementById("Modal").style.display = "none";
+function closeModal()
+{
+  document.getElementById("modal").style.display = "none";
 }
 
 var slideIndex = 1;
 showSlides(slideIndex);
 
 // Next/previous controls
-function plusSlides(n) {
+function plusSlides(n)
+{
   showSlides(slideIndex += n);
 }
 
 // Thumbnail image controls
-function currentSlide(n) {
+function currentSlide(n)
+{
   showSlides(slideIndex = n);
 }
 
