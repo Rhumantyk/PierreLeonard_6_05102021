@@ -49,10 +49,9 @@ console.log(Medias);
 
 
 const headTagName = document.getElementsByTagName('head')[0]; // Sans [0] --> Rien ne s'affiche.
-// const mainHtml = document.getElementsByTagName('main')[0]; // Sans [0] --> Rien ne s'affiche.
 
 const mainHtml = document.createElement('main');
-document.body.appendChild(mainHtml); // Appartient à body.
+document.body.appendChild(mainHtml); // Appartient à body. 2 jours pour trouver "document."
 
   // Création de la div contact-details //
   const contactDetails = document.createElement("div"); // Création de div contact-details.
@@ -112,6 +111,37 @@ document.body.appendChild(mainHtml); // Appartient à body.
 
       // Medias.tags.forEach(() => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
       // {
+        // Ajouts des différents médias
+        // mediasDiv.innerHTML +=
+        //     `
+        //     <div class="media">
+        //       <a href="#">
+        //         <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.image}" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
+        //         <span class="screenreader-text">${Medias.title}</span>
+        //         <div class="media-details">
+        //           <p>${Medias.title}</p>
+        //           <p>${Medias.likes}<i class="fas fa-heart"></i></p>
+        //         </div>
+        //       </a>
+        //       <a href="#">
+        //         <video controls width="300">
+        //           <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.video}"
+        //                   type="video/mp4" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
+        //           Sorry, your browser doesn't support embedded videos.
+        //         </video>
+        //       <span class="screenreader-text">${Medias.title}</span>
+        //       <div class="media-details">
+        //         <p>${Medias.title}</p>
+        //         <p>${Medias.likes}<i class="fas fa-heart"></i></p>
+        //       </div>
+        //     </a>
+        //     </div>
+        //     `
+      // });
+
+
+      // for (var key in Medias)
+      // {
       //   // Ajouts des différents médias
       //   mediasDiv.innerHTML +=
       //       `
@@ -124,13 +154,28 @@ document.body.appendChild(mainHtml); // Appartient à body.
       //             <p>${Medias.likes}<i class="fas fa-heart"></i></p>
       //           </div>
       //         </a>
+      //         <a href="#">
+      //           <video controls width="300">
+      //             <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.video}"
+      //                     type="video/mp4" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
+      //             Sorry, your browser doesn't support embedded videos.
+      //           </video>
+      //         <span class="screenreader-text">${Medias.title}</span>
+      //         <div class="media-details">
+      //           <p>${Medias.title}</p>
+      //           <p>${Medias.likes}<i class="fas fa-heart"></i></p>
+      //         </div>
+      //       </a>
       //       </div>
       //       `
-      // });
 
-      // for (var key in Medias)
+      //   console.log(key);
+      //   console.log(Medias);
+      // }
+
+      // for (var key of Object.keys(Medias))
       // {
-      //   //  Ajouts des différents médias
+      //   // Ajouts des différents médias
       //   mediasDiv.innerHTML +=
       //       `
       //       <div class="media">
@@ -142,6 +187,18 @@ document.body.appendChild(mainHtml); // Appartient à body.
       //             <p>${Medias.likes}<i class="fas fa-heart"></i></p>
       //           </div>
       //         </a>
+      //         <a href="#">
+      //           <video controls width="300">
+      //             <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.video}"
+      //                     type="video/mp4" alt="${Medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
+      //             Sorry, your browser doesn't support embedded videos.
+      //           </video>
+      //         <span class="screenreader-text">${Medias.title}</span>
+      //         <div class="media-details">
+      //           <p>${Medias.title}</p>
+      //           <p>${Medias.likes}<i class="fas fa-heart"></i></p>
+      //         </div>
+      //       </a>
       //       </div>
       //       `
 
@@ -149,9 +206,71 @@ document.body.appendChild(mainHtml); // Appartient à body.
       //   console.log(Medias);
       // }
 
-      for (var key of Object.keys(Medias))
+      // Medias.forEach((media) => // Ne fonctionne pas
+      // {
+      //   // Ajouts des différents médias
+      //   mediasDiv.innerHTML +=
+      //     `
+      //     <div class="media">
+      //       <a href="#">
+      //         <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
+      //         <span class="screenreader-text">${media.title}</span>
+      //         <div class="media-details">
+      //           <p>${media.title}</p>
+      //           <p>${media.likes}<i class="fas fa-heart"></i></p>
+      //         </div>
+      //       </a>
+      //       <a href="#">
+      //         <video controls width="300">
+      //           <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.video}"
+      //                   type="video/mp4" alt="${media.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
+      //           Sorry, your browser doesn't support embedded videos.
+      //         </video>
+      //       <span class="screenreader-text">${media.title}</span>
+      //       <div class="media-details">
+      //         <p>${media.title}</p>
+      //         <p>${media.likes}<i class="fas fa-heart"></i></p>
+      //       </div>
+      //     </a>
+      //     </div>
+      //     `
+      // });
+
+
+      // for (const child of medias)
+      // {
+      //   // Ajouts des différents médias
+      //   mediasDiv.innerHTML +=
+      //     `
+      //     <div class="media">
+      //       <a href="#">
+      //         <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${medias.image}" alt="${medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
+      //         <span class="screenreader-text">${medias.title}</span>
+      //         <div class="media-details">
+      //           <p>${medias.title}</p>
+      //           <p>${medias.likes}<i class="fas fa-heart"></i></p>
+      //         </div>
+      //       </a>
+      //       <a href="#">
+      //         <video controls width="300">
+      //           <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${medias.video}"
+      //                   type="video/mp4" alt="${medias.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
+      //           Sorry, your browser doesn't support embedded videos.
+      //         </video>
+      //       <span class="screenreader-text">${medias.title}</span>
+      //       <div class="media-details">
+      //         <p>${medias.title}</p>
+      //         <p>${medias.likes}<i class="fas fa-heart"></i></p>
+      //       </div>
+      //     </a>
+      //     </div>
+      //     `
+      //   console.log(child);
+      // }
+
+      for([key, val] of Object.entries(Medias))
       {
-        // Ajouts des différents médias
+                // Ajouts des différents médias
         mediasDiv.innerHTML +=
             `
             <div class="media">
@@ -177,10 +296,90 @@ document.body.appendChild(mainHtml); // Appartient à body.
             </a>
             </div>
             `
-
-        // console.log(key);
-        // console.log(Medias);
+        console.log(key, val);
       }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Pattern Factory
+class MediasFactory
+{
+  constructor()
+  {
+    this.showsMediaElements = function(type)
+    {
+      let element;
+      if (type === '.jpg') element = new ImageMedia();
+      else if (type === '.mp4') element = new VideoMedia();
+
+      return element;
+    };
+  }
+}
+
+class ImageMedia
+{
+  constructor()
+  {
+    this._type = '.jpg';
+    this.img = function()
+    {
+      return 'This media is an image';
+    };
+  }
+}
+
+class VideoMedia
+{
+  constructor()
+  {
+    this._type = '.mp4';
+    this.video = function()
+    {
+      return 'This media is a video';
+    };
+  }
+}
+
+// creating objects
+const factory = new MediasFactory();
+
+const imgMedia = factory.showsMediaElements('.jpg');
+const videoMedia = factory.showsMediaElements('.mp4');
+
+console.log(imgMedia.img()); // You kicked the football.
+console.log(videoMedia.video()); // You bounced the basketball.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
 
 
 

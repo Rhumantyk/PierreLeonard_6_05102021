@@ -94,7 +94,6 @@ function addPhotographersToHTML(tagFilter=null)
         tagsFiltered.innerHTML += `<a href="#" id="${photographer.name};${tag}" class="nav-filters" onclick="addPhotographersToHTML(this);">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
       });
     }
-
   });
 
   // medias.forEach(() =>
