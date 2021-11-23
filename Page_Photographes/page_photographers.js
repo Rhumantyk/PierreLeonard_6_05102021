@@ -56,7 +56,7 @@ document.body.appendChild(mainHtml); // Appartient à body.
     contactDetails.appendChild(photographersDetails); // Appartient à la div contactDetails.
 
       // title tag name //
-      const titlePage = document.createElement('title'); // Création de la balise title.
+      const titlePage = document.createElement("title"); // Création de la balise title.
       headTagName.appendChild(titlePage); // Appartient à Head.
       titlePage.innerHTML = Photographer.name;
 
@@ -67,33 +67,22 @@ document.body.appendChild(mainHtml); // Appartient à body.
       <p>${Photographer.tagline}</p>
       `;
 
-//           // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
-//           const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
-//           tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
-//           photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
-//           tagsFiltered.innerHTML +=
-//             `<a href="#" class="nav-filters">
-//             #${photographers[0].tags[0]}</a>
-//             <span class="screenreader-text">#${photographers[0].tags[0]}</span>`
-//             +
-//             `<a href="#" class="nav-filters">
-//             #${photographers[0].tags[1]}</a>
-//             <span class="screenreader-text">#${photographers[0].tags[1]}</span>`
-//             +
-//             `<a href="#" class="nav-filters">
-//             #${photographers[0].tags[2]}</a>
-//             <span class="screenreader-text">#${photographers[0].tags[2]}</span>`
-//             +
-//             `<a href="#" class="nav-filters">
-//             #${photographers[0].tags[3]}</a>
-//             <span class="screenreader-text">#${photographers[0].tags[3]}</span>`
-//             ;
+      // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
+      const tagsFiltered = document.createElement("div"); // Création de div tags-filtered.
+      tagsFiltered.classList.add("tags-filtered"); // Ajout de la classe correspondante.
+      photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
+      Photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
+      {
+        tagsFiltered.innerHTML += `<a href="#" id="${Photographer.name};${tag}" class="nav-filters" onclick="addPhotographersToHTML(this);">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
+      });
+
+     
           
-//           // Ajout bouton "Contactez-moi".
-//           const btnContact = document.createElement('button'); // Création de button.
-//           btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant.
-//           photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
-//           btnContact.innerHTML = `Contactez-moi`;
+      // Ajout bouton "Contactez-moi".
+      const btnContact = document.createElement("button"); // Création de button.
+      btnContact.setAttribute("role", "button"); // Ajout du rôle correspondant.
+      photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
+      btnContact.innerHTML = `Contactez-moi`;
 
 //           // Ajout photo photographe
 //           const picturePhotographer = document.createElement('div'); // Création de div div-photo.
@@ -235,7 +224,7 @@ document.body.appendChild(mainHtml); // Appartient à body.
 //     console.log(photographers[3].id);
 //   });
 // }
-console.log(addPhotographersToHTML);
+// console.log(addPhotographersToHTML);
 
 
 
