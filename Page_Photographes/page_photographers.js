@@ -111,14 +111,14 @@ document.body.appendChild(mainHtml); // Appartient à body. 2 jours pour trouver
         {
           constructor(Media)
           {
-            this.showsMediaElements = function(type)
+            this.showsMediaElements = function(Media)
             {
-              let element;
+              let FormattedMedia;
               // if Media.image ou id Media.video -> true si le tag existe dans l'objet Media
-              if (type === '.jpg') element = new ImageMedia();
-              else if (type === '.mp4') element = new VideoMedia();
+              if (Media === 'image') FormattedMedia = new ImageMedia();
+              else if (Media === 'video') FormattedMedia = new VideoMedia();
 
-              return element;
+              return FormattedMedia;
             };
           }
         }
@@ -127,10 +127,23 @@ document.body.appendChild(mainHtml); // Appartient à body. 2 jours pour trouver
         {
           constructor()
           {
-            this._type = '.jpg';
+            this._type = 'image';
             this.img = function()
             {
-              return 'This media is an image';
+              // Ajouts des différents médias img
+              mediasDiv.innerHTML +=
+              `
+                <div class="media">
+                  <a href="#">
+                    <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Media.image}" alt="${Media.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
+                    <span class="screenreader-text">${Media.title}</span>
+                    <div class="media-details">
+                      <p>${Media.title}</p>
+                      <p>${Media.likes}<i class="fas fa-heart"></i></p>
+                    </div>
+                  </a>
+                </div>
+              `;
             };
           }
         }
@@ -139,10 +152,27 @@ document.body.appendChild(mainHtml); // Appartient à body. 2 jours pour trouver
         {
           constructor()
           {
-            this._type = '.mp4';
+            this._type = 'video';
             this.video = function()
             {
-              return 'This media is a video';
+              // Ajouts des différents médias video
+              mediasDiv.innerHTML +=
+              `
+                <div class="media">
+                  <a href="#">
+                    <video controls width="300">
+                      <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Media.video}"
+                              type="video/mp4" alt="${Media.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
+                      Sorry, your browser doesn't support embedded videos.
+                    </video>
+                    <span class="screenreader-text">${Media.title}</span>
+                    <div class="media-details">
+                      <p>${Media.title}</p>
+                      <p>${Media.likes}<i class="fas fa-heart"></i></p>
+                    </div>
+                  </a>
+                </div>
+              `;
             };
           }
         }
@@ -150,27 +180,28 @@ document.body.appendChild(mainHtml); // Appartient à body. 2 jours pour trouver
         // creating objects
         const factory = new MediasFactory();
 
-        const imgMedia = factory.showsMediaElements('.jpg');
-        const videoMedia = factory.showsMediaElements('.mp4');
+        const imgMedia = factory.showsMediaElements('image');
+        const videoMedia = factory.showsMediaElements('video');
 
         console.log(imgMedia.img()); // This media is an image
         console.log(videoMedia.video()); // This media is a video
 
 
-        // Ajouts des différents médias
-        mediasDiv.innerHTML +=
-          `
-            <div class="media">
-              <a href="#">
-                <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Media.image}" alt="${Media.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
-                <span class="screenreader-text">${Media.title}</span>
-                <div class="media-details">
-                  <p>${Media.title}</p>
-                  <p>${Media.likes}<i class="fas fa-heart"></i></p>
-                </div>
-              </a>
-            </div>
-          `
+        // // Ajouts des différents médias
+        // mediasDiv.innerHTML +=
+        //   `
+        //     <div class="media">
+        //       <a href="#">
+        //         <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Media.image}" alt="${Media.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
+        //         <span class="screenreader-text">${Media.title}</span>
+        //         <div class="media-details">
+        //           <p>${Media.title}</p>
+        //           <p>${Media.likes}<i class="fas fa-heart"></i></p>
+        //         </div>
+        //       </a>
+        //     </div>
+        //   `
+        
           //   <a href="#">
           //   <video controls width="300">
           //     <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Media.video}"
