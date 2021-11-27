@@ -21,9 +21,12 @@ medias = JSON.parse(medias);
 // 	//return le nom du photographe;
 // }
 
-class MediasFactory {
-	constructor() {
-		this.showsMediaElements = function (media) {
+class MediasFactory
+{
+	constructor()
+  {
+		this.showsMediaElements = function (media)
+    {
 			let FormattedMedia;
 			// if Media.image ou id Media.video -> true si le tag existe dans l'objet Media
 			if (media.image != null) FormattedMedia = new ImageMedia(media);
@@ -35,62 +38,65 @@ class MediasFactory {
 }
 
 // I lfaut faire en sorte que ImageMedia puisse etre crée en recevant un objet media
-class ImageMedia {
-	constructor(media) {
+class ImageMedia
+{
+	constructor(media)
+  {
 		this._type = 'image';
-		// this.img = function () {
 			// Ajouts des différents médias img
 			mediasDiv.innerHTML += 
-                `
-                <div class="media">
-                  <a href="#">
-                    <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
-                    <span class="screenreader-text">${media.title}</span>
-                    <div class="media-details">
-                      <p>${media.title}</p>
-                      <p>${media.likes}<i class="fas fa-heart"></i></p>
-                    </div>
-                  </a>
-                </div>
-              `;
-		// };
+      `
+      <div class="media">
+        <a href="#">
+          <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
+          <span class="screenreader-text">${media.title}</span>
+          <div class="media-details">
+            <p>${media.title}</p>
+            <p>${media.likes}<i class="fas fa-heart"></i></p>
+          </div>
+        </a>
+      </div>
+    `;
 	}
 }
 
-class VideoMedia {
-	constructor(media) {
+class VideoMedia
+{
+	constructor(media)
+  {
 		this._type = 'video';
-		// this.video = function () {
-			// Ajouts des différents médias video
-			mediasDiv.innerHTML += `
-                <div class="media">
-                  <a href="#">
-                    <video controls width="300">
-                      <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.video}"
-                              type="video/mp4" alt="${media.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
-                      Sorry, your browser doesn't support embedded videos.
-                    </video>
-                    <span class="screenreader-text">${media.title}</span>
-                    <div class="media-details">
-                      <p>${media.title}</p>
-                      <p>${media.likes}<i class="fas fa-heart"></i></p>
-                    </div>
-                  </a>
-                </div>
-              `;
-		// };
+    // Ajouts des différents médias video
+    mediasDiv.innerHTML += 
+    `
+      <div class="media">
+        <a href="#">
+          <video controls width="300">
+            <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.video}"
+                    type="video/mp4" alt="${media.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
+            Sorry, your browser doesn't support embedded videos.
+          </video>
+          <span class="screenreader-text">${media.title}</span>
+          <div class="media-details">
+            <p>${media.title}</p>
+            <p>${media.likes}<i class="fas fa-heart"></i></p>
+          </div>
+        </a>
+      </div>
+    `;
 	}
 }
 
 // filter Photographes
-let Photographer = photographers.filter(function (photographer) {
+let Photographer = photographers.filter(function (photographer)
+{
 	return photographer.id === parseInt(idNumber);
 })[0];
 console.log('Photographer - ' + Photographer.name);
 console.log(Photographer);
 
 // filter Medias
-let Medias = medias.filter(function (media) {
+let Medias = medias.filter(function (media)
+{
 	return media.photographerId === parseInt(idNumber);
 });
 console.log('Medias - ' + Medias.photographerId);
@@ -116,22 +122,21 @@ const titlePage = document.createElement('title'); // Création de la balise tit
 headTagName.appendChild(titlePage); // Appartient à Head.
 titlePage.innerHTML = Photographer.name;
 
-photographersDetails.innerHTML = `
-          <h1>${Photographer.name}</h1>
-          <p>${Photographer.city}, ${Photographer.country}</p>
-          <p>${Photographer.tagline}</p>
-        `;
+photographersDetails.innerHTML = 
+`
+  <h1>${Photographer.name}</h1>
+  <p>${Photographer.city}, ${Photographer.country}</p>
+  <p>${Photographer.tagline}</p>
+`;
 
 // Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
 const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
 tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
 photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
-Photographer.tags.forEach(
-	(
-		tag // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
-	) => {
-		tagsFiltered.innerHTML += `<a href="#" id="${Photographer.name};${tag}" class="nav-filters" onclick="addPhotographersToHTML(this);">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
-	}
+Photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
+{
+  tagsFiltered.innerHTML += `<a href="#" id="${Photographer.name};${tag}" class="nav-filters" onclick="addPhotographersToHTML(this);">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
+}
 );
 
 // Ajout bouton "Contactez-moi".
@@ -145,8 +150,8 @@ const picturePhotographer = document.createElement('div'); // Création de div d
 picturePhotographer.classList.add('div-photo'); // Ajout de la classe correspondante.
 contactDetails.appendChild(picturePhotographer); // Appartient à la div contactDetails.
 picturePhotographer.innerHTML = `
-      <img src="/Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${Photographer.portrait}" alt="${Photographer.name}" class="img-pictures">
-      `;
+<img src="/Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${Photographer.portrait}" alt="${Photographer.name}" class="img-pictures">
+`;
 
 // Ajout menu déroulant ******** À COMPLÉTER PLUS TARD ********
 const menu = document.createElement('div');
@@ -159,11 +164,11 @@ const mediasDiv = document.createElement('div'); // Création de div media.
 mediasDiv.setAttribute('id', 'medias-div'); // Ajout de l'id correspondant.
 mainHtml.appendChild(mediasDiv); // Appartenance à la div medias.
 
-// -------------------- la ya le for each
+// -------------------- MediasFactory
 const factory = new MediasFactory();
-Medias.forEach((media) => {
-	// pour chaque media de la liste je lenvoi au factory
-	factory.showsMediaElements(media);
+Medias.forEach((media) =>
+{
+	factory.showsMediaElements(media); // pour chaque media de la liste je l'envoi au factory
 });
 // -----------------------------------------------
 
