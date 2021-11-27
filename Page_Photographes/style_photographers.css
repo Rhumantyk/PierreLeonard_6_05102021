@@ -206,6 +206,7 @@ nav > ul:hover .sous
 #medias-div
 {
     display: flex;
+    flex-wrap: wrap;
 }
 
 #medias-div > div
