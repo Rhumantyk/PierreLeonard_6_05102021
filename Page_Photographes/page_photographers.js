@@ -21,6 +21,7 @@ medias = JSON.parse(medias);
 // 	//return le nom du photographe;
 // }
 
+// FACTORY PATTERN
 class MediasFactory
 {
 	constructor()
@@ -99,9 +100,10 @@ let Medias = medias.filter(function (media)
 {
 	return media.photographerId === parseInt(idNumber);
 });
-console.log('Medias - ' + Medias.photographerId);
+console.log('Medias - ' + Medias[0].photographerId);
 console.log(Medias);
 
+// HTML
 const headTagName = document.getElementsByTagName('head')[0]; // Sans [0] --> Rien ne s'affiche.
 
 const mainHtml = document.createElement('main');
@@ -133,11 +135,32 @@ photographersDetails.innerHTML =
 const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
 tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
 photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
-Photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
-{
-  tagsFiltered.innerHTML += `<a href="#" id="${Photographer.name};${tag}" class="nav-filters" onclick="addPhotographersToHTML(this);">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
-}
-);
+// function addPhotographersToHTML(tagFilter=null)
+// {
+//   // get tag filter
+//   let filter = "";
+//   if(tagFilter != null) 
+//   {
+//     filter = tagFilter.id.substr(tagFilter.id.indexOf(";")+1);
+//     // substr() retourne une sous-chaîne de la chaîne courante, entre un indice de début et un indice de fin (prend un morceau 
+//     // du tableau. sous-morceau d'un tableau défini ci-dessous).
+//     // indexOf() renvoie le premier indice d'un élément dans un tableau de caractères.
+//   }
+
+  // Photographer.forEach((photographer) =>
+  // {
+  //   if(filter == "" || photographer.tags.includes(filter))
+  //   {
+      Photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
+      {
+        tagsFiltered.innerHTML += `<a href="#" id="${Photographer.name};${tag}" class="nav-filters" onclick="addPhotographersToHTML(this);">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
+      });
+  //   }
+  // });
+// }
+// console.log(Photographer);
+// console.log(addPhotographersToHTML);
+
 
 // Ajout bouton "Contactez-moi".
 const btnContact = document.createElement('button'); // Création de button.
@@ -164,13 +187,134 @@ const mediasDiv = document.createElement('div'); // Création de div media.
 mediasDiv.setAttribute('id', 'medias-div'); // Ajout de l'id correspondant.
 mainHtml.appendChild(mediasDiv); // Appartenance à la div medias.
 
+// // Ajout like-price (sticky bas-droite)
+// const likePrice = document.createElement('div'); // Création de div like-price
+// mainHtml.appendChild(likePrice); // Appartenance à mainHtml
+// likePrice.setAttribute('id', 'like-price'); // Attribution d'id et son identifiant.
+// likePrice.innerHTML += `
+// <p>${media.likes}(Afficher le calcul correct)<i class="fas fa-heart"></i></p>
+// <p>${Photographer.price}€</p>
+// `;
+
 // -------------------- MediasFactory
 const factory = new MediasFactory();
 Medias.forEach((media) =>
 {
-	factory.showsMediaElements(media); // pour chaque media de la liste je l'envoi au factory
+	factory.showsMediaElements(media); // Chaque media de la liste est envoyé au MediasFactory()
+
+  // Ajout like-price (sticky bas-droite)
+  const likePrice = document.createElement('div'); // Création de div like-price
+  mainHtml.appendChild(likePrice); // Appartenance à mainHtml
+  likePrice.setAttribute('id', 'like-price'); // Attribution d'id et son identifiant.
+  likePrice.innerHTML += `
+  <p>${media.likes}(Afficher le calcul correct)<i class="fas fa-heart"></i></p>
+  <p>${Photographer.price}€</p>
+  `;
 });
 // -----------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+// function addPhotographersToHTML(tagFilter=null)
+// {
+//   // get tag filter
+//   let filter = "";
+//   if(tagFilter != null) 
+//   {
+//     filter = tagFilter.id.substr(tagFilter.id.indexOf(";")+1);
+//     // substr() retourne une sous-chaîne de la chaîne courante, entre un indice de début et un indice de fin (prend un morceau 
+//     // du tableau. sous-morceau d'un tableau défini ci-dessous).
+//     // indexOf() renvoie le premier indice d'un élément dans un tableau de caractères.
+//   }
+
+//   photographers.forEach((photographer) =>
+//   {
+
+//     if(filter == "" || photographer.tags.includes(filter))
+//     {
+//       photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
+//       {
+//         tagsFiltered.innerHTML += `<a href="#" id="${photographer.name};${tag}" class="nav-filters" onclick="addPhotographersToHTML(this);">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
+//       });
+//     }
+//   });
+// }
+
+
+
+// Original
+// Photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
+// {
+//   tagsFiltered.innerHTML += `<a href="#" id="${Photographer.name};${tag}" class="nav-filters" onclick="addPhotographersToHTML(this);">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
+// }
+// );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Ajout lightbox (Avec 2 estampes pour le moment)
 const modal = document.createElement('div'); // Création de la div modal.
@@ -259,15 +403,6 @@ function showSlides(n) {
 	captionText.innerHTML = dots[slideIndex - 1].alt;
 }
 
-// Ajout like-price (sticky bas-droite)
-const likePrice = document.createElement('div'); // Création de div like-price
-mainHtml.appendChild(likePrice); // Appartenance à mainHtml
-likePrice.setAttribute('id', 'like-price'); // Attribution d'id et son identifiant.
-likePrice.innerHTML += `
-<p>${Medias.likes}(Afficher le calcul correct)<i class="fas fa-heart"></i></p>
-<p>${Photographer.price}€</p>
-`;
-
 // function addPhotographersToHTML(tagFilter=null)
 // {
 //   // get tag filter
@@ -294,3 +429,14 @@ likePrice.innerHTML += `
 //   {
 //   });
 // }
+
+
+
+
+
+
+
+
+
+
+
