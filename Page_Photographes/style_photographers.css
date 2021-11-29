@@ -254,6 +254,7 @@ nav > ul:hover .sous
 {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 300px;
 }
 
@@ -271,6 +272,8 @@ nav > ul:hover .sous
 
 .media-details button
 {
+    display: flex;
+    align-items: center;
     color: #901C1C;
     background-color: white;
     border-radius: inherit;
@@ -281,6 +284,11 @@ nav > ul:hover .sous
     font-size: inherit;
     margin-left: inherit;
     cursor: pointer;
+}
+
+.media-details p
+{
+    height: 18.4px;
 }
 
 #like-price
