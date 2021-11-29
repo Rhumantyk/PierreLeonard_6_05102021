@@ -53,7 +53,7 @@ class ImageMedia
           <span class="screenreader-text">${media.title}</span>
           <div class="media-details">
             <p>${media.title}</p>
-            <p>${media.likes}<i class="fas fa-heart"></i></p>
+            <p><button>${media.likes}<i class="fas fa-heart" aria-label="likes"></i></button></p>
           </div>
         </a>
       </div>
@@ -79,7 +79,7 @@ class VideoMedia
           <span class="screenreader-text">${media.title}</span>
           <div class="media-details">
             <p>${media.title}</p>
-            <p>${media.likes}<i class="fas fa-heart"></i></p>
+            <p><button>${media.likes}<i class="fas fa-heart" aria-label="likes"></i></button></p>
           </div>
         </a>
       </div>
