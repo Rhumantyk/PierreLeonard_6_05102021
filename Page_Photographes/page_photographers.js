@@ -79,7 +79,7 @@ class VideoMedia
           <span class="screenreader-text">${media.title}</span>
           <div class="media-details">
             <p>${media.title}</p>
-            <p><button>${media.likes}<i class="fas fa-heart" aria-label="likes"></i></button></p>
+            <p><button onclick="incrementButton()"><p id="likes-number">${media.likes}</p><i class="fas fa-heart" aria-label="likes"></i></button></p>
           </div>
         </a>
       </div>
@@ -212,6 +212,18 @@ Medias.forEach((media) =>
   `;
 });
 // -----------------------------------------------
+
+// Function increment
+function incrementButton()
+{
+  let element = document.getElementById("likes-number");
+  let value = element.innerHTML;
+
+  ++value;
+
+  console.log(value);
+  document.getElementById("likes-number").innerHTML = value;
+}
 
 
 
