@@ -53,13 +53,15 @@ class ImageMedia
           <span class="screenreader-text">${media.title}</span>
           <div class="media-details">
             <p>${media.title}</p>
-            <p><button onclick="incrementButton()"><p id="likes-number">${media.likes}</p><i class="fas fa-heart" aria-label="likes"></i></button></p>
+            <div>
+              <p class="nbr-likes">${media.likes}</p><button onclick="incrementButton()" class="btn-likes"><i class="fas fa-heart" aria-label="likes"></i></button>
+            </div>
           </div>
         </a>
       </div>
     `;
 	}
-}
+} // <p><button>${media.likes}<i class="fas fa-heart" aria-label="likes"></i></button></p>
 
 class VideoMedia
 {
@@ -79,13 +81,15 @@ class VideoMedia
           <span class="screenreader-text">${media.title}</span>
           <div class="media-details">
             <p>${media.title}</p>
-            <p><button onclick="incrementButton()"><p id="likes-number">${media.likes}</p><i class="fas fa-heart" aria-label="likes"></i></button></p>
+            <div>
+              <p class="nbr-likes">${media.likes}</p><button onclick="incrementButton()" class="btn-likes"><i class="fas fa-heart" aria-label="likes"></i></button>
+            </div>
           </div>
         </a>
       </div>
     `;
 	}
-}
+} // <p><button onclick="incrementButton()"><p class="likes-number">${media.likes}</p><i class="fas fa-heart" aria-label="likes"></i></button></p>
 
 // filter Photographes
 let Photographer = photographers.filter(function (photographer)
@@ -200,7 +204,7 @@ mainHtml.appendChild(mediasDiv); // Appartenance à la div medias.
 const factory = new MediasFactory();
 Medias.forEach((media) =>
 {
-	factory.showsMediaElements(media); // Chaque media de la liste est envoyé au MediasFactory()
+	factory.showsMediaElements(media); // Chaque media de la liste est envoyé au MediasFactory() qui va faire le tri
 
   // Ajout like-price (sticky bas-droite)
   const likePrice = document.createElement('div'); // Création de div like-price
@@ -213,19 +217,58 @@ Medias.forEach((media) =>
 });
 // -----------------------------------------------
 
+
 // Function increment
-function incrementButton()
+
+let addlike = document.querySelectorAll('.btn-likes');
+
+addlike.forEach((like) =>
 {
-  let element = document.getElementById("likes-number");
-  let value = element.innerHTML;
+  like.addEventListener("click", (e) =>
+  {
+    let input = e.target.querySelector('.nbr-likes');
+    input.value = parseInt(input.value) + 1;
+  });
+});
 
-  ++value;
+// window.onload = function()
+//   {
+//     let btn = document.getElementsByClassName("btn-likes");
+//     let value = document.getElementsByClassName("nbr-likes").innerHTML;
+//     btn.onclick = function incrementButton()
+//     {
+    
+//       value ++;
+//       value.innerHTML = value;
+//     };
+//   }
 
-  console.log(value);
-  document.getElementById("likes-number").innerHTML = value;
-}
+// function incrementButton()
+// {
+//   let value = document.getElementsByClassName("nbr-likes").innerHTML;
+//   value++;
+//   document.getElementsByClassName("btn-likes").value = value
+// }
 
+// let i = 0;
 
+// document.getElementsByClassName("nbr-likes").innerHTML = i;
+
+// function incrementButton()
+// {
+//   document.getElementsByClassName("nbr-likes").innerHTML = ++i;
+// }
+// console.log(i);
+
+// let btn = document.getElementsByClassName("btn-likes");
+// let value = document.getElementsByClassName("nbr-likes");
+
+// btn.addEventListener("click", event =>
+// {
+//   event.preventDefault();
+//   let num = parseInt(value.innerHTML);
+//   value.innerHTML = num + 1;
+// });
 
 
 

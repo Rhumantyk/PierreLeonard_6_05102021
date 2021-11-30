@@ -291,6 +291,11 @@ nav > ul:hover .sous
     height: 18.4px;
 }
 
+.media-details div
+{
+    display: flex;
+}
+
 #like-price
 {
     position: fixed;
