@@ -376,50 +376,58 @@ mainHtml.appendChild(modal);
 modal.setAttribute('id', 'modal');
 modal.classList.add('modalClass');
 
+// <!-- The Modal/Lightbox -->
+const closeCursor = document.createElement('span'); // Création du span.
+modal.appendChild(closeCursor);
+closeCursor.setAttribute('onclick','closeModal();');
+closeCursor.classList.add('close', 'cursor');
+closeCursor.innerHTML = `&times`; // <span class="close cursor" onclick="closeModal()">&times;</span>
+
+const modalContent = document.createElement('div'); // Création de la div modal-content.
+modal.appendChild(modalContent);
+modalContent.classList.add('modal-content'); // <div class="modal-content">
+
 
 Medias.forEach((media) =>
 {
 
 // Ajout lightbox
-modal.innerHTML += 
+modalContent.innerHTML += 
   `
-    <!-- The Modal/Lightbox -->
-    <span class="close cursor" onclick="closeModal()">&times;</span>
-    <div class="modal-content">
+
 
       <div class="mySlides">
         <div class="numbertext">1 / 4</div>
         <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" style="width:100%">
       </div>
 
-      <!-- Next/previous controls -->
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-      <!-- Caption text -->
-      <div class="caption-container">
-        <p id="caption"></p>
-      </div>
 
-    </div>
+    
   `;
 });
-//
-// <!-- Caption text -->
-//   <div class="caption-container">
-//     <p id="caption"></p>
-//   </div>
 
-//   <!-- Thumbnail image controls -->
-//   <div class="column">
-//     <img class="demo" src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" onclick="currentSlide(1)" alt="${media.title}">
-//   </div>
+// Next/Previous Controls
+const prevControl = document.createElement('a');
+prevControl.setAttribute('onclick', 'plusSlides(-1)');
+modalContent.appendChild(prevControl);
+prevControl.classList.add('prev');
+prevControl.innerHTML = `&#10094;`; // <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 
-//   <div class="column">
-//     <img class="demo" src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.video}" onclick="currentSlide(2)" alt="${media.title}">
-//   </div>
-// </div>
-//
+const nextControl = document.createElement('a');
+nextControl.setAttribute('onclick', 'plusSlides(1)');
+modalContent.appendChild(nextControl);
+nextControl.classList.add('next');
+nextControl.innerHTML = `&#10095;`; // <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+// Caption text
+const captionContainer = document.createElement('div');
+modalContent.appendChild(nextControl);
+captionContainer.classList.add('caption-container');
+captionContainer.innerHTML = `<p id="caption"></p>`;
+
+
+
 
 // Script pour Lightbox
 
