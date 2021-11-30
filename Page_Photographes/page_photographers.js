@@ -157,7 +157,7 @@ photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactD
   //   {
       Photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
       {
-        tagsFiltered.innerHTML += `<a href="#" id="${Photographer.name};${tag}" class="nav-filters" onclick="addPhotographersToHTML(this);">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
+        tagsFiltered.innerHTML += `<a href="../index.html?tag=${tag}" id="${Photographer.name};${tag}" class="nav-filters">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
       });
   //   }
   // });
@@ -224,16 +224,16 @@ likePrice.innerHTML += `
 
 // Function increment
 
-let addlike = document.querySelectorAll('.btn-likes');
+// let addlike = document.querySelectorAll('.btn-likes');
 
-addlike.forEach((like) =>
-{
-  like.addEventListener("click", (e) =>
-  {
-    let input = e.target.querySelector('.nbr-likes');
-    input.value = parseInt(input.value) + 1;
-  });
-});
+// addlike.forEach((like) =>
+// {
+//   like.addEventListener("click", (e) =>
+//   {
+//     let input = e.target.querySelector('.nbr-likes');
+//     input.value = parseInt(input.value) + 1;
+//   });
+// });
 
 // window.onload = function()
 //   {
@@ -376,7 +376,7 @@ mainHtml.appendChild(modal);
 modal.setAttribute('id', 'modal');
 modal.classList.add('modalClass');
 
-// <!-- The Modal/Lightbox -->
+// Close modal
 const closeCursor = document.createElement('span'); // Création du span.
 modal.appendChild(closeCursor);
 closeCursor.setAttribute('onclick','closeModal();');
@@ -390,20 +390,13 @@ modalContent.classList.add('modal-content'); // <div class="modal-content">
 
 Medias.forEach((media) =>
 {
-
 // Ajout lightbox
 modalContent.innerHTML += 
   `
-
-
-      <div class="mySlides">
-        <div class="numbertext">1 / 4</div>
-        <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" style="width:100%">
-      </div>
-
-
-
-    
+    <div class="mySlides">
+      <div class="numbertext">1 / 4</div>
+      <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" style="width:100%">
+    </div>
   `;
 });
 
@@ -430,7 +423,6 @@ captionContainer.innerHTML = `<p id="caption"></p>`;
 
 
 // Script pour Lightbox
-
 // Ouverture Modal
 function openModal()
 {

@@ -1,3 +1,9 @@
+// Récupération de l'id du photographe sur l'URL
+const queryString = window.location.search; // http://127.0.0.1:5500/index.html
+// console.log(queryString); // Donne donc le ?${photographer.id}
+const urlParams = new URLSearchParams(queryString);
+const idTag = urlParams.get('tag'); // Cf tag=${tag} dans la page photographes
+
 window.onscroll = function() // L'élément scroll est déclenché quand l'utilisateur fait défiler le contenu.
 { 
     // Renvoie le nbr de pixel que le document défile (pour les 2).
@@ -24,7 +30,7 @@ fetch(file)
   .then(function(json)
   {
     photographers = json["photographers"]; // Renvoie à la variable "let photographers = []".
-    addPhotographersToHTML();
+    addPhotographersToHTML(idTag);
     medias = json["media"]; // Renvoie à la variable "let media = []".
 
     // local storage pour "page_photographers"
@@ -48,10 +54,17 @@ function addPhotographersToHTML(tagFilter=null)
   let filter = "";
   if(tagFilter != null) 
   {
-    filter = tagFilter.id.substr(tagFilter.id.indexOf(";")+1);
-    // substr() retourne une sous-chaîne de la chaîne courante, entre un indice de début et un indice de fin (prend un morceau 
-    // du tableau. sous-morceau d'un tableau défini ci-dessous).
-    // indexOf() renvoie le premier indice d'un élément dans un tableau de caractères.
+    if(typeof(tagFilter) == 'string')
+    {
+      filter = tagFilter; // Cf page-photographe : href="../index.html?tag=${tag}
+    }
+    else
+    {
+      filter = tagFilter.id.substr(tagFilter.id.indexOf(";")+1);
+      // substr() retourne une sous-chaîne de la chaîne courante, entre un indice de début et un indice de fin (prend un morceau 
+      // du tableau. sous-morceau d'un tableau défini ci-dessous).
+      // indexOf() renvoie le premier indice d'un élément dans un tableau de caractères.
+    }
   }
 
   // Main div contenant les div des photographes.
@@ -94,9 +107,4 @@ function addPhotographersToHTML(tagFilter=null)
       });
     }
   });
-
-  // medias.forEach(() =>
-  // {
-  //   // Ajout uniquement pour Page_photographers.js
-  // });
 }
