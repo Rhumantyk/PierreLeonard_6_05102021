@@ -49,7 +49,7 @@ class ImageMedia
       `
       <div class="media">
         <a href="#">
-          <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(1)">
+          <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}" class="img-pictures hover-shadow cursor" onclick="openModal();currentSlide()">
           <span class="screenreader-text">${media.title}</span>
           <div class="media-details">
             <p>${media.title}</p>
@@ -75,7 +75,7 @@ class VideoMedia
         <a href="#">
           <video controls width="300">
             <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.video}"
-                    type="video/mp4" alt="${media.title}" class="img-pictures hover-shadow" onclick="openModal();currentSlide(2)">              
+                    type="video/mp4" alt="${media.title}" class="img-pictures hover-shadow cursor" onclick="openModal();currentSlide()">              
             Sorry, your browser doesn't support embedded videos.
           </video>
           <span class="screenreader-text">${media.title}</span>
@@ -191,31 +191,35 @@ const mediasDiv = document.createElement('div'); // Création de div media.
 mediasDiv.setAttribute('id', 'medias-div'); // Ajout de l'id correspondant.
 mainHtml.appendChild(mediasDiv); // Appartenance à la div medias.
 
-// // Ajout like-price (sticky bas-droite)
-// const likePrice = document.createElement('div'); // Création de div like-price
-// mainHtml.appendChild(likePrice); // Appartenance à mainHtml
-// likePrice.setAttribute('id', 'like-price'); // Attribution d'id et son identifiant.
-// likePrice.innerHTML += `
-// <p>${media.likes}(Afficher le calcul correct)<i class="fas fa-heart"></i></p>
-// <p>${Photographer.price}€</p>
-// `;
-
 // -------------------- MediasFactory
 const factory = new MediasFactory();
 Medias.forEach((media) =>
 {
 	factory.showsMediaElements(media); // Chaque media de la liste est envoyé au MediasFactory() qui va faire le tri
-
-  // Ajout like-price (sticky bas-droite)
-  const likePrice = document.createElement('div'); // Création de div like-price
-  mainHtml.appendChild(likePrice); // Appartenance à mainHtml
-  likePrice.setAttribute('id', 'like-price'); // Attribution d'id et son identifiant.
-  likePrice.innerHTML += `
-  <p>${media.likes}(Afficher le calcul correct)<i class="fas fa-heart"></i></p>
-  <p>${Photographer.price}€</p>
-  `;
 });
 // -----------------------------------------------
+
+// Ajout like-price (sticky bas-droite)
+const likePrice = document.createElement('div'); // Création de div like-price
+mainHtml.appendChild(likePrice); // Appartenance à mainHtml
+likePrice.setAttribute('id', 'like-price'); // Attribution d'id et son identifiant.
+likePrice.innerHTML += `
+<p>${Medias[0].likes} (Afficher le calcul correct) <i class="fas fa-heart"></i></p>
+<p>${Photographer.price}€</p>
+`;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Function increment
@@ -367,59 +371,67 @@ addlike.forEach((like) =>
 
 
 
-
-
-
-
-// Ajout lightbox (Avec 2 estampes pour le moment)
 const modal = document.createElement('div'); // Création de la div modal.
 mainHtml.appendChild(modal);
 modal.setAttribute('id', 'modal');
 modal.classList.add('modalClass');
-modal.innerHTML += `
-      <!-- The Modal/Lightbox -->
-      <span class="close cursor" onclick="closeModal()">&times;</span>
-<div class="modal-content">
 
-  <div class="mySlides">
-    <div class="numbertext">1 / 4</div>
-    <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.image}" style="width:100%">
-  </div>
 
-  <div class="mySlides">
-    <div class="numbertext">2 / 4</div>
-    <video src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.video}" style="width:100%"></video>
-  </div>
+Medias.forEach((media) =>
+{
 
-  <!-- Next/previous controls -->
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+// Ajout lightbox
+modal.innerHTML += 
+  `
+    <!-- The Modal/Lightbox -->
+    <span class="close cursor" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
 
-  <!-- Caption text -->
-  <div class="caption-container">
-    <p id="caption"></p>
-  </div>
+      <div class="mySlides">
+        <div class="numbertext">1 / 4</div>
+        <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" style="width:100%">
+      </div>
 
-  <!-- Thumbnail image controls -->
-  <div class="column">
-    <img class="demo" src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.image}" onclick="currentSlide(1)" alt="${Medias.title}">
-  </div>
+      <!-- Next/previous controls -->
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-  <div class="column">
-    <img class="demo" src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${Medias.video}" onclick="currentSlide(2)" alt="${Medias.title}">
-  </div>
-</div>
-`;
+      <!-- Caption text -->
+      <div class="caption-container">
+        <p id="caption"></p>
+      </div>
+
+    </div>
+  `;
+});
+//
+// <!-- Caption text -->
+//   <div class="caption-container">
+//     <p id="caption"></p>
+//   </div>
+
+//   <!-- Thumbnail image controls -->
+//   <div class="column">
+//     <img class="demo" src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" onclick="currentSlide(1)" alt="${media.title}">
+//   </div>
+
+//   <div class="column">
+//     <img class="demo" src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.video}" onclick="currentSlide(2)" alt="${media.title}">
+//   </div>
+// </div>
+//
 
 // Script pour Lightbox
 
 // Ouverture Modal
-function openModal() {
+function openModal()
+{
 	document.getElementById('modal').style.display = 'block';
 }
 
 // Close the Modal
-function closeModal() {
+function closeModal()
+{
 	document.getElementById('modal').style.display = 'none';
 }
 
@@ -427,36 +439,67 @@ var slideIndex = 1;
 showSlides(slideIndex);
 
 // Next/previous controls
-function plusSlides(n) {
+function plusSlides(n)
+{
 	showSlides((slideIndex += n));
 }
 
 // Thumbnail image controls
-function currentSlide(n) {
+function currentSlide(n)
+{
 	showSlides((slideIndex = n));
 }
 
-function showSlides(n) {
+function showSlides(n)
+{
 	var i;
 	var slides = document.getElementsByClassName('mySlides');
 	var dots = document.getElementsByClassName('demo');
 	var captionText = document.getElementById('caption');
-	if (n > slides.length) {
+	if (n > slides.length)
+  {
 		slideIndex = 1;
 	}
-	if (n < 1) {
+	if (n < 1)
+  {
 		slideIndex = slides.length;
 	}
-	for (i = 0; i < slides.length; i++) {
+	for (i = 0; i < slides.length; i++)
+  {
 		slides[i].style.display = 'none';
 	}
-	for (i = 0; i < dots.length; i++) {
+	for (i = 0; i < dots.length; i++)
+  {
 		dots[i].className = dots[i].className.replace(' active', '');
 	}
 	slides[slideIndex - 1].style.display = 'block';
 	dots[slideIndex - 1].className += ' active';
 	captionText.innerHTML = dots[slideIndex - 1].alt;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // function addPhotographersToHTML(tagFilter=null)
 // {
