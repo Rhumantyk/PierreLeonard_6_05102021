@@ -38,7 +38,7 @@ class MediasFactory
 	}
 }
 
-// I lfaut faire en sorte que ImageMedia puisse etre crée en recevant un objet media
+// Il faut faire en sorte que ImageMedia puisse etre crée en recevant un objet media
 class ImageMedia
 {
 	constructor(media)
@@ -53,15 +53,17 @@ class ImageMedia
           <span class="screenreader-text">${media.title}</span>
           <div class="media-details">
             <p>${media.title}</p>
-            <div>
-              <p class="nbr-likes">${media.likes}</p><button onclick="incrementButton()" class="btn-likes"><i class="fas fa-heart" aria-label="likes"></i></button>
+              <div>
+                <p class="nbr-likes" id="${media.id};counter">${media.likes}</p><button id="${media.id};heart" class="btn-likes" onclick="incrementButton(this)"><i class="fas fa-heart" aria-label="likes"></i></button>
+              </div>
             </div>
-          </div>
         </a>
       </div>
     `;
-	}
-} // <p><button>${media.likes}<i class="fas fa-heart" aria-label="likes"></i></button></p>
+	} // <p class="nbr-likes" id="${media.id};counter">${media.likes}</p><button onclick="incrementButton(this)" id="${media.id};heart" class="btn-likes"><i class="fas fa-heart" aria-label="likes"></i></button>
+}
+
+
 
 class VideoMedia
 {
@@ -139,31 +141,12 @@ photographersDetails.innerHTML =
 const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
 tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
 photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
-// function addPhotographersToHTML(tagFilter=null)
-// {
-//   // get tag filter
-//   let filter = "";
-//   if(tagFilter != null) 
-//   {
-//     filter = tagFilter.id.substr(tagFilter.id.indexOf(";")+1);
-//     // substr() retourne une sous-chaîne de la chaîne courante, entre un indice de début et un indice de fin (prend un morceau 
-//     // du tableau. sous-morceau d'un tableau défini ci-dessous).
-//     // indexOf() renvoie le premier indice d'un élément dans un tableau de caractères.
-//   }
 
-  // Photographer.forEach((photographer) =>
-  // {
-  //   if(filter == "" || photographer.tags.includes(filter))
-  //   {
-      Photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
-      {
-        tagsFiltered.innerHTML += `<a href="../index.html?tag=${tag}" id="${Photographer.name};${tag}" class="nav-filters">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
-      });
-  //   }
-  // });
-// }
-// console.log(Photographer);
-// console.log(addPhotographersToHTML);
+Photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
+{
+  tagsFiltered.innerHTML += `<a href="../index.html?tag=${tag}" id="${Photographer.name};${tag}" class="nav-filters">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
+}); // id="${Photographer.name};${tag}" --> N'est pas l'évènement href, donc partie non fonctionnelle/necessaire.
+
 
 
 // Ajout bouton "Contactez-moi".
@@ -247,32 +230,40 @@ likePrice.innerHTML += `
 //     };
 //   }
 
-// function incrementButton()
-// {
-//   let value = document.getElementsByClassName("nbr-likes").innerHTML;
-//   value++;
-//   document.getElementsByClassName("btn-likes").value = value
-// }
+
+
+function incrementButton(control)
+{
+  // alert(control.id);
+  let idMedia = control.id.split(";")[0];
+  alert(idMedia);
+  // let value = document.getElementById("nbr-likes").innerHTML; // Nombre de likes
+  // value++;
+  // document.getElementsByClassName("btn-likes").value = value;
+}
+
+
 
 // let i = 0;
 
 // document.getElementsByClassName("nbr-likes").innerHTML = i;
 
-// function incrementButton()
+// function incrementButton(number)
 // {
 //   document.getElementsByClassName("nbr-likes").innerHTML = ++i;
 // }
 // console.log(i);
 
-// let btn = document.getElementsByClassName("btn-likes");
-// let value = document.getElementsByClassName("nbr-likes");
 
-// btn.addEventListener("click", event =>
+
+// document.getElementById("${medias.id};heart").addEventListener("click", incrementButton);
+
+// function incrementButton()
 // {
-//   event.preventDefault();
-//   let num = parseInt(value.innerHTML);
-//   value.innerHTML = num + 1;
-// });
+//   document.getElementById("${medias.id};counter").innerHTML = Date();
+// }
+
+
 
 
 
