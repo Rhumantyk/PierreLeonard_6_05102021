@@ -48,13 +48,13 @@ class ImageMedia
 			mediasDiv.innerHTML += 
       `
       <div class="media">
-        <a href="#">
+        <a href="">
           <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}" class="img-pictures hover-shadow cursor" onclick="openModal();currentSlide()">
           <span class="screenreader-text">${media.title}</span>
           <div class="media-details">
             <p>${media.title}</p>
               <div>
-                <p class="nbr-likes" id="${media.id};counter">${media.likes}</p><button id="${media.id};heart" class="btn-likes" onclick="incrementButton(this)"><i class="fas fa-heart" aria-label="likes"></i></button>
+                <p class="nbr-likes" id="${media.id};counter">${media.likes}</p><button id="${media.id};heart" class="btn-likes" onclick="incrementButton(this); return false;"><i class="fas fa-heart" aria-label="likes"></i></button>
               </div>
             </div>
         </a>
@@ -84,7 +84,7 @@ class VideoMedia
           <div class="media-details">
             <p>${media.title}</p>
             <div>
-              <p class="nbr-likes">${media.likes}</p><button onclick="incrementButton()" class="btn-likes"><i class="fas fa-heart" aria-label="likes"></i></button>
+              <p class="nbr-likes" id="${media.id};counter">${media.likes}</p><button id="${media.id};heart" class="btn-likes" onclick="incrementButton(this); return false;"><i class="fas fa-heart" aria-label="likes"></i></button>
             </div>
           </div>
         </a>
@@ -186,7 +186,8 @@ Medias.forEach((media) =>
 const likePrice = document.createElement('div'); // Création de div like-price
 mainHtml.appendChild(likePrice); // Appartenance à mainHtml
 likePrice.setAttribute('id', 'like-price'); // Attribution d'id et son identifiant.
-likePrice.innerHTML += `
+likePrice.innerHTML +=
+`
 <p>${Medias[0].likes} (Afficher le calcul correct) <i class="fas fa-heart"></i></p>
 <p>${Photographer.price}€</p>
 `;
@@ -236,10 +237,12 @@ function incrementButton(control)
 {
   // alert(control.id);
   let idMedia = control.id.split(";")[0];
-  alert(idMedia);
-  // let value = document.getElementById("nbr-likes").innerHTML; // Nombre de likes
-  // value++;
-  // document.getElementsByClassName("btn-likes").value = value;
+  let value = document.getElementById(idMedia + ";counter").innerText; // Nombre de likes
+
+  value++;
+  idMedia.value = value; // document.idMedia.value = value
+
+  let result = document.getElementById(idMedia + ";counter").innerText = value;
 }
 
 
