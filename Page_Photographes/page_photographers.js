@@ -233,7 +233,7 @@ likePrice.innerHTML +=
 
 
 
-function incrementButton(control)
+function incrementButton(control) // Single increment for each medias.
 {
   // alert(control.id);
   let idMedia = control.id.split(";")[0];
@@ -243,7 +243,21 @@ function incrementButton(control)
   idMedia.value = value; // document.idMedia.value = value
 
   let result = document.getElementById(idMedia + ";counter").innerText = value;
+  console.log(result);
 }
+console.log(incrementButton);
+
+// function totalIncrements(control)
+// {
+//   let totalLikesPrice = document.getElementById("like-price").innerText;
+
+//   let idMedia = control.id.split(";")[0];
+//   let allMediasLikes = parseInt(document.getElementById(idMedia + ";counter").innerText);
+
+//   total += allMediasLikes;
+
+
+// }
 
 
 
@@ -270,45 +284,6 @@ function incrementButton(control)
 
 
 
-
-
-
-
-
-
-// function addPhotographersToHTML(tagFilter=null)
-// {
-//   // get tag filter
-//   let filter = "";
-//   if(tagFilter != null) 
-//   {
-//     filter = tagFilter.id.substr(tagFilter.id.indexOf(";")+1);
-//     // substr() retourne une sous-chaîne de la chaîne courante, entre un indice de début et un indice de fin (prend un morceau 
-//     // du tableau. sous-morceau d'un tableau défini ci-dessous).
-//     // indexOf() renvoie le premier indice d'un élément dans un tableau de caractères.
-//   }
-
-//   photographers.forEach((photographer) =>
-//   {
-
-//     if(filter == "" || photographer.tags.includes(filter))
-//     {
-//       photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
-//       {
-//         tagsFiltered.innerHTML += `<a href="#" id="${photographer.name};${tag}" class="nav-filters" onclick="addPhotographersToHTML(this);">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
-//       });
-//     }
-//   });
-// }
-
-
-
-// Original
-// Photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux dans le fichier JSON.
-// {
-//   tagsFiltered.innerHTML += `<a href="#" id="${Photographer.name};${tag}" class="nav-filters" onclick="addPhotographersToHTML(this);">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
-// }
-// );
 
 
 
