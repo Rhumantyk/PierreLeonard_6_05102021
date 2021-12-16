@@ -178,7 +178,7 @@ mainHtml.appendChild(mediasDiv); // Appartenance à la div medias.
 const factory = new MediasFactory();
 Medias.forEach((media) =>
 {
-	factory.showsMediaElements(media); // Chaque media de la liste est envoyé au MediasFactory() qui va faire le tri
+	factory.showsMediaElements(media); // Chaque media de la liste est envoyé au MediasFactory() qui fera le tri
 });
 // -----------------------------------------------
 
@@ -188,151 +188,42 @@ mainHtml.appendChild(likePrice); // Appartenance à mainHtml
 likePrice.setAttribute('id', 'like-price'); // Attribution d'id et son identifiant.
 likePrice.innerHTML +=
 `
-<p id="all-likes">${Medias.likes} <i class="fas fa-heart"></i></p>
+<p><span id="all-likes"></span> <i class="fas fa-heart"></i></p>
 <p>${Photographer.price}€</p>
 `;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Function increment
-
-// let addlike = document.querySelectorAll('.btn-likes');
-
-// addlike.forEach((like) =>
-// {
-//   like.addEventListener("click", (e) =>
-//   {
-//     let input = e.target.querySelector('.nbr-likes');
-//     input.value = parseInt(input.value) + 1;
-//   });
-// });
-
-// window.onload = function()
-//   {
-//     let btn = document.getElementsByClassName("btn-likes");
-//     let value = document.getElementsByClassName("nbr-likes").innerHTML;
-//     btn.onclick = function incrementButton()
-//     {
-    
-//       value ++;
-//       value.innerHTML = value;
-//     };
-//   }
-
-
-let total = null;
-function incrementButton(control) // Single increment for each medias.
+// Total avant incrémentation
+let totallikes = Medias.reduce((total, { likes }) =>
 {
+  total += likes;
+  return total;
+}, 0);
+console.log(totallikes);
 
+const allLikes = document.getElementById("all-likes");
+updateTotalLikes();
 
-  // alert(control.id);
-  let idMedia = control.id.split(";")[0];
-  let value = document.getElementById(idMedia + ";counter").innerText; // Nombre de likes
-
-  value++;
-  idMedia.value = value; // document.idMedia.value = value
-
-  let result = document.getElementById(idMedia + ";counter").innerText = value;
-  console.log(result);
-
-  total += value;
-  let likePrice = document.getElementById("all-likes").innerHTML = total + `<i class="fas fa-heart"></i>`;
-
-
-
-  // var num2 = parseInt(document.getElementById("Num2").value); // result
-  document.getElementById("all-likes").innerHTML = result + " " + `<i class="fas fa-heart"></i>`;
-
-//   let datas = Object.values(control).reduce((acc,curr) =>
-//   {
-//     acc.likes += curr[0].likes;
-//     return acc;
-//   },
-//   {likes:null});
-// console.log(result);
-
-
-
-
-
-  // let calc = control[0].map(media => media.likes).reduce((likes, media) => media + likes);
-  // result = document.getElementById("all-likes").innerHTML = calc;
-  // console.log(result);  
-
-
-  // let results = control.likes.reduce((a, c) => a + c[Object.keys(c)], 0);
-  // let resultss = document.getElementById("all-likes").innerHTML = results;
-  // console.log(results);
-
-
-
-
-    const response = Medias.reduce((total, { likes }) =>
-    {
-      total += likes;
-      return total;
-    }, 0);
-    console.log(response);
-
-
-
-
+function updateTotalLikes()
+{
+  allLikes.innerHTML = totallikes;
 }
 
+// Function increment
+function incrementButton(control) // Single increment for each medias.
+{
+  let idMedia = control.id.split(";")[0];
+  let counter = document.getElementById(idMedia + ";counter"); // Element récupéreré
+  let counterValue = counter.innerText; // Nombre de likes (propriété de)
+
+  counterValue++;
+  idMedia.value = counterValue;
+  counter.innerText = counterValue; // Nouvelle valeur counter value.
+
+  totallikes++;
+  updateTotalLikes();
+}
 console.log(incrementButton);
 
-
-
-
-
-
-
-
-
-
-// function totalIncrements(control)
-// {
-//   let totalLikesPrice = document.getElementById("like-price").innerText;
-
-//   let idMedia = control.id.split(";")[0];
-//   let allMediasLikes = parseInt(document.getElementById(idMedia + ";counter").innerText);
-
-//   total += allMediasLikes;
-
-
-// }
-
-
-
-// let i = 0;
-
-// document.getElementsByClassName("nbr-likes").innerHTML = i;
-
-// function incrementButton(number)
-// {
-//   document.getElementsByClassName("nbr-likes").innerHTML = ++i;
-// }
-// console.log(i);
-
-
-
-// document.getElementById("${medias.id};heart").addEventListener("click", incrementButton);
-
-// function incrementButton()
-// {
-//   document.getElementById("${medias.id};counter").innerHTML = Date();
-// }
 
 
 
@@ -499,65 +390,3 @@ function showSlides(n)
 	dots[slideIndex - 1].className += ' active';
 	captionText.innerHTML = dots[slideIndex - 1].alt;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function addPhotographersToHTML(tagFilter=null)
-// {
-//   // get tag filter
-//   let filter = "";
-//   if(tagFilter != null)
-//   {
-//     filter = tagFilter.id.substr(tagFilter.id.indexOf(";")+1);
-//     // substr() retourne une sous-chaîne de la chaîne courante, entre un indice de début et un indice de fin (prend un morceau
-//     // du tableau. sous-morceau d'un tableau défini ci-dessous).
-//     // indexOf() renvoie le premier indice d'un élément dans un tableau de caractères.
-//   }
-
-//       // ********** Dans le if à l'origine ************** //
-//       Photographer.forEach((photographer) =>
-//       {
-//         // Si on a un filtre actif, on vérifie que le photographe possède ce filtre dans ses tags
-//         if(filter == "" || photographer.tags.includes(filter))
-//         {
-
-//         }
-//       });
-//       // ********** Dans le if à l'origine ************** //
-//   medias.forEach(() =>
-//   {
-//   });
-// }
-
-
-
-
-
-
-
-
-
-
-
