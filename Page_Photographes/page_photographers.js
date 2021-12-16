@@ -48,7 +48,7 @@ class ImageMedia
 			mediasDiv.innerHTML += 
       `
       <div class="media">
-        <a href="">
+        <a href="#">
           <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}" class="img-pictures hover-shadow cursor" onclick="openModal();currentSlide()">
           <span class="screenreader-text">${media.title}</span>
           <div class="media-details">
@@ -188,10 +188,9 @@ mainHtml.appendChild(likePrice); // Appartenance à mainHtml
 likePrice.setAttribute('id', 'like-price'); // Attribution d'id et son identifiant.
 likePrice.innerHTML +=
 `
-<p>${Medias[0].likes} (Afficher le calcul correct) <i class="fas fa-heart"></i></p>
+<p id="all-likes">${Medias.likes} <i class="fas fa-heart"></i></p>
 <p>${Photographer.price}€</p>
 `;
-
 
 
 
@@ -232,9 +231,11 @@ likePrice.innerHTML +=
 //   }
 
 
-
+let total = null;
 function incrementButton(control) // Single increment for each medias.
 {
+
+
   // alert(control.id);
   let idMedia = control.id.split(";")[0];
   let value = document.getElementById(idMedia + ";counter").innerText; // Nombre de likes
@@ -244,8 +245,61 @@ function incrementButton(control) // Single increment for each medias.
 
   let result = document.getElementById(idMedia + ";counter").innerText = value;
   console.log(result);
+
+  total += value;
+  let likePrice = document.getElementById("all-likes").innerHTML = total + `<i class="fas fa-heart"></i>`;
+
+
+
+  // var num2 = parseInt(document.getElementById("Num2").value); // result
+  document.getElementById("all-likes").innerHTML = result + " " + `<i class="fas fa-heart"></i>`;
+
+//   let datas = Object.values(control).reduce((acc,curr) =>
+//   {
+//     acc.likes += curr[0].likes;
+//     return acc;
+//   },
+//   {likes:null});
+// console.log(result);
+
+
+
+
+
+  // let calc = control[0].map(media => media.likes).reduce((likes, media) => media + likes);
+  // result = document.getElementById("all-likes").innerHTML = calc;
+  // console.log(result);  
+
+
+  // let results = control.likes.reduce((a, c) => a + c[Object.keys(c)], 0);
+  // let resultss = document.getElementById("all-likes").innerHTML = results;
+  // console.log(results);
+
+
+
+
+    const response = Medias.reduce((total, { likes }) =>
+    {
+      total += likes;
+      return total;
+    }, 0);
+    console.log(response);
+
+
+
+
 }
+
 console.log(incrementButton);
+
+
+
+
+
+
+
+
+
 
 // function totalIncrements(control)
 // {
