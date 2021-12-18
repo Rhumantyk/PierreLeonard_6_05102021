@@ -49,7 +49,7 @@ class ImageMedia
       `
       <div class="media">
         <a href="#">
-          <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}" class="img-pictures hover-shadow cursor" onclick="openModal();currentSlide()">
+          <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}" class="img-pictures hover-shadow cursor" onclick="openModal(); currentSlide(2)">
           <span class="screenreader-text">${media.title}</span>
           <div class="media-details">
             <p>${media.title}</p>
@@ -60,7 +60,7 @@ class ImageMedia
         </a>
       </div>
     `;
-	} // <p class="nbr-likes" id="${media.id};counter">${media.likes}</p><button onclick="incrementButton(this)" id="${media.id};heart" class="btn-likes"><i class="fas fa-heart" aria-label="likes"></i></button>
+	}
 }
 
 
@@ -91,7 +91,7 @@ class VideoMedia
       </div>
     `;
 	}
-} // <p><button onclick="incrementButton()"><p class="likes-number">${media.likes}</p><i class="fas fa-heart" aria-label="likes"></i></button></p>
+}
 
 // filter Photographes
 let Photographer = photographers.filter(function (photographer)
