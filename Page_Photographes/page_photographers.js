@@ -49,7 +49,7 @@ class ImageMedia
       `
       <div class="media">
         <a href="#">
-          <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}" class="img-pictures hover-shadow cursor" onclick="openModal();currentSlide()">
+          <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}" class="img-pictures hover-shadow cursor" onclick="openModal()">
           <span class="screenreader-text">${media.title}</span>
           <div class="media-details">
             <p>${media.title}</p>
@@ -77,7 +77,7 @@ class VideoMedia
         <a href="#">
           <video controls width="300" onclick="openModal()">
             <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.video}"
-                    type="video/mp4" alt="${media.title}" class="img-pictures hover-shadow cursor" onclick="currentSlide()">              
+                    type="video/mp4" alt="${media.title}" class="img-pictures hover-shadow cursor">              
             Sorry, your browser doesn't support embedded videos.
           </video>
           <span class="screenreader-text">${media.title}</span>
@@ -339,7 +339,7 @@ class VideoLightBox
 const modal = document.createElement('div'); // Création de la div modal.
 mainHtml.appendChild(modal);
 modal.setAttribute('id', 'modal');
-modal.classList.add('modalClass');
+modal.classList.add('modal');
 
 // Close modal
 const closeCursor = document.createElement('span'); // Création du span.
@@ -414,8 +414,8 @@ function showSlides(n)
 {
 	var i;
 	var slides = document.getElementsByClassName('mySlides');
-	var dots = document.getElementsByClassName('demo');
-	var captionText = document.getElementById('caption');
+	// var dots = document.getElementsByClassName('demo');
+	// var captionText = document.getElementById('caption');
 	if (n > slides.length)
   {
 		slideIndex = 1;
@@ -428,11 +428,11 @@ function showSlides(n)
   {
 		slides[i].style.display = 'none';
 	}
-	for (i = 0; i < dots.length; i++)
-  {
-		dots[i].className = dots[i].className.replace(' active', '');
-	}
+	// for (i = 0; i < dots.length; i++)
+  // {
+	// 	dots[i].className = dots[i].className.replace(' active', '');
+	// }
 	slides[slideIndex - 1].style.display = 'block';
-	dots[slideIndex - 1].className += ' active';
-	captionText.innerHTML = dots[slideIndex - 1].alt;
+	// dots[slideIndex - 1].className += ' active';
+	// captionText.innerHTML = dots[slideIndex - 1].alt;
 }
