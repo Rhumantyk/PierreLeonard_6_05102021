@@ -408,7 +408,7 @@ nav > ul:hover .sous
 /* The Close Button */
 .close 
 {
-    color: white;
+    color: #901C1C;
     position: absolute;
     top: 10px;
     right: 25px;
@@ -416,12 +416,12 @@ nav > ul:hover .sous
     font-weight: bold;
 }
 
-.close:hover, .close:focus
+/* .close:hover, .close:focus
 {
     color: #999;
     text-decoration: none;
     cursor: pointer;
-}
+} */
 
 /* Hide the slides by default */
 .mySlides
