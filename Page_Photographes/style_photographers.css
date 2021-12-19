@@ -413,6 +413,11 @@ nav > ul:hover .sous
     display: none;
 }
 
+.cursor
+{
+    cursor: pointer;
+}
+
 /* Next & previous buttons */
 .prev, .next
 {

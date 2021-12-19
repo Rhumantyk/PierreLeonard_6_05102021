@@ -49,7 +49,7 @@ class ImageMedia
       `
       <div class="media">
         <a href="#">
-          <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}" class="img-pictures hover-shadow cursor" onclick="openModal(); currentSlide()">
+          <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}" class="img-pictures hover-shadow cursor" onclick="openModal();currentSlide()">
           <span class="screenreader-text">${media.title}</span>
           <div class="media-details">
             <p>${media.title}</p>
@@ -75,9 +75,9 @@ class VideoMedia
     `
       <div class="media">
         <a href="#">
-          <video controls width="300">
+          <video controls width="300" onclick="openModal()">
             <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.video}"
-                    type="video/mp4" alt="${media.title}" class="img-pictures hover-shadow cursor" onclick="openModal();currentSlide()">              
+                    type="video/mp4" alt="${media.title}" class="img-pictures hover-shadow cursor" onclick="currentSlide()">              
             Sorry, your browser doesn't support embedded videos.
           </video>
           <span class="screenreader-text">${media.title}</span>
@@ -222,7 +222,6 @@ function incrementButton(control) // Single increment for each medias.
   totallikes++;
   updateTotalLikes();
 }
-console.log(incrementButton);
 
 
 
@@ -310,8 +309,7 @@ class VideoLightBox
         <span class="screenreader-text">${media.title}</span>
         </div>
       `;
-	} // type="video/mp4" alt="${media.title}" class="img-pictures hover-shadow cursor" onclick="openModal();currentSlide()">              
-
+	}             
 }
 
 
@@ -354,18 +352,6 @@ const modalContent = document.createElement('div'); // Création de la div modal
 modal.appendChild(modalContent);
 modalContent.classList.add('modal-content'); // <div class="modal-content">
 
-
-// Medias.forEach((media) =>
-// {
-// // Ajout lightbox
-// modalContent.innerHTML += 
-//   `
-//     <div class="mySlides">
-//       <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" style="width:100%">
-//     </div>
-//   `;
-// });
-
 // -------------------- MediasLightFactory
 const lightFactory = new LightBoxFactory();
 Medias.forEach((media) =>
@@ -403,7 +389,7 @@ function openModal()
 	document.getElementById('modal').style.display = 'block';
 }
 
-// Close the Modal
+// Fermeture Modal
 function closeModal()
 {
 	document.getElementById('modal').style.display = 'none';
@@ -418,11 +404,11 @@ function plusSlides(n) // Permet la navigation avec les flèches
 	showSlides((slideIndex += n));
 }
 
-// Thumbnail image controls
-function currentSlide(n) // Permet la navigation en cliquant sur les médias disposés en dessous du média affiché
-{
-	showSlides((slideIndex = n));
-}
+// Thumbnail image controls -- À SUPPRIMER --
+// function currentSlide(n) // Permet la navigation en cliquant sur les médias disposés en dessous du média affiché
+// {
+// 	showSlides((slideIndex = n));
+// }
 
 function showSlides(n)
 {
