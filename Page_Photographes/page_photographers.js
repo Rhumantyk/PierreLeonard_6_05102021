@@ -21,7 +21,7 @@ medias = JSON.parse(medias);
 // 	//return le nom du photographe;
 // }
 
-// FACTORY PATTERN
+// FACTORIES PATTERNS
 class MediasFactory
 {
 	constructor()
@@ -49,7 +49,7 @@ class ImageMedia
       `
       <div class="media">
         <a href="#">
-          <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}" class="img-pictures hover-shadow cursor" onclick="openModal(); currentSlide(2)">
+          <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}" class="img-pictures hover-shadow cursor" onclick="openModal(); currentSlide()">
           <span class="screenreader-text">${media.title}</span>
           <div class="media-details">
             <p>${media.title}</p>
@@ -259,7 +259,60 @@ console.log(incrementButton);
 
 
 
+// FACTORIES PATTERNS
+class LightBoxFactory
+{
+	constructor()
+  {
+		this.showsMediaElements = function (media)
+    {
+			let FormattedMedia;
+			// if Media.image ou id Media.video -> true si le tag existe dans l'objet Media
+			if (media.image != null) FormattedMedia = new ImageLightBox(media);
+			else if (media.video != null) FormattedMedia = new VideoLightBox(media);
 
+			return FormattedMedia;
+		};
+	}
+}
+
+class ImageLightBox
+{
+	constructor(media)
+  {
+    this._type = 'image';
+    // Ajout lightbox
+    modalContent.innerHTML += 
+      `
+        <div class="mySlides">
+          <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}"
+          class="img-pictures alt="${media.title}">
+          <span class="screenreader-text">${media.title}</span>
+        </div>
+      `;
+	}
+}
+
+class VideoLightBox
+{
+	constructor(media)
+  {
+		this._type = 'video';
+    // Ajout lightbox
+    modalContent.innerHTML += 
+      `
+        <div class="mySlides">
+          <video controls width="300">
+            <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.video}"
+                    type="video/mp4" alt="${media.title}" class="img-pictures>              
+            Sorry, your browser doesn't support embedded videos.
+          </video>
+        <span class="screenreader-text">${media.title}</span>
+        </div>
+      `;
+	} // type="video/mp4" alt="${media.title}" class="img-pictures hover-shadow cursor" onclick="openModal();currentSlide()">              
+
+}
 
 
 
@@ -302,17 +355,24 @@ modal.appendChild(modalContent);
 modalContent.classList.add('modal-content'); // <div class="modal-content">
 
 
+// Medias.forEach((media) =>
+// {
+// // Ajout lightbox
+// modalContent.innerHTML += 
+//   `
+//     <div class="mySlides">
+//       <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" style="width:100%">
+//     </div>
+//   `;
+// });
+
+// -------------------- MediasLightFactory
+const lightFactory = new LightBoxFactory();
 Medias.forEach((media) =>
 {
-// Ajout lightbox
-modalContent.innerHTML += 
-  `
-    <div class="mySlides">
-      <div class="numbertext">1 / 4</div>
-      <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" style="width:100%">
-    </div>
-  `;
+	lightFactory.showsMediaElements(media); // Chaque media de la liste est envoyé au LightBoxFactory() qui fera le tri
 });
+// -----------------------------------------------
 
 // Next/Previous Controls
 const prevControl = document.createElement('a');
@@ -353,13 +413,13 @@ var slideIndex = 1;
 showSlides(slideIndex);
 
 // Next/previous controls
-function plusSlides(n)
+function plusSlides(n) // Permet la navigation avec les flèches
 {
 	showSlides((slideIndex += n));
 }
 
 // Thumbnail image controls
-function currentSlide(n)
+function currentSlide(n) // Permet la navigation en cliquant sur les médias disposés en dessous du média affiché
 {
 	showSlides((slideIndex = n));
 }
