@@ -242,10 +242,26 @@ nav > ul:hover .sous
     border-radius: 3%;
 }
 
+.mediaLightBox img
+{
+    width: 95%;
+    height: 95%;
+    object-fit: cover;
+    border-radius: 3%;
+}
+
 .media video
 {
     width: 300px;
     height: 300px;
+    object-fit: cover;
+    border-radius: 3%;
+}
+
+.mediaLightBox video
+{
+    width: 95%;
+    height: 95%;
     object-fit: cover;
     border-radius: 3%;
 }

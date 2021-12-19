@@ -283,7 +283,7 @@ class ImageLightBox
     // Ajout lightbox
     modalContent.innerHTML += 
       `
-        <div class="mySlides media">
+        <div class="mySlides mediaLightBox">
           <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}"
           class="img-pictures alt="${media.title}">
           <span class="screenreader-text">${media.title}</span>
@@ -300,7 +300,7 @@ class VideoLightBox
     // Ajout lightbox
     modalContent.innerHTML += 
       `
-        <div class="mySlides media">
+        <div class="mySlides mediaLightBox">
           <video controls width="300">
             <source src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.video}"
                     type="video/mp4" alt="${media.title}" class="img-pictures>              
