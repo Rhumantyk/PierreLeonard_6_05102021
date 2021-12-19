@@ -287,6 +287,9 @@ class ImageLightBox
           <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}"
           class="img-pictures alt="${media.title}">
           <span class="screenreader-text">${media.title}</span>
+            <div class="media-details">
+              <p>${media.title}</p>
+            </div>
         </div>
       `;
 	}
@@ -306,7 +309,10 @@ class VideoLightBox
                     type="video/mp4" alt="${media.title}" class="img-pictures>              
             Sorry, your browser doesn't support embedded videos.
           </video>
-        <span class="screenreader-text">${media.title}</span>
+          <span class="screenreader-text">${media.title}</span>
+          <div class="media-details">
+            <p>${media.title}</p>
+          </div>
         </div>
       `;
 	}             

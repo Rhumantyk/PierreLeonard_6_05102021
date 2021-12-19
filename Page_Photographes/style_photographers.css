@@ -385,7 +385,7 @@ nav > ul:hover .sous
     display: none;
     position: fixed;
     z-index: 1;
-    padding-top: 100px;
+    padding-top: 2%;
     left: 0;
     top: 0;
     width: 100%;
@@ -397,17 +397,19 @@ nav > ul:hover .sous
 /* Modal Content */
 .modal-content 
 {
+    width: calc(100% - 80px);
     position: relative;
     background-color: #fefefe;
     margin: auto;
     padding: 0;
-    width: 90%;
-    max-width: 1200px;
+    /* width: 90%; */
+    /* max-width: 1200px; */
 }
 
 /* The Close Button */
 .close 
 {
+    z-index: 1;
     color: #901C1C;
     position: absolute;
     top: 10px;
