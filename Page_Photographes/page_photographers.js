@@ -347,13 +347,6 @@ mainHtml.appendChild(modal);
 modal.setAttribute('id', 'modal');
 modal.classList.add('modal');
 
-// Close modal
-const closeCursor = document.createElement('span'); // Création du span.
-modal.appendChild(closeCursor);
-closeCursor.setAttribute('onclick','closeModal();');
-closeCursor.classList.add('close', 'cursor');
-closeCursor.innerHTML = `&times`; // <span class="close cursor" onclick="closeModal()">&times;</span>
-
 const modalContent = document.createElement('div'); // Création de la div modal-content.
 modal.appendChild(modalContent);
 modalContent.classList.add('modal-content'); // <div class="modal-content">
@@ -366,13 +359,21 @@ Medias.forEach((media) =>
 });
 // -----------------------------------------------
 
-// Next/Previous Controls
+// Close modal
+const closeCursor = document.createElement('span'); // Création du span.
+modalContent.appendChild(closeCursor);
+closeCursor.setAttribute('onclick','closeModal();');
+closeCursor.classList.add('close', 'cursor');
+closeCursor.innerHTML = `&times`; // <span class="close cursor" onclick="closeModal()">&times;</span>
+
+// Previous Controls
 const prevControl = document.createElement('a');
 prevControl.setAttribute('onclick', 'plusSlides(-1)');
 modalContent.appendChild(prevControl);
 prevControl.classList.add('prev');
 prevControl.innerHTML = `&#10094;`; // <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 
+// Next Controls
 const nextControl = document.createElement('a');
 nextControl.setAttribute('onclick', 'plusSlides(1)');
 modalContent.appendChild(nextControl);
@@ -392,7 +393,7 @@ captionContainer.innerHTML = `<p id="caption"></p>`;
 // Ouverture Modal
 function openModal()
 {
-	document.getElementById('modal').style.display = 'block';
+	document.getElementById('modal').style.display = 'flex';
 }
 
 // Fermeture Modal
@@ -411,10 +412,10 @@ function plusSlides(n) // Permet la navigation avec les flèches
 }
 
 // Thumbnail image controls -- À SUPPRIMER --
-// function currentSlide(n) // Permet la navigation en cliquant sur les médias disposés en dessous du média affiché
-// {
-// 	showSlides((slideIndex = n));
-// }
+function currentSlide(n) // Permet la navigation en cliquant sur les médias disposés en dessous du média affiché
+{
+	showSlides((slideIndex = n));
+}
 
 function showSlides(n)
 {
@@ -438,7 +439,7 @@ function showSlides(n)
   // {
 	// 	dots[i].className = dots[i].className.replace(' active', '');
 	// }
-	slides[slideIndex - 1].style.display = 'block';
+	slides[slideIndex - 1].style.display = 'flex';
 	// dots[slideIndex - 1].className += ' active';
 	// captionText.innerHTML = dots[slideIndex - 1].alt;
 }
