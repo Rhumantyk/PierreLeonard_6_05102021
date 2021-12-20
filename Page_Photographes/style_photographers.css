@@ -169,6 +169,11 @@ nav ul
     padding-left: 0px;
 }
 
+.filter-medias li
+{
+    margin-bottom: 20%;
+}
+
 /* nav ul::after
 {
     content: "";

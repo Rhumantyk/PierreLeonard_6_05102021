@@ -169,16 +169,14 @@ menu.classList.add('media-nav'); // Ajout de la classe correspondante.
 mainHtml.appendChild(menu);
 menu.innerHTML =
 `
-
-    <p>Trier par</p>
-    <nav>
-      <ul>
-        <li><a href="#">Popularité</a></li>
-        <li><a href="#">Date</a></li>
-        <li><a href="#">Titre</a></li>
-      </ul>
-    </nav>
-
+  <p>Trier par</p>
+  <nav class="filter-medias">
+    <ul>
+      <li><a href="#" onclick="showPopular()">Popularité</a></li>
+      <li><a href="#" onclick="showDate()">Date</a></li>
+      <li><a href="#" onclick="showTitle()">Titre</a></li>
+    </ul>
+  </nav>
 `;
 //
 
