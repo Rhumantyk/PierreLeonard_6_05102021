@@ -165,24 +165,20 @@ picturePhotographer.innerHTML = `
 
 // Ajout menu déroulant ******** À COMPLÉTER PLUS TARD ********
 const menu = document.createElement('div');
+menu.classList.add('media-nav'); // Ajout de la classe correspondante.
 mainHtml.appendChild(menu);
 menu.innerHTML =
 `
-  <div>
+
     <p>Trier par</p>
     <nav>
       <ul>
-        <li class="menu-deroulant">
-          <a href="#">Services</a>
-          <ul class="sous-menu">
-            <li><a href="#">Popularité</a></li>
-            <li><a href="#">Date</a></li>
-            <li><a href="#">Titre</a></li>
-          </ul>
-        </li>
+        <li><a href="#">Popularité</a></li>
+        <li><a href="#">Date</a></li>
+        <li><a href="#">Titre</a></li>
       </ul>
     </nav>
-  </div>
+
 `;
 //
 
