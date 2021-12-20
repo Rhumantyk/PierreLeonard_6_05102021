@@ -166,7 +166,24 @@ picturePhotographer.innerHTML = `
 // Ajout menu déroulant ******** À COMPLÉTER PLUS TARD ********
 const menu = document.createElement('div');
 mainHtml.appendChild(menu);
-menu.innerHTML = `<p>Trier par</p>`;
+menu.innerHTML =
+`
+  <div>
+    <p>Trier par</p>
+    <nav>
+      <ul>
+        <li class="menu-deroulant">
+          <a href="#">Services</a>
+          <ul class="sous-menu">
+            <li><a href="#">Popularité</a></li>
+            <li><a href="#">Date</a></li>
+            <li><a href="#">Titre</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+`;
 //
 
 // Ajout de la div medias
@@ -380,11 +397,11 @@ modalContent.appendChild(nextControl);
 nextControl.classList.add('next');
 nextControl.innerHTML = `&#10095;`; // <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-// Caption text
-const captionContainer = document.createElement('div');
-modalContent.appendChild(nextControl);
-captionContainer.classList.add('caption-container');
-captionContainer.innerHTML = `<p id="caption"></p>`;
+// // Caption text
+// const captionContainer = document.createElement('div');
+// modalContent.appendChild(nextControl);
+// captionContainer.classList.add('caption-container');
+// captionContainer.innerHTML = `<p id="caption"></p>`;
 
 
 
