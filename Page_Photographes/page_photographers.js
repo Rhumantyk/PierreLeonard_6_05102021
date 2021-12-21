@@ -1,45 +1,37 @@
+// window.onload = function test ()
+// {
 let photographers = [];
 let medias = [];
 
 // Récupération de l'id du photographe sur l'URL
 const queryString = window.location.search; // http://127.0.0.1:5500/index.html
-// console.log(queryString); // Donne donc le ?${photographer.id}
 const urlParams = new URLSearchParams(queryString);
 const idNumber = urlParams.get('id');
-// console.log(idNumber);
 
 // Récupération JSON via localStorage
 photographers = localStorage.getItem('photographers');
 photographers = JSON.parse(photographers);
-// console.log('photographers ' + photographers);
 medias = localStorage.getItem('media');
 medias = JSON.parse(medias);
 
-// Cette fonction te servira a recuperer le nom du photographe pour un Id donné
-// function getPhotograph(id) {
-// 	// for each sur la liste des photographes je compare jusqua trouver le photographe qui a l'id voulu
-// 	//return le nom du photographe;
-// }
-
 // FACTORIES PATTERNS
-class MediasFactory
+class mediasFactory
 {
 	constructor()
   {
 		this.showsMediaElements = function (media)
     {
-			let FormattedMedia;
+			let formattedMedia;
 			// if Media.image ou id Media.video -> true si le tag existe dans l'objet Media
-			if (media.image != null) FormattedMedia = new ImageMedia(media);
-			else if (media.video != null) FormattedMedia = new VideoMedia(media);
+			if (media.image != null) formattedMedia = new imageMedia(media);
+			else if (media.video != null) formattedMedia = new videoMedia(media);
 
-			return FormattedMedia;
+			return formattedMedia;
 		};
 	}
 }
 
-// Il faut faire en sorte que ImageMedia puisse etre crée en recevant un objet media
-class ImageMedia
+class imageMedia
 {
 	constructor(media)
   {
@@ -63,9 +55,7 @@ class ImageMedia
 	}
 }
 
-
-
-class VideoMedia
+class videoMedia
 {
 	constructor(media)
   {
@@ -185,11 +175,11 @@ const mediasDiv = document.createElement('div'); // Création de div media.
 mediasDiv.setAttribute('id', 'medias-div'); // Ajout de l'id correspondant.
 mainHtml.appendChild(mediasDiv); // Appartenance à la div medias.
 
-// -------------------- MediasFactory
-const factory = new MediasFactory();
+// -------------------- mediasFactory
+const factory = new mediasFactory();
 Medias.forEach((media) =>
 {
-	factory.showsMediaElements(media); // Chaque media de la liste est envoyé au MediasFactory() qui fera le tri
+	factory.showsMediaElements(media); // Chaque media de la liste est envoyé au mediasFactory() qui fera le tri
 });
 // -----------------------------------------------
 
@@ -232,6 +222,7 @@ function updateTotalLikes()
   allLikes.innerHTML = totallikes;
 }
 
+
 // Function increment
 function incrementButton(control) // Single increment for each medias.
 {
@@ -246,7 +237,8 @@ function incrementButton(control) // Single increment for each medias.
   totallikes++;
   updateTotalLikes();
 }
-
+// window.onload = incrementButton();
+// };
 
 
 
@@ -289,12 +281,12 @@ class LightBoxFactory
   {
 		this.showsMediaElements = function (media)
     {
-			let FormattedMedia;
+			let formattedMedia;
 			// if Media.image ou id Media.video -> true si le tag existe dans l'objet Media
-			if (media.image != null) FormattedMedia = new ImageLightBox(media);
-			else if (media.video != null) FormattedMedia = new VideoLightBox(media);
+			if (media.image != null) formattedMedia = new ImageLightBox(media);
+			else if (media.video != null) formattedMedia = new VideoLightBox(media);
 
-			return FormattedMedia;
+			return formattedMedia;
 		};
 	}
 }
@@ -341,30 +333,6 @@ class VideoLightBox
       `;
 	}             
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const modal = document.createElement('div'); // Création de la div modal.
 mainHtml.appendChild(modal);
