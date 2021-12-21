@@ -193,6 +193,19 @@ Medias.forEach((media) =>
 });
 // -----------------------------------------------
 
+
+// Triage des medias par nombre de likes
+function showPopular()
+{
+  Medias.forEach((media) =>
+  {
+    let mediasSort = media.likes.sort(function(a, b){return a - b});
+    document.getElementById('medias-div').innerHTML = mediasSort;
+    console.log(mediasSort);
+  });
+}
+
+
 // Ajout like-price (sticky bas-droite)
 const likePrice = document.createElement('div'); // Création de div like-price
 mainHtml.appendChild(likePrice); // Appartenance à mainHtml
@@ -269,7 +282,7 @@ function incrementButton(control) // Single increment for each medias.
 
 
 
-// FACTORIES PATTERNS
+// FACTORIES PATTERNS POUR LIGHTBOX
 class LightBoxFactory
 {
 	constructor()
@@ -430,8 +443,8 @@ function currentSlide(n) // Permet la navigation en cliquant sur les médias dis
 
 function showSlides(n)
 {
-	var i;
-	var slides = document.getElementsByClassName('mySlides');
+	let i;
+	let slides = document.getElementsByClassName('mySlides');
 	// var dots = document.getElementsByClassName('demo');
 	// var captionText = document.getElementById('caption');
 	if (n > slides.length)
