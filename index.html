@@ -32,7 +32,7 @@
                 <span class="screenreader-text">#Sport</span>
                 <a href="#" class="nav-filters" id="animals" onclick="addPhotographersToHTML(this);">#Animals</a>
                 <span class="screenreader-text">#Animals</span>
-                <a href="#" class="nav-filters" id="events" onclick="addPhotographersToHTML(this);">#Events</a>
+                <a href="#" class="nav-filters" id="events" onclick="getFilter(this);">#Events</a>
                 <span class="screenreader-text">#Events</span>
             </nav>
         </div>
@@ -43,136 +43,6 @@
         </div>
 
         <div id="photographers">
-            <!-- <div id="mimi-keel">
-                <div>
-                    <a href="/Page_Mimi_Keel/mimi_keel.html" class="photographers-link">
-                        <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/MimiKeel.jpg" alt="Mimi Keel" class="img-pictures">
-                        <h2>Mimi Keel</h2>
-                        <span class="screenreader-text">Mimi Keel</span>
-                    </a>
-                </div>
-                <div class="photographers-details">
-                    <p>London, UK</p>
-                    <p>Voir le beau dans le quotidien</p>
-                    <p>400€/jour</p>
-                </div>
-                <div class="tags-filtered">
-                    <a href="#" class="nav-filters" id="portrait-tag">#portraits</a>
-                    <span class="screenreader-text">#portraits</span>
-                    <a href="#" class="nav-filters">#events</a>
-                    <span class="screenreader-text">#events</span>
-                    <a href="#" class="nav-filters">#travel</a>
-                    <span class="screenreader-text">#travel</span>
-                    <a href="#" class="nav-filters">#animals</a>
-                    <span class="screenreader-text">#animals</span>
-                </div>
-            </div>
-            <div id="ellie-rose-wilkens">
-                <div>
-                    <a href="/Page_Ellie_Rose_Wilkens/ellie_rose_wilkens.html" class="photographers-link">
-                        <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/EllieRoseWilkens.jpg" alt="Ellie-Rose Wilkens" class="img-pictures">
-                        <h2>Ellie-Rose Wilkens</h2>
-                        <span class="screenreader-text">Ellie-Rose Wilkens</span>
-                    </a>
-                </div>
-                <div class="photographers-details">
-                    <p>Paris, France</p>
-                    <p>Travaille sur des compositions complexes</p>
-                    <p>250€/jour</p>
-                </div>
-                <div class="tags-filtered">
-                    <a href="#" class="nav-filters">#sports</a>
-                    <span class="screenreader-text">#sport</span>
-                    <a href="#" class="nav-filters">#architecture</a>
-                    <span class="screenreader-text">#architecture</span>
-                </div>
-            </div>
-            <div id="tracy-galindo">
-                <div>
-                    <a href="#" class="photographers-link">
-                        <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/TracyGalindo.jpg" alt="Tracy Galindo" class="img-pictures">
-                        <h2>Tracy Galindo</h2>
-                        <span class="screenreader-text">Tracy Galindo</span>
-                    </a>
-                </div>
-                <div class="photographers-details">
-                    <p>Montreal, Canada</p>
-                    <p>Photographe freelance</p>
-                    <p>500€/jour</p>
-                </div>
-                <div class="tags-filtered">
-                    <a href="#" class="nav-filters">#art</a>
-                    <span class="screenreader-text">#art</span>
-                    <a href="#" class="nav-filters">#fashion</a>
-                    <span class="screenreader-text">#fashion</span>
-                    <a href="#" class="nav-filters">#events</a>
-                    <span class="screenreader-text">#events</span>
-                </div>
-            </div>
-            <div id="nabeel-bradford">
-                <div>
-                    <a href="#" class="photographers-link">
-                        <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/NabeelBradford.jpg" alt="Nabeel Bradford" class="img-pictures">
-                        <h2>Nabeel Bradford</h2>
-                        <span class="screenreader-text">Nabeel Bradford</span>
-                    </a>
-                </div>
-                <div class="photographers-details">
-                    <p>Mexico City, Mexico</p>
-                    <p>Je vais toujours de l'avant</p>
-                    <p>350€/jour</p>
-                </div>
-                <div class="tags-filtered">
-                    <a href="#" class="nav-filters">#travel</a>
-                    <span class="screenreader-text">#travel</span>
-                    <a href="#" class="nav-filters">#portraits</a>
-                    <span class="screenreader-text">#portraits</span>
-                </div>
-            </div>
-            <div id="rhode-dubois">
-                <div>
-                    <a href="#" class="photographers-link">
-                        <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/RhodeDubois.jpg" alt="Rhode Dubois" class="img-pictures">
-                        <h2>Rhode Dubois</h2>
-                        <span class="screenreader-text">Rhode Dubois</span>
-                    </a>
-                </div>
-                <div class="photographers-details">
-                    <p>Barcelona, Spain</p>
-                    <p>Créatrice de souvenirs</p>
-                    <p>375€/jour</p>
-                </div>
-                <div class="tags-filtered">
-                    <a href="#" class="nav-filters">#sport</a>
-                    <span class="screenreader-text">#sport</span>
-                    <a href="#" class="nav-filters">#fashion</a>
-                    <span class="screenreader-text">#fashion</span>
-                    <a href="#" class="nav-filters">#events</a>
-                    <span class="screenreader-text">#events</span>
-                    <a href="#" class="nav-filters">#animals</a>
-                    <span class="screenreader-text">#animals</span>
-                </div>
-            </div>
-            <div id="marcel-nikolic">
-                <div>
-                    <a href="#" class="photographers-link">
-                        <img src="Photos_FishEye/Sample_Photos/Photographers_ID_Photos/MarcelNikolic.jpg" alt="Marcel Nikolic" class="img-pictures">
-                        <h2>Marcel Nikolic</h2>
-                        <span class="screenreader-text">Marcel Nikolic</span>
-                    </a>
-                </div>
-                <div class="photographers-details">
-                    <p>Berlin, Germany</p>
-                    <p>Toujours à la recherche de LA photo</p>
-                    <p>300€/jour</p>
-                </div>
-                <div class="tags-filtered">
-                    <a href="#" class="nav-filters">#travel</a>
-                    <span class="screenreader-text">#travel</span>
-                    <a href="#" class="nav-filters">#architecture</a>
-                    <span class="screenreader-text">#architecture</span>
-                </div>
-            </div> -->
         </div>
     </main>
     <script src="FishEyeData.json"></script>

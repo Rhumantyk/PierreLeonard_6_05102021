@@ -13,8 +13,9 @@ photographers = localStorage.getItem('photographers');
 photographers = JSON.parse(photographers);
 medias = localStorage.getItem('media');
 medias = JSON.parse(medias);
+console.log(photographers);
 
-// FACTORIES PATTERNS
+// Factory Pattern de la page photographe 
 class mediasFactory
 {
 	constructor()
@@ -22,7 +23,7 @@ class mediasFactory
 		this.showsMediaElements = function (media)
     {
 			let formattedMedia;
-			// if Media.image ou id Media.video -> true si le tag existe dans l'objet Media
+			// if media.image ou id Media.video -> true si le tag existe dans l'objet Media
 			if (media.image != null) formattedMedia = new imageMedia(media);
 			else if (media.video != null) formattedMedia = new videoMedia(media);
 
@@ -83,7 +84,7 @@ class videoMedia
 	}
 }
 
-// filter Photographes
+// Filtre Photographes
 let Photographer = photographers.filter(function (photographer)
 {
 	return photographer.id === parseInt(idNumber);
@@ -91,7 +92,7 @@ let Photographer = photographers.filter(function (photographer)
 console.log('Photographer - ' + Photographer.name);
 console.log(Photographer);
 
-// filter Medias
+// Filtre Medias
 let Medias = medias.filter(function (media)
 {
 	return media.photographerId === parseInt(idNumber);
@@ -101,9 +102,13 @@ console.log(Medias);
 
 // HTML
 const headTagName = document.getElementsByTagName('head')[0]; // Sans [0] --> Rien ne s'affiche.
-
 const mainHtml = document.createElement('main');
-document.body.appendChild(mainHtml); // Appartient à body. 2 jours pour trouver "document."
+document.body.appendChild(mainHtml); // Appartient à body.
+
+// Nom de l'onglet (Page) //
+const titlePage = document.createElement('title'); // Création de la balise title.
+headTagName.appendChild(titlePage); // Appartient à Head.
+titlePage.innerHTML = Photographer.name;
 
 // Création de la div contact-details //
 const contactDetails = document.createElement('div'); // Création de div contact-details.
@@ -114,12 +119,6 @@ document.getElementsByTagName('main')[0].appendChild(contactDetails); // Apparti
 const photographersDetails = document.createElement('div'); // Création de class photographers-details.
 photographersDetails.classList.add('photographers-details'); // Ajout de la classe correspondante.
 contactDetails.appendChild(photographersDetails); // Appartient à la div contactDetails.
-
-// title tag name //
-const titlePage = document.createElement('title'); // Création de la balise title.
-headTagName.appendChild(titlePage); // Appartient à Head.
-titlePage.innerHTML = Photographer.name;
-
 photographersDetails.innerHTML = 
 `
   <h1>${Photographer.name}</h1>
@@ -127,7 +126,7 @@ photographersDetails.innerHTML =
   <p>${Photographer.tagline}</p>
 `;
 
-// Tags + Suppression virgules contenues dans la liste JSON de "tags" [] + Ajout individuel sans boucle forEach.
+// Filtre à Tags 
 const tagsFiltered = document.createElement('div'); // Création de div tags-filtered.
 tagsFiltered.classList.add('tags-filtered'); // Ajout de la classe correspondante.
 photographersDetails.appendChild(tagsFiltered); // Appartient à la div contactDetails.
@@ -137,15 +136,13 @@ Photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux 
   tagsFiltered.innerHTML += `<a href="../index.html?tag=${tag}" id="${Photographer.name};${tag}" class="nav-filters">#${tag}</a>`; // Ajout HTML. ${tag} seul puisque string.
 }); // id="${Photographer.name};${tag}" --> N'est pas l'évènement href, donc partie non fonctionnelle/necessaire.
 
-
-
-// Ajout bouton "Contactez-moi".
+// Bouton "Contactez-moi".
 const btnContact = document.createElement('button'); // Création de button.
 btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant.
 photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
 btnContact.innerHTML = `Contactez-moi`;
 
-// Ajout photo photographe
+// Photo du photographe
 const picturePhotographer = document.createElement('div'); // Création de div div-photo.
 picturePhotographer.classList.add('div-photo'); // Ajout de la classe correspondante.
 contactDetails.appendChild(picturePhotographer); // Appartient à la div contactDetails.
@@ -153,7 +150,7 @@ picturePhotographer.innerHTML = `
 <img src="/Photos_FishEye/Sample_Photos/Photographers_ID_Photos/${Photographer.portrait}" alt="${Photographer.name}" class="img-pictures">
 `;
 
-// Ajout menu déroulant ******** À COMPLÉTER PLUS TARD ********
+// Menu déroulant ******** À COMPLÉTER PLUS TARD ********
 const menu = document.createElement('div');
 menu.classList.add('media-nav'); // Ajout de la classe correspondante.
 mainHtml.appendChild(menu);
@@ -170,7 +167,7 @@ menu.innerHTML =
 `;
 //
 
-// Ajout de la div medias
+// Div medias-div = Contient tous les média du photographe.
 const mediasDiv = document.createElement('div'); // Création de div media.
 mediasDiv.setAttribute('id', 'medias-div'); // Ajout de l'id correspondant.
 mainHtml.appendChild(mediasDiv); // Appartenance à la div medias.
@@ -183,8 +180,7 @@ Medias.forEach((media) =>
 });
 // -----------------------------------------------
 
-
-// Triage des medias par nombre de likes
+// Triage des medias par nombre de likes ******** À COMPLÉTER PLUS TARD ********
 function showPopular()
 {
   Medias.forEach((media) =>
@@ -195,8 +191,7 @@ function showPopular()
   });
 }
 
-
-// Ajout like-price (sticky bas-droite)
+// Like-price = Encart en bas à droite de la page
 const likePrice = document.createElement('div'); // Création de div like-price
 mainHtml.appendChild(likePrice); // Appartenance à mainHtml
 likePrice.setAttribute('id', 'like-price'); // Attribution d'id et son identifiant.
@@ -222,8 +217,7 @@ function updateTotalLikes()
   allLikes.innerHTML = totallikes;
 }
 
-
-// Function increment
+// Incrémentation
 function incrementButton(control) // Single increment for each medias.
 {
   let idMedia = control.id.split(";")[0];
@@ -274,7 +268,7 @@ function incrementButton(control) // Single increment for each medias.
 
 
 
-// FACTORIES PATTERNS POUR LIGHTBOX
+// Factory Pattern pour la page LightBox
 class LightBoxFactory
 {
 	constructor()
@@ -334,6 +328,7 @@ class VideoLightBox
 	}             
 }
 
+// HTML
 const modal = document.createElement('div'); // Création de la div modal.
 mainHtml.appendChild(modal);
 modal.setAttribute('id', 'modal');
@@ -351,21 +346,21 @@ Medias.forEach((media) =>
 });
 // -----------------------------------------------
 
-// Close modal
+// Fermeture modale (X)
 const closeCursor = document.createElement('span'); // Création du span.
 modalContent.appendChild(closeCursor);
 closeCursor.setAttribute('onclick','closeModal();');
 closeCursor.classList.add('close', 'cursor');
 closeCursor.innerHTML = `&times`; // <span class="close cursor" onclick="closeModal()">&times;</span>
 
-// Previous Controls
+// Previous Controls (<)
 const prevControl = document.createElement('a');
 prevControl.setAttribute('onclick', 'plusSlides(-1)');
 modalContent.appendChild(prevControl);
 prevControl.classList.add('prev');
 prevControl.innerHTML = `&#10094;`; // <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 
-// Next Controls
+// Next Controls (>)
 const nextControl = document.createElement('a');
 nextControl.setAttribute('onclick', 'plusSlides(1)');
 modalContent.appendChild(nextControl);
@@ -404,10 +399,10 @@ function plusSlides(n) // Permet la navigation avec les flèches
 }
 
 // Thumbnail image controls -- À SUPPRIMER --
-function currentSlide(n) // Permet la navigation en cliquant sur les médias disposés en dessous du média affiché
-{
-	showSlides((slideIndex = n));
-}
+// function currentSlide(n) // Permet la navigation en cliquant sur les médias disposés en dessous du média affiché
+// {
+// 	showSlides((slideIndex = n));
+// }
 
 function showSlides(n)
 {
