@@ -42,7 +42,8 @@ class imageMedia
       `
       <div class="media">
         <a href="#">
-          <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}" class="img-pictures hover-shadow cursor" onclick="openModal()">
+          <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}"
+          class="img-pictures hover-shadow cursor" onclick="openModal();currentSlide(n)">
           <span class="screenreader-text">${media.title}</span>
           <div class="media-details">
             <p>${media.title}</p>
@@ -180,17 +181,6 @@ Medias.forEach((media) =>
 });
 // -----------------------------------------------
 
-// Triage des medias par nombre de likes ******** À COMPLÉTER PLUS TARD ********
-function showPopular()
-{
-  Medias.forEach((media) =>
-  {
-    let mediasSort = media.likes.sort(function(a, b){return a - b});
-    document.getElementById('medias-div').innerHTML = mediasSort;
-    console.log(mediasSort);
-  });
-}
-
 // Like-price = Encart en bas à droite de la page
 const likePrice = document.createElement('div'); // Création de div like-price
 mainHtml.appendChild(likePrice); // Appartenance à mainHtml
@@ -230,6 +220,7 @@ function incrementButton(control) // Single increment for each medias.
 
   totallikes++;
   updateTotalLikes();
+  console.log(counterValue);
 }
 // window.onload = incrementButton();
 // };
@@ -248,9 +239,74 @@ function incrementButton(control) // Single increment for each medias.
 
 
 
+// Triage des medias par nombre de likes ******** À COMPLÉTER PLUS TARD ********
+function showPopular()
+{
+  Medias.forEach(() =>
+  {
+
+    // let mediasSort = media.likes; // media.likes
+    // console.log(mediasSort); // Donne le nombre du 1er media uniquement
+    
+    // mediasSort.sort(function(a, b){return a - b});
+    // mediasDiv.innerHTML = mediasSort; // document.getElementById('medias-div')
+    // console.log(mediasSort);
 
 
 
+
+    var elems = document.getElementsByClassName("nbr-likes");
+
+    // convert nodelist to array
+    var array = [];
+    for (var i = elems.length >>> 0; i--;)
+    { 
+      array[i] = elems[i];
+    }
+
+    // perform sort
+    array.sort(function(a, b)
+    {
+      return Number(a.innerHTML) - Number(b.innerHTML);      
+    });
+
+    // join the array back into HTML
+    var output = "";
+    for (var i = 0; i < array.length; i++)
+    { 
+      output += array[i].outerHTML;
+    }
+
+    // append output to div 'myDiv'
+    document.getElementById('medias-div').innerHTML = output;
+
+  });
+}
+
+// var elems = document.getElementsByClassName("nbr-likes");
+
+// // convert nodelist to array
+// var array = [];
+// for (var i = elems.length >>> 0; i--;)
+// { 
+//   array[i] = elems[i];
+// }
+
+// // perform sort
+// array.sort(function(a, b)
+// {
+//   return Number(a.innerHTML) - Number(b.innerHTML);      
+// });
+
+// // join the array back into HTML
+// var output = "";
+// for (var i = 0; i < array.length; i++)
+// { 
+//   output += array[i].outerHTML;
+// }
+
+// // append output to div 'myDiv'
+// document.getElementById('medias-div').innerHTML = output;
 
 
 
@@ -399,10 +455,10 @@ function plusSlides(n) // Permet la navigation avec les flèches
 }
 
 // Thumbnail image controls -- À SUPPRIMER --
-// function currentSlide(n) // Permet la navigation en cliquant sur les médias disposés en dessous du média affiché
-// {
-// 	showSlides((slideIndex = n));
-// }
+function currentSlide(n) // Permet la navigation en cliquant sur les médias disposés en dessous du média affiché
+{
+	showSlides((slideIndex = n));
+}
 
 function showSlides(n)
 {
