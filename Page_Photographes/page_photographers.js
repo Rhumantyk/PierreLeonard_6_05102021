@@ -233,95 +233,7 @@ function incrementButton(control) // Single increment for each medias.
 
 
 
-
-
-
-
-
-
-// Triage des medias par nombre de likes ******** À COMPLÉTER PLUS TARD ********
-// function showPopular()
-// {
-//   Medias.forEach(() =>
-//   {
-
-
-
-
-
-
-
-
-    // let mediasSort = media.likes; // media.likes
-    // console.log(mediasSort); // Donne le nombre du 1er media uniquement
-    
-    // mediasSort.sort(function(a, b){return a - b});
-    // mediasDiv.innerHTML = mediasSort; // document.getElementById('medias-div')
-    // console.log(mediasSort);
-
-
-
-// ***************** Oui mais incomplet *********************
-
-//     var elems = document.getElementsByClassName("nbr-likes");
-
-//     // convert nodelist to array
-//     var array = [];
-//     for (var i = elems.length >>> 0; i--;)
-//     { 
-//       array[i] = elems[i];
-//     }
-
-//     // perform sort
-//     array.sort(function(a, b)
-//     {
-//       return Number(a.innerHTML) - Number(b.innerHTML);      
-//     });
-
-//     // join the array back into HTML
-//     var output = "";
-//     for (var i = 0; i < array.length; i++)
-//     { 
-//       output += array[i].outerHTML;
-//     }
-
-//     // append output to div 'myDiv'
-//     document.getElementById('medias-div').innerHTML = output;
-
-//   });
-// }
-// ***************** Oui mais incomplet *********************
-
-
-
-
-
-// var elems = document.getElementsByClassName("nbr-likes");
-
-// // convert nodelist to array
-// var array = [];
-// for (var i = elems.length >>> 0; i--;)
-// { 
-//   array[i] = elems[i];
-// }
-
-// // perform sort
-// array.sort(function(a, b)
-// {
-//   return Number(a.innerHTML) - Number(b.innerHTML);      
-// });
-
-// // join the array back into HTML
-// var output = "";
-// for (var i = 0; i < array.length; i++)
-// { 
-//   output += array[i].outerHTML;
-// }
-
-// // append output to div 'myDiv'
-// document.getElementById('medias-div').innerHTML = output;
-
-
+// Triage des medias par nombre de likes
 
 function sortUnorderedList(list, sortDescending)
 {
@@ -329,7 +241,9 @@ function sortUnorderedList(list, sortDescending)
     elements = [].slice.call(htmlCollection); //convert htmlCollection to array.
 
   //sort by ...
-  elements.sort(compareAges);
+  //elements.sort(compareDates);
+  //elements.sort(compareTitle);
+  elements.sort(compareLikes);
 
   if (sortDescending) elements.reverse();
 
@@ -340,18 +254,18 @@ function sortUnorderedList(list, sortDescending)
     list.appendChild(elements[i]); //add them again in different order
   }
 
-  function compareAges(el1, el2)
+  function compareLikes(el1, el2)
   {
-    var age1 = parseInt(el1.children[0].children[2].children[1].children[0].innerText),
-        age2 = parseInt(el2.children[0].children[2].children[1].children[0].innerText);
-    if(isNaN(age1))age1=-1;
-    if(isNaN(age2))age2=-1;
+    var like1 = parseInt(el1.children[0].children[2].children[1].children[0].innerText),
+        like2 = parseInt(el2.children[0].children[2].children[1].children[0].innerText);
+    if(isNaN(like1))like1=-1;
+    if(isNaN(like2))like2=-1;
     console.log(el1.children[0].children[2].children[1].children[0].innerText);
-    return age1 - age2;
+    return like1 - like2;
   }
 }
 
-window.onload = function click() // Ici le onload est NECESSAIRE, si non, rien ne se passe.
+window.onload = function click() // Ici  window.onload est NECESSAIRE, si non, rien ne se passe.
 {
   var desc = false;
   document.getElementById("test").onclick = function()
