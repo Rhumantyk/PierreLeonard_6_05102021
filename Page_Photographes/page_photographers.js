@@ -160,7 +160,7 @@ menu.innerHTML =
   <p>Trier par</p>
   <nav class="filter-medias">
     <ul>
-      <li><a href="#" onclick="showPopular()">Popularité</a></li>
+      <li><a href="#" id="test">Popularité</a></li>
       <li><a href="#" onclick="showDate()">Date</a></li>
       <li><a href="#" onclick="showTitle()">Titre</a></li>
     </ul>
@@ -240,10 +240,17 @@ function incrementButton(control) // Single increment for each medias.
 
 
 // Triage des medias par nombre de likes ******** À COMPLÉTER PLUS TARD ********
-function showPopular()
-{
-  Medias.forEach(() =>
-  {
+// function showPopular()
+// {
+//   Medias.forEach(() =>
+//   {
+
+
+
+
+
+
+
 
     // let mediasSort = media.likes; // media.likes
     // console.log(mediasSort); // Donne le nombre du 1er media uniquement
@@ -254,34 +261,40 @@ function showPopular()
 
 
 
+// ***************** Oui mais incomplet *********************
 
-    var elems = document.getElementsByClassName("nbr-likes");
+//     var elems = document.getElementsByClassName("nbr-likes");
 
-    // convert nodelist to array
-    var array = [];
-    for (var i = elems.length >>> 0; i--;)
-    { 
-      array[i] = elems[i];
-    }
+//     // convert nodelist to array
+//     var array = [];
+//     for (var i = elems.length >>> 0; i--;)
+//     { 
+//       array[i] = elems[i];
+//     }
 
-    // perform sort
-    array.sort(function(a, b)
-    {
-      return Number(a.innerHTML) - Number(b.innerHTML);      
-    });
+//     // perform sort
+//     array.sort(function(a, b)
+//     {
+//       return Number(a.innerHTML) - Number(b.innerHTML);      
+//     });
 
-    // join the array back into HTML
-    var output = "";
-    for (var i = 0; i < array.length; i++)
-    { 
-      output += array[i].outerHTML;
-    }
+//     // join the array back into HTML
+//     var output = "";
+//     for (var i = 0; i < array.length; i++)
+//     { 
+//       output += array[i].outerHTML;
+//     }
 
-    // append output to div 'myDiv'
-    document.getElementById('medias-div').innerHTML = output;
+//     // append output to div 'myDiv'
+//     document.getElementById('medias-div').innerHTML = output;
 
-  });
-}
+//   });
+// }
+// ***************** Oui mais incomplet *********************
+
+
+
+
 
 // var elems = document.getElementsByClassName("nbr-likes");
 
@@ -310,7 +323,44 @@ function showPopular()
 
 
 
+function sortUnorderedList(list, sortDescending)
+{
+  var htmlCollection = list.getElementsByClassName("media"),
+    elements = [].slice.call(htmlCollection); //convert htmlCollection to array.
 
+  //sort by ...
+  elements.sort(compareAges);
+
+  if (sortDescending) elements.reverse();
+
+  list.innerHtml = ''; //remove current contents
+
+  for (var i = 0; i < elements.length; i++)
+  {
+    list.appendChild(elements[i]); //add them again in different order
+  }
+
+  function compareAges(el1, el2)
+  {
+    var age1 = parseInt(el1.children[0].children[2].children[1].children[0].innerText),
+        age2 = parseInt(el2.children[0].children[2].children[1].children[0].innerText);
+    if(isNaN(age1))age1=-1;
+    if(isNaN(age2))age2=-1;
+    console.log(el1.children[0].children[2].children[1].children[0].innerText);
+    return age1 - age2;
+  }
+}
+
+window.onload = function click() // Ici le onload est NECESSAIRE, si non, rien ne se passe.
+{
+  var desc = false;
+  document.getElementById("test").onclick = function()
+  {
+    sortUnorderedList(document.getElementById('medias-div'), desc);
+    desc = !desc;
+    return false;
+  };
+}
 
 
 
