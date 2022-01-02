@@ -160,9 +160,9 @@ menu.innerHTML =
   <p>Trier par</p>
   <nav class="filter-medias">
     <ul>
-      <li><a href="#" id="test">Popularité</a></li>
-      <li><a href="#" onclick="showDate()">Date</a></li>
-      <li><a href="#" onclick="showTitle()">Titre</a></li>
+      <li><a href="#" id="popularity">Popularité</a></li>
+      <li><a href="#" id="date">Date</a></li>
+      <li><a href="#" id="title">Titre</a></li>
     </ul>
   </nav>
 `;
@@ -238,20 +238,20 @@ function incrementButton(control) // Single increment for each medias.
 function sortUnorderedList(list, sortDescending)
 {
   var htmlCollection = list.getElementsByClassName("media"),
-    elements = [].slice.call(htmlCollection); //convert htmlCollection to array.
+    elements = [].slice.call(htmlCollection); //converti htmlCollection en tableau (array).
 
-  //sort by ...
-  //elements.sort(compareDates);
+  //Trier par ...
+  elements.sort(compareDates);
   //elements.sort(compareTitle);
   elements.sort(compareLikes);
 
   if (sortDescending) elements.reverse();
 
-  list.innerHtml = ''; //remove current contents
+  list.innerHtml = ''; // Enlève les éléments qui s'y trouvent.
 
   for (var i = 0; i < elements.length; i++)
   {
-    list.appendChild(elements[i]); //add them again in different order
+    list.appendChild(elements[i]); // Les rajoute dans un ordre différent.
   }
 
   function compareLikes(el1, el2)
@@ -263,12 +263,31 @@ function sortUnorderedList(list, sortDescending)
     console.log(el1.children[0].children[2].children[1].children[0].innerText);
     return like1 - like2;
   }
+
+  function compareDates(el1, el2)
+  {
+
+  }
 }
 
 window.onload = function click() // Ici  window.onload est NECESSAIRE, si non, rien ne se passe.
 {
   var desc = false;
-  document.getElementById("test").onclick = function()
+  document.getElementById("popularity").onclick = function()
+  {
+    sortUnorderedList(document.getElementById('medias-div'), desc);
+    desc = !desc;
+    return false;
+  };
+
+  document.getElementById("date").onclick = function()
+  {
+    sortUnorderedList(document.getElementById('medias-div'), desc);
+    desc = !desc;
+    return false;
+  };
+  
+  document.getElementById("title").onclick = function()
   {
     sortUnorderedList(document.getElementById('medias-div'), desc);
     desc = !desc;
