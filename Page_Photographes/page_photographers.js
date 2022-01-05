@@ -159,8 +159,8 @@ menu.innerHTML =
 `
   <p>Trier par</p>
   <nav class="filter-medias">
-    <ul>
-      <li><a href="#" id="popularity">Popularité</a></li>
+    <ul class="ul-sort">
+      <li><a href="#" id="popularity">Popularité</a><a href="#" class="dropdown">&#10097;</a></li>
       <li><a href="#" id="date">Date</a></li>
       <li><a href="#" id="title">Titre</a></li>
     </ul>
@@ -241,7 +241,7 @@ function sortUnorderedList(list, sortDescending)
     elements = [].slice.call(htmlCollection); //converti htmlCollection en tableau (array).
 
   //Trier par ...
-  elements.sort(compareDates);
+  // elements.sort(compareDates);
   //elements.sort(compareTitle);
   elements.sort(compareLikes);
 
@@ -264,38 +264,57 @@ function sortUnorderedList(list, sortDescending)
     return like1 - like2;
   }
 
-  function compareDates(el1, el2)
-  {
-
-  }
 }
 
-window.onload = function click() // Ici  window.onload est NECESSAIRE, si non, rien ne se passe.
+window.onload = function() // Ici  window.onload est NECESSAIRE, si non, rien ne se passe.
+// Mais je n'ai rien compris à son application.
 {
-  var desc = false;
+  var descPopularity = false;
   document.getElementById("popularity").onclick = function()
   {
-    sortUnorderedList(document.getElementById('medias-div'), desc);
-    desc = !desc;
+    sortUnorderedList(document.getElementById('medias-div'), descPopularity);
+    descPopularity = !descPopularity;
     return false;
   };
 
+  var descDate = false;
   document.getElementById("date").onclick = function()
   {
-    sortUnorderedList(document.getElementById('medias-div'), desc);
-    desc = !desc;
+    sortUnorderedList(document.getElementById('medias-div'), descDate);
+    descDate = !descDate;
     return false;
   };
-  
+
+  var descTitle = false;
   document.getElementById("title").onclick = function()
   {
-    sortUnorderedList(document.getElementById('medias-div'), desc);
-    desc = !desc;
+    sortUnorderedList(document.getElementById('medias-div'), descTitle);
+    descTitle = !descTitle;
     return false;
   };
 }
 
 
+// function compareDates()
+// {
+//   return new Date(medias.date).getTime() - new Date(medias.date).getTime();
+// }
+// compareDates.sort(compareDates);
+
+
+function sortByValue(jsObj)
+{
+  var sortedArray = medias;
+  for(var i in jsObj)
+  {
+    // Push each JSON Object entry in array by [value, key]
+    sortedArray.push([jsObj[i], i]);
+  }
+  return sortedArray.sort();
+}
+
+var sortedbyValueJSONArray = sortByValue(medias);
+console.log(sortedbyValueJSONArray);
 
 
 
