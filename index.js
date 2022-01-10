@@ -13,6 +13,7 @@ let medias = [];
 // Récupération de la balise HTML d'affichage des photographes
 const divPhotographers = document.getElementById('photographers');
 
+
 // Fonctions
 // ---------------
 

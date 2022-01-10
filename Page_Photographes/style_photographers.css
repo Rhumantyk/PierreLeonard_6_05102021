@@ -180,10 +180,27 @@ nav ul
     /* background-color: red; */
 }
 
+.ul-sort :nth-child(1)
+{
+    display: flex;
+}
+
+.dropdown
+{
+    transform: rotate(270deg);
+}
+
+.dropdown:hover
+{
+    transform: rotate(90deg); 
+}
+
 .dropdown:hover .ul-sort
 {
     display:block;
 }
+
+
 
 /* nav ul::after
 {
