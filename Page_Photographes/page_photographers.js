@@ -329,26 +329,26 @@ contactForm.innerHTML +=
 `
   <div class="formElements">
 
-    <div>
-      <h1> CONTACTEZ-MOI </br>${Photographer.name}</h1>
-      <span class="close, cursor" onclick="closeForm()">&times</span>
+    <div class="tittleForm">
+      <h2> CONTACTEZ-MOI </br>${Photographer.name}</h2>
+      <span class="closeForm cursor" onclick="closeForm()">&times</span>
     </div>
 
     <div>
-      <h2>Prénom</h2>
+      <h3>Prénom</h3>
         <input type="text">
 
-      <h2>Nom</h2>
+      <h3>Nom</h3>
         <input type="text">
 
-      <h2>Email</h2>
+      <h3>Email</h3>
         <input type="text">
 
-      <h2>Votre message</h2>
+      <h3>Votre message</h3>
         <textarea type="text" rows="4" cols="20"></textarea>
     </div>
 
-    <input type="submit" value="Envoyer">
+    <input class="formBtn" type="submit" value="Envoyer">
 
   </div>
 `
