@@ -327,24 +327,30 @@ contactForm.setAttribute('id', 'contactForm');
 contactForm.classList.add('contactForm');
 contactForm.innerHTML +=
 `
-  <div>
-    <h1> CONTACTEZ-MOI </br> ${Photographer.name}</h1>
-    <span class="close, cursor" onclick="closeForm()">&times</span>
+  <div class="formElements">
+
+    <div>
+      <h1> CONTACTEZ-MOI </br>${Photographer.name}</h1>
+      <span class="close, cursor" onclick="closeForm()">&times</span>
+    </div>
+
+    <div>
+      <h2>Prénom</h2>
+        <input type="text">
+
+      <h2>Nom</h2>
+        <input type="text">
+
+      <h2>Email</h2>
+        <input type="text">
+
+      <h2>Votre message</h2>
+        <textarea type="text" rows="4" cols="20"></textarea>
+    </div>
+
+    <input type="submit" value="Envoyer">
+
   </div>
-  <div>
-    <h2>Prénom</h2>
-      <input type="text">
-
-    <h2>Nom</h2>
-      <input type="text">
-
-    <h2>Email</h2>
-      <input type="text">
-
-    <h2>Votre message</h2>
-      <textarea type="text" rows="4" cols="20"></textarea>
-  </div>
-  <input type="submit" value="Envoyer">
 `
 
 
