@@ -190,12 +190,12 @@ nav ul
     transform: rotate(270deg);
 }
 
-.dropdown:hover
+.dropdown:active
 {
     transform: rotate(90deg); 
 }
 
-.dropdown:hover .ul-sort
+.dropdown:active .ul-sort
 {
     display:block;
 }
