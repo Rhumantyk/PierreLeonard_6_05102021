@@ -437,6 +437,12 @@ nav ul
     margin-top: -28%;
 }
 
+.inputs-form h2
+{
+    font-size: 2.1em;
+    font-weight: 500;
+}
+
 .inputs-form h3
 {
     line-height: 0.1px;
@@ -466,8 +472,7 @@ textarea
     color: white;
     top: 10px;
     right: 25px;
-    font-size: 35px;
-    font-weight: bold;
+    font-size: 43px;
 }
 
 .btn-form-div
