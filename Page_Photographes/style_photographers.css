@@ -410,6 +410,7 @@ nav ul
     background-color: #DB8876;
     width: 40%;
     flex-direction: column;
+    justify-content: space-around;
     height: 75%;
     align-items: center;
     margin: auto;
@@ -437,6 +438,17 @@ nav ul
     justify-content: space-around;
 }
 
+.inputs-form h3
+{
+    line-height: 0.1px;
+}
+
+.inputs-form :nth-child(2)
+{
+    margin-left: 1%;
+    /* margin-right: inherit; */
+}
+
 .close-form 
 {
     z-index: 1;
@@ -445,16 +457,6 @@ nav ul
     right: 25px;
     font-size: 35px;
     font-weight: bold;
-}
-
-.form-elements h1
-{
-    color: black;
-}
-
-.form-elements h2
-{
-    line-height: 0,1;
 }
 
 .form-btn

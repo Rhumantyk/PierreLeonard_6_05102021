@@ -334,15 +334,15 @@ contactForm.innerHTML +=
       <span class="close-form cursor" onclick="closeForm()">&times</span>
     </div>
 
-    <div>
+    <div class="inputs-form">
       <h3>Prénom</h3>
-        <input type="text">
+        <input type="text" size="20">
 
       <h3>Nom</h3>
-        <input type="text">
+        <input type="text" size="20">
 
       <h3>Email</h3>
-        <input type="text">
+        <input type="text" size="20">
 
       <h3>Votre message</h3>
         <textarea type="text" rows="4" cols="20"></textarea>
