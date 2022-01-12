@@ -346,9 +346,12 @@ contactForm.innerHTML +=
 
       <h3>Votre message</h3>
         <textarea type="text" rows="4" cols="20"></textarea>
+      
     </div>
 
-    <input class="form-btn" type="submit" value="Envoyer">
+    <div class="btn-form-div">
+      <input class="form-btn" type="submit" value="Envoyer">
+    </div>
 
   </div>
 `

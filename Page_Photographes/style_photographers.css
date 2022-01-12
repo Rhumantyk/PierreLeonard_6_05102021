@@ -418,35 +418,46 @@ nav ul
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-/* img.hover-shadow 
-{
-    transition: 0.3s;
-} */
-
-/* .hover-shadow:hover 
-{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-} */
-
 .tittle-form
 {
-    width: 100%;
+    width: 95%;
     display: flex;
     flex-direction: row;
     align-items: baseline;
     flex-wrap: nowrap;
-    justify-content: space-around;
+    justify-content: space-between;
+}
+
+.inputs-form
+{
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin-top: -28%;
 }
 
 .inputs-form h3
 {
     line-height: 0.1px;
+    font-weight: inherit;
 }
 
 .inputs-form :nth-child(2)
 {
     margin-left: 1%;
     /* margin-right: inherit; */
+}
+
+input
+{
+    line-height: 2;
+    border-radius: 6px;
+}
+
+textarea
+{
+    border-radius: 6px;
 }
 
 .close-form 
@@ -459,13 +470,21 @@ nav ul
     font-weight: bold;
 }
 
+.btn-form-div
+{
+    display: flex;
+    width: 100%;
+    margin-left: 6%;
+    margin-top: -18%;
+}
+
 .form-btn
 {
+    margin-top: 0%;
     color: white;
     background-color: #901C1C;
     border-radius: 6px;
     border-width: inherit;
-    height: 6%;
     width: 110px;
     font-size: 1em;
     cursor: pointer;
