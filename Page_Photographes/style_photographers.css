@@ -388,7 +388,7 @@ nav ul
 
 
 /* Modal "COntactez-moi" */
-.contactForm 
+.contact-form 
 {
     display: none;
     /* align-items: center; */
@@ -404,7 +404,7 @@ nav ul
     background-color: transparent;
 }
 
-.formElements
+.form-elements
 {
     display: flex;
     background-color: #D3573C;
@@ -416,7 +416,7 @@ nav ul
     border-radius: 6px;
 }
 
-.tittleForm
+.tittle-form
 {
     width: 100%;
     display: flex;
@@ -426,7 +426,7 @@ nav ul
     justify-content: space-around;
 }
 
-.closeForm 
+.close-form 
 {
     z-index: 1;
     color: white;
@@ -436,17 +436,17 @@ nav ul
     font-weight: bold;
 }
 
-.formElements h1
+.form-elements h1
 {
     color: black;
 }
 
-.formElements h2
+.form-elements h2
 {
     line-height: 0,1;
 }
 
-.formBtn
+.form-btn
 {
     color: white;
     background-color: #901C1C;

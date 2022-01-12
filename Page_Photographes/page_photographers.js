@@ -323,15 +323,15 @@ nextControl.innerHTML = `&#10095;`; // <a class="next" onclick="plusSlides(1)">&
 // HTML Modale "Contactez-moi"
 const contactForm = document.createElement('div'); // Création de la div contactForm.
 mainHtml.appendChild(contactForm);
-contactForm.setAttribute('id', 'contactForm');
-contactForm.classList.add('contactForm');
+contactForm.setAttribute('id', 'contact-form');
+contactForm.classList.add('contact-form');
 contactForm.innerHTML +=
 `
-  <div class="formElements">
+  <div class="form-elements">
 
-    <div class="tittleForm">
+    <div class="tittle-form">
       <h2> CONTACTEZ-MOI </br>${Photographer.name}</h2>
-      <span class="closeForm cursor" onclick="closeForm()">&times</span>
+      <span class="close-form cursor" onclick="closeForm()">&times</span>
     </div>
 
     <div>
@@ -348,7 +348,7 @@ contactForm.innerHTML +=
         <textarea type="text" rows="4" cols="20"></textarea>
     </div>
 
-    <input class="formBtn" type="submit" value="Envoyer">
+    <input class="form-btn" type="submit" value="Envoyer">
 
   </div>
 `
@@ -557,13 +557,13 @@ function showSlides(n)
 // Ouverture Modal
 function openForm()
 {
-	document.getElementById('contactForm').style.display = 'flex';
+	document.getElementById('contact-form').style.display = 'flex';
 }
 
 // Fermeture Modal
 function closeForm()
 {
-	document.getElementById('contactForm').style.display = 'none';
+	document.getElementById('contact-form').style.display = 'none';
 }
 
 
