@@ -445,8 +445,8 @@ nav ul
 
 .inputs-form :nth-child(2)
 {
-    margin-left: 1%;
-    /* margin-right: inherit; */
+    margin-left: 0%;
+    margin-right: 0%;
 }
 
 input
