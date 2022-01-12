@@ -387,8 +387,22 @@ nav ul
 
 
 
-
-
+/* Modal "COntactez-moi" */
+.contactForm 
+{
+    display: none;
+    align-items: center;
+    /* padding: 3%; */
+    position: fixed;
+    z-index: 1;
+    /* padding-top: 2%; */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #D3573C;
+}
 
 
 
@@ -424,7 +438,7 @@ nav ul
 {
     float: left;
     width: 25%;
-} 
+}
 
 /* The Modal (background) */
 .modal 

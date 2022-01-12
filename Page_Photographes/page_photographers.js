@@ -209,7 +209,8 @@ Photographer.tags.forEach((tag) => // Boucle forEach puisqu'il y a des tableaux 
 
 // Bouton "Contactez-moi".
 const btnContact = document.createElement('button'); // Création de button.
-btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant.
+btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant btn. 
+btnContact.setAttribute('onclick', 'openForm();'); // Ajout du rôle correspondant openForm();. 
 photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
 btnContact.innerHTML = `Contactez-moi`;
 
@@ -319,6 +320,69 @@ nextControl.innerHTML = `&#10095;`; // <a class="next" onclick="plusSlides(1)">&
 // captionContainer.innerHTML = `<p id="caption"></p>`;
 
 
+// HTML Modale "Contactez-moi"
+const contactForm = document.createElement('div'); // Création de la div contactForm.
+mainHtml.appendChild(contactForm);
+contactForm.setAttribute('id', 'contactForm');
+contactForm.classList.add('contactForm');
+contactForm.innerHTML +=
+`
+  <div>
+    <h1> CONTACTEZ-MOI </br> ${Photographer.name}</h1>
+    <span class="close, cursor" onclick="closeForm()">&times</span>
+  </div>
+  <div>
+    <h2>Prénom</h2>
+      <input type="text">
+
+    <h2>Nom</h2>
+      <input type="text">
+
+    <h2>Email</h2>
+      <input type="text">
+
+    <h2>Votre message</h2>
+      <textarea type="text" rows="4" cols="20"></textarea>
+  </div>
+  <input type="submit" value="Envoyer">
+`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Fonctions
 // ---------------
 
@@ -386,21 +450,21 @@ window.onload = function() // Ici  window.onload est NECESSAIRE, si non, rien ne
     return false;
   };
 
-  var descDate = false;
-  document.getElementById("date").onclick = function()
-  {
-    sortUnorderedList(document.getElementById('medias-div'), descDate);
-    descDate = !descDate;
-    return false;
-  };
+  // var descDate = false;
+  // document.getElementById("date").onclick = function()
+  // {
+  //   sortUnorderedList(document.getElementById('medias-div'), descDate);
+  //   descDate = !descDate;
+  //   return false;
+  // };
 
-  var descTitle = false;
-  document.getElementById("title").onclick = function()
-  {
-    sortUnorderedList(document.getElementById('medias-div'), descTitle);
-    descTitle = !descTitle;
-    return false;
-  };
+  // var descTitle = false;
+  // document.getElementById("title").onclick = function()
+  // {
+  //   sortUnorderedList(document.getElementById('medias-div'), descTitle);
+  //   descTitle = !descTitle;
+  //   return false;
+  // };
 }
 
 
@@ -410,20 +474,21 @@ window.onload = function() // Ici  window.onload est NECESSAIRE, si non, rien ne
 // }
 // compareDates.sort(compareDates);
 
-
-function sortByValue(jsObj)
+function sortByDates()
 {
-  var sortedArray = medias;
-  for(var i in jsObj)
+  medias[0].date.sort(function (a, b)
   {
-    // Push each JSON Object entry in array by [value, key]
-    sortedArray.push([jsObj[i], i]);
-  }
-  return sortedArray.sort();
+    var dateA = new Date(a.date), dateB = new Date(b.date)
+    return dateA - dateB
+  });
 }
 
-var sortedbyValueJSONArray = sortByValue(medias);
-console.log(sortedbyValueJSONArray);
+// ****************************** Pourquoi je n'arrive pas à avoir juste medias.date ? *********************************
+medias.sort(function (a, b)
+{
+  return a.date.localeCompare(b.date);
+});
+console.log(medias.date) //array is now sorted by date
 
 
 // Script pour Lightbox
@@ -480,6 +545,21 @@ function showSlides(n)
 	// dots[slideIndex - 1].className += ' active';
 	// captionText.innerHTML = dots[slideIndex - 1].alt;
 }
+
+
+// Script pour Lightbox
+// Ouverture Modal
+function openForm()
+{
+	document.getElementById('contactForm').style.display = 'flex';
+}
+
+// Fermeture Modal
+function closeForm()
+{
+	document.getElementById('contactForm').style.display = 'none';
+}
+
 
 // Événements
 // ---------------
