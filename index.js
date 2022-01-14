@@ -19,16 +19,18 @@ const divPhotographers = document.getElementById('photographers');
 
 // Récupération des donées du fichier JSON
 const getData = fetch(file)
+
   .then(function(response)
   {
+
     return response.json();
+
   })
   .then(function(json)
   {
+
     photographers = json["photographers"]; // Renvoie à la variable "let photographers = []".
-    medias = json["media"]; // Renvoie à la variable "let media = []".
-    // console.log(photographers);
-    
+    medias = json["media"]; // Renvoie à la variable "let media = []".    
 
     // local storage pour "page_photographers"
     let photographersLinea = JSON.stringify(photographers); // Récupération de la variable photographers. 
@@ -38,11 +40,13 @@ const getData = fetch(file)
     // console.log("medias L " + mediasLinea);
     localStorage.setItem("media", mediasLinea); // Serialisation/linearisation = Transformation en chaîne de caractères.
 
-    return json; // console.log(getData) = [[PromiseResult]] passe de Undefined à Object
+    return json;
+
   });
 
 function getFilter(tagFilter=null)
 {
+
   // get tag filter
   let filter = "";
 
@@ -113,28 +117,10 @@ function addPhotographersToHTML(filter)
 function LoadHTML(idTag=null)
 {
 
-  // console.log("idTag = " + idTag);
-  // console.log("queryString = " + queryString);
-  // const urlParams = new URLSearchParams(queryString);
-  // console.log("urlParams = " + urlParams);
-  // const ParamTag = urlParams.get('tag');
-  // console.log("ParamTag = " + ParamTag);
-  // if (idTag == null && ParamTag != "");
-  //   idTag = ParamTag;
-  //    // Cf tag=${tag} dans la page photographes
-
-  // let filter = "";
   let filter = getFilter(idTag);
-  // console.log("idTag = " ,idTag);
-  // console.log("filter 1 = " ,filter);
-
-  // console.log("photographers=" ,photographers);
-
-  // Affichage photographes
   divPhotographers.innerHTML = "";
 
   addPhotographersToHTML(filter);
-  // console.log(divPhotographers.innerHTML);
 }
 
 
@@ -150,17 +136,6 @@ window.onload = async function()
   LoadHTML();
   
 }
-// console.log(getData);
-// function Test()
-// {
-
-//   // Affichage photographes
-//   divPhotographers.innerHTML = await function B()
-//   {
-//     "";
-//   };
-//   return + 1;
-// }
 
 window.onscroll = function() // L'élément scroll est déclenché quand l'utilisateur fait défiler le contenu.
 { 

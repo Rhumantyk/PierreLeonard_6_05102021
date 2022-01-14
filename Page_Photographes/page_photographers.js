@@ -13,7 +13,7 @@ const idNumber = urlParams.get('id');
 let Photographer = null;
 let Medias = null;
 
-// Global likes couter
+// Global likes counter
 let totalLikes = 0;
 
 // Global HTML tags
@@ -508,6 +508,7 @@ function currentSlide(n) // Permet la navigation en cliquant sur les médias dis
 	showSlides((slideIndex = n));
 }
 
+// À mettre dans une fontion
 function showSlides(n)
 {
 	let i;
