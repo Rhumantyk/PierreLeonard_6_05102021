@@ -411,13 +411,13 @@ function incrementButton(control) // Single increment for each medias.
 }
 
 // Triage des medias par nombre de likes
-function sortUnorderedList(list, sortDescending)
+function sortLikesList(list, sortDescending)
 {
   var htmlCollection = list.getElementsByClassName("media"),
-    elements = [].slice.call(htmlCollection); // Converti htmlCollection (tous les médias) en tableau (array).
+      elements = [].slice.call(htmlCollection); // Converti htmlCollection (tous les médias) en tableau (array).
 
   //Trier par ...
-  elements.sort(compareDates);
+  // elements.sort(compareDates);
   //elements.sort(compareTitle);
   elements.sort(compareLikes);
 
@@ -429,23 +429,48 @@ function sortUnorderedList(list, sortDescending)
   {
     list.appendChild(elements[i]); // Les rajoute dans un ordre différent.
   }
-
+  
+  // elements.sort(compareLikes);
   function compareLikes(el1, el2)
   {
     var like1 = parseInt(el1.children[0].children[2].children[1].children[0].innerText),
         like2 = parseInt(el2.children[0].children[2].children[1].children[0].innerText);
     if(isNaN(like1))like1=-1;
     if(isNaN(like2))like2=-1;
-    console.log(el1.children[0].children[2].children[1].children[0].innerText);
+    // console.log(el1.children[0].children[2].children[1].children[0].innerText);
     return like1 - like2;
   }
+}
 
+function sortDatesList(list, sortDescending)
+{
+  var htmlCollection = list.getElementsByClassName("media"),
+      elements = [].slice.call(htmlCollection); // Converti htmlCollection (tous les médias) en tableau (array).
+
+  //Trier par ...
+  elements.sort(compareDates);
+  //elements.sort(compareTitle);
+  // elements.sort(compareLikes);
+
+  if (sortDescending) elements.reverse();
+
+  list.innerHtml = ''; // Enlève les éléments qui s'y trouvent.
+
+  for (var i = 0; i < elements.length; i++)
+  {
+    list.appendChild(elements[i]); // Les rajoute dans un ordre différent.
+  }
+
+  // elements.sort(compareDates);
   function compareDates()
   {
-    Medias.forEach((media) =>
+
+    Medias.forEach((a, b) =>
     {
-      return new Date(media.date).getTime() - new Date(media.date).getTime();
+      var dateA = new Date(a.date), dateB = new Date(b.date)
+      return dateA - dateB;
     });
+
   }
 
 }
@@ -573,8 +598,7 @@ function closeForm()
 // Evènements
 // ----------
 
-window.onload = function() // Ici  window.onload est NECESSAIRE, si non, rien ne se passe.
-// Mais je n'ai rien compris à son application.
+window.onload = function()
 {
 
   GetDataFromLocalStorage();
@@ -586,8 +610,16 @@ window.onload = function() // Ici  window.onload est NECESSAIRE, si non, rien ne
   var descPopularity = false;
   document.getElementById("popularity").onclick = function()
   {
-    sortUnorderedList(document.getElementById('medias-div'), descPopularity);
+    sortLikesList(document.getElementById('medias-div'), descPopularity);
     descPopularity = !descPopularity;
+    return false;
+  };
+
+  var descDate = false;
+  document.getElementById("date").onclick = function()
+  {
+    sortDatesList(document.getElementById('medias-div'), descDate);
+    descDate = !descDate;
     return false;
   };
 }
