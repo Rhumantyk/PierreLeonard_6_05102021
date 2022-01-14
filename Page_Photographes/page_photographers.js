@@ -165,7 +165,8 @@ class VideoLightBox
 // Fonctions
 // ---------
 
-function GetDataFromLocalStorage() {
+function GetDataFromLocalStorage()
+{
 
   // Récupération JSON via localStorage
   photographers = localStorage.getItem('photographers');
@@ -176,7 +177,8 @@ function GetDataFromLocalStorage() {
 
 }
 
-function GetPageData() {
+function GetPageData()
+{
 
   // Get required photograppher
   Photographer = photographers.filter(function (photographer)
@@ -197,7 +199,8 @@ function GetPageData() {
 }
 
 
-function CreateFactories() {
+function CreateFactories()
+{
 
   mediasfactory = new mediasFactory();
   Medias.forEach((media) =>
@@ -205,7 +208,6 @@ function CreateFactories() {
     mediasfactory.showsMediaElements(media); // Chaque media de la liste est envoyé au mediasFactory() qui fera le tri
   });
   // -----------------------------------------------
-  
   
   // -------------------- MediasLightFactory
   lightFactory = new LightBoxFactory();
@@ -320,68 +322,68 @@ function CreatePageHTML() {
   modalContent.classList.add('modal-content'); // <div class="modal-content">
 
   // Fermeture modale (X)
-const closeCursor = document.createElement('span'); // Création du span.
-modalContent.appendChild(closeCursor);
-closeCursor.setAttribute('onclick','closeModal();');
-closeCursor.classList.add('close', 'cursor');
-closeCursor.innerHTML = `&times`; // <span class="close cursor" onclick="closeModal()">&times;</span>
+  const closeCursor = document.createElement('span'); // Création du span.
+  modalContent.appendChild(closeCursor);
+  closeCursor.setAttribute('onclick','closeModal();');
+  closeCursor.classList.add('close', 'cursor');
+  closeCursor.innerHTML = `&times`; // <span class="close cursor" onclick="closeModal()">&times;</span>
 
-// Previous Controls (<)
-const prevControl = document.createElement('a');
-prevControl.setAttribute('onclick', 'plusSlides(-1)');
-modalContent.appendChild(prevControl);
-prevControl.classList.add('prev');
-prevControl.innerHTML = `&#10094;`; // <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  // Previous Controls (<)
+  const prevControl = document.createElement('a');
+  prevControl.setAttribute('onclick', 'plusSlides(-1)');
+  modalContent.appendChild(prevControl);
+  prevControl.classList.add('prev');
+  prevControl.innerHTML = `&#10094;`; // <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 
-// Next Controls (>)
-const nextControl = document.createElement('a');
-nextControl.setAttribute('onclick', 'plusSlides(1)');
-modalContent.appendChild(nextControl);
-nextControl.classList.add('next');
-nextControl.innerHTML = `&#10095;`; // <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  // Next Controls (>)
+  const nextControl = document.createElement('a');
+  nextControl.setAttribute('onclick', 'plusSlides(1)');
+  modalContent.appendChild(nextControl);
+  nextControl.classList.add('next');
+  nextControl.innerHTML = `&#10095;`; // <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-// // Caption text
-// const captionContainer = document.createElement('div');
-// modalContent.appendChild(nextControl);
-// captionContainer.classList.add('caption-container');
-// captionContainer.innerHTML = `<p id="caption"></p>`;
+  // // Caption text
+  // const captionContainer = document.createElement('div');
+  // modalContent.appendChild(nextControl);
+  // captionContainer.classList.add('caption-container');
+  // captionContainer.innerHTML = `<p id="caption"></p>`;
 
 
-// HTML Modale "Contactez-moi"
-const contactForm = document.createElement('div'); // Création de la div contactForm.
-mainHtml.appendChild(contactForm);
-contactForm.setAttribute('id', 'contact-form');
-contactForm.classList.add('contact-form');
-contactForm.innerHTML +=
-`
-  <div class="form-elements">
+  // HTML Modale "Contactez-moi"
+  const contactForm = document.createElement('div'); // Création de la div contactForm.
+  mainHtml.appendChild(contactForm);
+  contactForm.setAttribute('id', 'contact-form');
+  contactForm.classList.add('contact-form');
+  contactForm.innerHTML +=
+  `
+    <div class="form-elements">
 
-    <div class="tittle-form">
-      <h2> CONTACTEZ-MOI </br>${Photographer.name}</h2>
-      <span class="close-form cursor" onclick="closeForm()">&times</span>
+      <div class="tittle-form">
+        <h2> CONTACTEZ-MOI </br>${Photographer.name}</h2>
+        <span class="close-form cursor" onclick="closeForm()">&times</span>
+      </div>
+
+      <div class="inputs-form">
+        <h3>Prénom</h3>
+          <input type="text" size="20">
+
+        <h3>Nom</h3>
+          <input type="text" size="20">
+
+        <h3>Email</h3>
+          <input type="text" size="20">
+
+        <h3>Votre message</h3>
+          <textarea type="text" rows="4" cols="20"></textarea>
+        
+      </div>
+
+      <div class="btn-form-div">
+        <input class="form-btn" type="submit" value="Envoyer">
+      </div>
+
     </div>
-
-    <div class="inputs-form">
-      <h3>Prénom</h3>
-        <input type="text" size="20">
-
-      <h3>Nom</h3>
-        <input type="text" size="20">
-
-      <h3>Email</h3>
-        <input type="text" size="20">
-
-      <h3>Votre message</h3>
-        <textarea type="text" rows="4" cols="20"></textarea>
-      
-    </div>
-
-    <div class="btn-form-div">
-      <input class="form-btn" type="submit" value="Envoyer">
-    </div>
-
-  </div>
-`
+  `
 
 }
 
@@ -412,10 +414,10 @@ function incrementButton(control) // Single increment for each medias.
 function sortUnorderedList(list, sortDescending)
 {
   var htmlCollection = list.getElementsByClassName("media"),
-    elements = [].slice.call(htmlCollection); //converti htmlCollection en tableau (array).
+    elements = [].slice.call(htmlCollection); // Converti htmlCollection (tous les médias) en tableau (array).
 
   //Trier par ...
-  // elements.sort(compareDates);
+  elements.sort(compareDates);
   //elements.sort(compareTitle);
   elements.sort(compareLikes);
 
@@ -438,7 +440,17 @@ function sortUnorderedList(list, sortDescending)
     return like1 - like2;
   }
 
+  function compareDates()
+  {
+    Medias.forEach((media) =>
+    {
+      return new Date(media.date).getTime() - new Date(media.date).getTime();
+    });
+  }
+
 }
+
+
 
 // function compareDates()
 // {
@@ -446,21 +458,25 @@ function sortUnorderedList(list, sortDescending)
 // }
 // compareDates.sort(compareDates);
 
-function sortByDates()
-{
-  medias[0].date.sort(function (a, b)
-  {
-    var dateA = new Date(a.date), dateB = new Date(b.date)
-    return dateA - dateB
-  });
-}
+// function sortByDates()
+// {
+//   console.log(medias.date);
+//   medias[0].date.sort(function (a, b)
+//   {
+//     var dateA = new Date(a.date), dateB = new Date(b.date)
+//     return dateA - dateB
+//   });
+// }
 
 // ****************************** Pourquoi je n'arrive pas à avoir juste medias.date ? *********************************
-medias.sort(function (a, b)
-{
-  return a.date.localeCompare(b.date);
-});
-console.log(medias.date) //array is now sorted by date
+// function sortByDates()
+// {
+// medias.sort(function (a, b)
+// {
+//   return a.date.localeCompare(b.date);
+// });
+// console.log(medias[0].date); //array is now sorted by date
+// }
 
 
 // Script pour Lightbox
