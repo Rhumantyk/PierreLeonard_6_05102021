@@ -184,14 +184,14 @@ nav ul
     display: none;
 }
 
+.dropdown:focus + .ul-sort
+{
+    display: block;
+}
+
 .dropdown:focus
 {
     transform: rotate(90deg);
-}
-
-.dropdown:focus + .ul-sort /* Comment faire pour que ça se ferme hors fonctionnement du focus ? */
-{
-    display: block;
 }
 
 /* .ul-sort :nth-child(1)
@@ -407,7 +407,7 @@ nav ul
 {
     display: flex;
     background-color: #DB8876;
-    width: 40%;
+    width: 43%;
     flex-direction: column;
     justify-content: space-around;
     height: 75%;
