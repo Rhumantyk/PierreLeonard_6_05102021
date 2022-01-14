@@ -174,31 +174,30 @@ nav ul
     margin-bottom: 20%;
 }
 
-.ul-sort
-{
-    display:block; /* Je veux none; ici */
-    /* background-color: red; */
-}
-
-.ul-sort :nth-child(1)
-{
-    display: flex;
-}
-
 .dropdown
 {
     transform: rotate(270deg);
 }
 
-.dropdown:active
+.ul-sort
 {
-    transform: rotate(90deg); 
+    display: none;
 }
 
-.dropdown:active .ul-sort
+.dropdown:focus
 {
-    display:block;
+    transform: rotate(90deg);
 }
+
+.dropdown:focus + .ul-sort /* Comment faire pour que ça se ferme hors fonctionnement du focus ? */
+{
+    display: block;
+}
+
+/* .ul-sort :nth-child(1)
+{
+    display: flex;
+} */
 
 
 

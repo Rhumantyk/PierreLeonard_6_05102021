@@ -278,8 +278,9 @@ function CreatePageHTML() {
   `
     <p>Trier par</p>
     <nav class="filter-medias">
+      <a href="#" class="dropdown">&#10097;</a>
       <ul class="ul-sort">
-        <li><a href="#" id="popularity">Popularité</a><a href="#" class="dropdown">&#10097;</a></li>
+        <li><a href="#" id="popularity">Popularité</a></li>
         <li><a href="#" id="date">Date</a></li>
         <li><a href="#" id="title">Titre</a></li>
       </ul>
@@ -411,70 +412,72 @@ function incrementButton(control) // Single increment for each medias.
 }
 
 // Triage des medias par nombre de likes
-// function sortLikesList(list, sortDescending)
-// {
-//   var htmlCollection = list.getElementsByClassName("media"),
-//       elements = [].slice.call(htmlCollection); // Converti htmlCollection (tous les médias) en tableau (array).
+function sortLikesList(list, sortDescending)
+{
+  var htmlCollection = list.getElementsByClassName("media"),
+      elements = [].slice.call(htmlCollection); // Converti htmlCollection (tous les médias) en tableau (array).
 
-//   //Trier par ...
-//   // elements.sort(compareDates);
-//   //elements.sort(compareTitle);
-//   elements.sort(compareLikes);
+  //Trier par ...
+  // elements.sort(compareDates);
+  //elements.sort(compareTitle);
+  elements.sort(compareLikes);
 
-//   if (sortDescending) elements.reverse();
+  if (sortDescending) elements.reverse();
 
-//   list.innerHtml = ''; // Enlève les éléments qui s'y trouvent.
+  list.innerHtml = ''; // Enlève les éléments qui s'y trouvent.
 
-//   for (var i = 0; i < elements.length; i++)
-//   {
-//     list.appendChild(elements[i]); // Les rajoute dans un ordre différent.
-//   }
+  for (var i = 0; i < elements.length; i++)
+  {
+    list.appendChild(elements[i]); // Les rajoute dans un ordre différent.
+  }
   
-//   // elements.sort(compareLikes);
-//   function compareLikes(el1, el2)
-//   {
-//     var like1 = parseInt(el1.children[0].children[2].children[1].children[0].innerText),
-//         like2 = parseInt(el2.children[0].children[2].children[1].children[0].innerText);
-//     if(isNaN(like1))like1=-1;
-//     if(isNaN(like2))like2=-1;
-//     // console.log(el1.children[0].children[2].children[1].children[0].innerText);
-//     return like1 - like2;
-//   }
-// }
+  // elements.sort(compareLikes);
+  function compareLikes(el1, el2)
+  {
+    var like1 = parseInt(el1.children[0].children[2].children[1].children[0].innerText),
+        like2 = parseInt(el2.children[0].children[2].children[1].children[0].innerText);
+    if(isNaN(like1))like1=-1;
+    if(isNaN(like2))like2=-1;
+    // console.log(el1.children[0].children[2].children[1].children[0].innerText);
+    return like1 - like2;
+  }
+}
 
-// function sortDatesList(list, sortDescending)
-// {
-//   var htmlCollection = list.getElementsByClassName("media"),
-//       elements = [].slice.call(htmlCollection); // Converti htmlCollection (tous les médias) en tableau (array).
+// Triage des medias par date
+function sortDatesList(list, sortDescending)
+{
+  var htmlCollection = list.getElementsByClassName("media"),
+      elements = [].slice.call(htmlCollection); // Converti htmlCollection (tous les médias) en tableau (array).
 
-//   //Trier par ...
-//   elements.sort(compareDates);
-//   //elements.sort(compareTitle);
-//   // elements.sort(compareLikes);
+  //Trier par ...
+  elements.sort(compareDates);
+  //elements.sort(compareTitle);
+  // elements.sort(compareLikes);
 
-//   if (sortDescending) elements.reverse();
+  if (sortDescending) elements.reverse();
 
-//   list.innerHtml = ''; // Enlève les éléments qui s'y trouvent.
+  list.innerHtml = ''; // Enlève les éléments qui s'y trouvent.
 
-//   for (var i = 0; i < elements.length; i++)
-//   {
-//     list.appendChild(elements[i]); // Les rajoute dans un ordre différent.
-//   }
+  for (var i = 0; i < elements.length; i++)
+  {
+    list.appendChild(elements[i]); // Les rajoute dans un ordre différent.
+  }
 
-//   // elements.sort(compareDates);
-//   function compareDates()
-//   {
+  // elements.sort(compareDates);
+  function compareDates()
+  {
 
-//     Medias.forEach((a, b) =>
-//     {
-//       var dateA = new Date(a.date), dateB = new Date(b.date)
-//       return dateA - dateB;
-//     });
+    Medias.forEach((a, b) =>
+    {
+      var dateA = new Date(a.date), dateB = new Date(b.date)
+      return dateA - dateB;
+    });
 
-//   }
+  }
 
-// }
+}
 
+// Triage des medias par Titre
 function sortTitlesList(list, sortDescending)
 {
   var htmlCollection = list.getElementsByClassName("media"),
@@ -507,34 +510,6 @@ function sortTitlesList(list, sortDescending)
   }
 
 }
-
-
-
-// function compareDates()
-// {
-//   return new Date(medias.date).getTime() - new Date(medias.date).getTime();
-// }
-// compareDates.sort(compareDates);
-
-// function sortByDates()
-// {
-//   console.log(medias.date);
-//   medias[0].date.sort(function (a, b)
-//   {
-//     var dateA = new Date(a.date), dateB = new Date(b.date)
-//     return dateA - dateB
-//   });
-// }
-
-// ****************************** Pourquoi je n'arrive pas à avoir juste medias.date ? *********************************
-// function sortByDates()
-// {
-// medias.sort(function (a, b)
-// {
-//   return a.date.localeCompare(b.date);
-// });
-// console.log(medias[0].date); //array is now sorted by date
-// }
 
 
 // Script pour Lightbox
@@ -640,13 +615,13 @@ window.onload = function()
   CreatePageHTML();
 
 
-  // let descPLikes = false;
-  // document.getElementById("popularity").onclick = function()
-  // {
-  //   sortLikesList(document.getElementById('medias-div'), descPLikes);
-  //   descPLikes = !descPLikes;
-  //   return false;
-  // };
+  let descPLikes = false;
+  document.getElementById("popularity").onclick = function()
+  {
+    sortLikesList(document.getElementById('medias-div'), descPLikes);
+    descPLikes = !descPLikes;
+    return false;
+  };
 
   // let descDate = false;
   // document.getElementById("date").onclick = function()
@@ -656,12 +631,12 @@ window.onload = function()
   //   return false;
   // };
 
-  let descTitle = false;
-  document.getElementById("title").onclick = function()
-  {
-    sortTitlesList(document.getElementById('medias-div'), descTitle);
-    descTitle = !descTitle;
-    return false;
-  };
+  // let descTitle = false;
+  // document.getElementById("title").onclick = function()
+  // {
+  //   sortTitlesList(document.getElementById('medias-div'), descTitle);
+  //   descTitle = !descTitle;
+  //   return false;
+  // };
 
 }
