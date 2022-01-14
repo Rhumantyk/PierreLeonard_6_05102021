@@ -411,46 +411,77 @@ function incrementButton(control) // Single increment for each medias.
 }
 
 // Triage des medias par nombre de likes
-function sortLikesList(list, sortDescending)
-{
-  var htmlCollection = list.getElementsByClassName("media"),
-      elements = [].slice.call(htmlCollection); // Converti htmlCollection (tous les médias) en tableau (array).
+// function sortLikesList(list, sortDescending)
+// {
+//   var htmlCollection = list.getElementsByClassName("media"),
+//       elements = [].slice.call(htmlCollection); // Converti htmlCollection (tous les médias) en tableau (array).
 
-  //Trier par ...
-  // elements.sort(compareDates);
-  //elements.sort(compareTitle);
-  elements.sort(compareLikes);
+//   //Trier par ...
+//   // elements.sort(compareDates);
+//   //elements.sort(compareTitle);
+//   elements.sort(compareLikes);
 
-  if (sortDescending) elements.reverse();
+//   if (sortDescending) elements.reverse();
 
-  list.innerHtml = ''; // Enlève les éléments qui s'y trouvent.
+//   list.innerHtml = ''; // Enlève les éléments qui s'y trouvent.
 
-  for (var i = 0; i < elements.length; i++)
-  {
-    list.appendChild(elements[i]); // Les rajoute dans un ordre différent.
-  }
+//   for (var i = 0; i < elements.length; i++)
+//   {
+//     list.appendChild(elements[i]); // Les rajoute dans un ordre différent.
+//   }
   
-  // elements.sort(compareLikes);
-  function compareLikes(el1, el2)
-  {
-    var like1 = parseInt(el1.children[0].children[2].children[1].children[0].innerText),
-        like2 = parseInt(el2.children[0].children[2].children[1].children[0].innerText);
-    if(isNaN(like1))like1=-1;
-    if(isNaN(like2))like2=-1;
-    // console.log(el1.children[0].children[2].children[1].children[0].innerText);
-    return like1 - like2;
-  }
-}
+//   // elements.sort(compareLikes);
+//   function compareLikes(el1, el2)
+//   {
+//     var like1 = parseInt(el1.children[0].children[2].children[1].children[0].innerText),
+//         like2 = parseInt(el2.children[0].children[2].children[1].children[0].innerText);
+//     if(isNaN(like1))like1=-1;
+//     if(isNaN(like2))like2=-1;
+//     // console.log(el1.children[0].children[2].children[1].children[0].innerText);
+//     return like1 - like2;
+//   }
+// }
 
-function sortDatesList(list, sortDescending)
+// function sortDatesList(list, sortDescending)
+// {
+//   var htmlCollection = list.getElementsByClassName("media"),
+//       elements = [].slice.call(htmlCollection); // Converti htmlCollection (tous les médias) en tableau (array).
+
+//   //Trier par ...
+//   elements.sort(compareDates);
+//   //elements.sort(compareTitle);
+//   // elements.sort(compareLikes);
+
+//   if (sortDescending) elements.reverse();
+
+//   list.innerHtml = ''; // Enlève les éléments qui s'y trouvent.
+
+//   for (var i = 0; i < elements.length; i++)
+//   {
+//     list.appendChild(elements[i]); // Les rajoute dans un ordre différent.
+//   }
+
+//   // elements.sort(compareDates);
+//   function compareDates()
+//   {
+
+//     Medias.forEach((a, b) =>
+//     {
+//       var dateA = new Date(a.date), dateB = new Date(b.date)
+//       return dateA - dateB;
+//     });
+
+//   }
+
+// }
+
+function sortTitlesList(list, sortDescending)
 {
   var htmlCollection = list.getElementsByClassName("media"),
       elements = [].slice.call(htmlCollection); // Converti htmlCollection (tous les médias) en tableau (array).
 
   //Trier par ...
-  elements.sort(compareDates);
-  //elements.sort(compareTitle);
-  // elements.sort(compareLikes);
+  elements.sort(compareTitles);
 
   if (sortDescending) elements.reverse();
 
@@ -461,14 +492,16 @@ function sortDatesList(list, sortDescending)
     list.appendChild(elements[i]); // Les rajoute dans un ordre différent.
   }
 
-  // elements.sort(compareDates);
-  function compareDates()
+  // elements.sort(compareLikes);
+  function compareTitles()
   {
 
     Medias.forEach((a, b) =>
     {
-      var dateA = new Date(a.date), dateB = new Date(b.date)
-      return dateA - dateB;
+      // var titleA = a.title, titleB = b.title
+      console.log(a.title - b.title);
+      // return titleA - titleB;
+      return b.title - a.title;
     });
 
   }
@@ -607,19 +640,28 @@ window.onload = function()
   CreatePageHTML();
 
 
-  var descPopularity = false;
-  document.getElementById("popularity").onclick = function()
+  // let descPLikes = false;
+  // document.getElementById("popularity").onclick = function()
+  // {
+  //   sortLikesList(document.getElementById('medias-div'), descPLikes);
+  //   descPLikes = !descPLikes;
+  //   return false;
+  // };
+
+  // let descDate = false;
+  // document.getElementById("date").onclick = function()
+  // {
+  //   sortDatesList(document.getElementById('medias-div'), descDate);
+  //   descDate = !descDate;
+  //   return false;
+  // };
+
+  let descTitle = false;
+  document.getElementById("title").onclick = function()
   {
-    sortLikesList(document.getElementById('medias-div'), descPopularity);
-    descPopularity = !descPopularity;
+    sortTitlesList(document.getElementById('medias-div'), descTitle);
+    descTitle = !descTitle;
     return false;
   };
 
-  var descDate = false;
-  document.getElementById("date").onclick = function()
-  {
-    sortDatesList(document.getElementById('medias-div'), descDate);
-    descDate = !descDate;
-    return false;
-  };
 }
