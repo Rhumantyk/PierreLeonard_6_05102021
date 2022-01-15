@@ -190,6 +190,7 @@ main
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-evenly;
+    margin-top: 5%;
 }
 
 @media screen and (max-width: 1153px) /* Test media queries */
@@ -200,7 +201,7 @@ main
         flex-wrap: wrap;
         flex-direction: row;
         justify-content: space-evenly;
-        margin-top: 40px;
+        margin-top: 110px;
     }
 }
 
