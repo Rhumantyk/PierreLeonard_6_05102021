@@ -179,6 +179,23 @@ main
     position: absolute;
 }
 
+@media screen and (max-width: 1153px) /* Test media queries */
+{
+    #main-title /* Titre index */
+    {
+        margin-top: -83px;
+    }
+}
+
+@media screen and (max-width: 685px) /* Test media queries */
+{
+    #main-title /* Titre index */
+    {
+        font-size: x-small;
+        margin-top: -63px;
+    }
+}
+
 .h1-main
 {
     padding-right: 60px;
