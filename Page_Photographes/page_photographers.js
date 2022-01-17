@@ -35,7 +35,7 @@ class mediasFactory
 {
 	constructor()
   {
-		this.showsMediaElements = function (media)
+		this.showsMediasElements = function (media)
     {
 			let formattedMedia;
 			// if media.image ou id Media.video -> true si le tag existe dans l'objet Media
@@ -58,7 +58,7 @@ class imageMedia
       <div class="media">
         <a href="#">
           <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}"
-          class="img-pictures hover-shadow cursor" onclick="openModal();currentSlide(n)">
+          class="img-pictures hover-shadow cursor" onclick="openModal()">
           <span class="screenreader-text">${media.title}</span>
           <div class="media-details">
             <p>${media.title}</p>
@@ -106,7 +106,7 @@ class LightBoxFactory
 {
 	constructor()
   {
-		this.showsMediaElements = function (media)
+		this.showsLightBoxMediaElements = function (media)
     {
 			let formattedMedia;
 			// if Media.image ou id Media.video -> true si le tag existe dans l'objet Media
@@ -205,7 +205,7 @@ function CreateFactories()
   mediasfactory = new mediasFactory();
   Medias.forEach((media) =>
   {
-    mediasfactory.showsMediaElements(media); // Chaque media de la liste est envoyé au mediasFactory() qui fera le tri
+    mediasfactory.showsMediasElements(media); // Chaque media de la liste est envoyé au mediasFactory() qui fera le tri
   });
   // -----------------------------------------------
   
@@ -213,7 +213,7 @@ function CreateFactories()
   lightFactory = new LightBoxFactory();
   Medias.forEach((media) =>
   {
-    lightFactory.showsMediaElements(media); // Chaque media de la liste est envoyé au LightBoxFactory() qui fera le tri
+    lightFactory.showsLightBoxMediaElements(media); // Chaque media de la liste est envoyé au LightBoxFactory() qui fera le tri
   });
   
 }
@@ -552,10 +552,10 @@ function plusSlides(n) // Permet la navigation avec les flèches
 }
 
 // Thumbnail image controls -- À SUPPRIMER --
-function currentSlide(n) // Permet la navigation en cliquant sur les médias disposés en dessous du média affiché
-{
-	showSlides((slideIndex = n));
-}
+// function currentSlide(n) // Permet la navigation en cliquant sur les médias disposés en dessous du média affiché
+// {
+// 	showSlides((slideIndex = n));
+// }
 
 // À mettre dans une fontion
 function showSlides(n)
