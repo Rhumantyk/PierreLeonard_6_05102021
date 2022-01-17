@@ -337,7 +337,7 @@ nav ul
     display: flex;
     align-items: center;
     color: #901C1C;
-    background-color: white;
+    background-color: transparent;
     border-radius: inherit;
     border-width: inherit;
     height: inherit;
