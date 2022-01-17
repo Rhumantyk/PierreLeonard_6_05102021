@@ -102,7 +102,7 @@ class videoMedia
 
 
 // Factory Pattern pour la page LightBox
-class LightBoxFactory
+class lightBoxFactory
 {
 	constructor()
   {
@@ -110,15 +110,15 @@ class LightBoxFactory
     {
 			let formattedMedia;
 			// if Media.image ou id Media.video -> true si le tag existe dans l'objet Media
-			if (media.image != null) formattedMedia = new ImageLightBox(media);
-			else if (media.video != null) formattedMedia = new VideoLightBox(media);
+			if (media.image != null) formattedMedia = new imageLightBox(media);
+			else if (media.video != null) formattedMedia = new videoLightBox(media);
 
 			return formattedMedia;
 		};
 	}
 }
 
-class ImageLightBox
+class imageLightBox
 {
 	constructor(media)
   {
@@ -138,7 +138,7 @@ class ImageLightBox
 	}
 }
 
-class VideoLightBox
+class videoLightBox
 {
 	constructor(media)
   {
@@ -210,10 +210,10 @@ function createFactories()
   // -----------------------------------------------
   
   // -------------------- MediasLightFactory
-  lightFactory = new LightBoxFactory();
+  lightFactory = new lightBoxFactory();
   Medias.forEach((media) =>
   {
-    lightFactory.showsLightBoxMediaElements(media); // Chaque media de la liste est envoyé au LightBoxFactory() qui fera le tri
+    lightFactory.showsLightBoxMediaElements(media); // Chaque media de la liste est envoyé au lightBoxFactory() qui fera le tri
   });
   
 }
@@ -614,7 +614,6 @@ window.onload = function()
   getPageData();
   createFactories();
   createPageHTML();
-
 
   let descPLikes = false;
   document.getElementById("popularity").onclick = function()
