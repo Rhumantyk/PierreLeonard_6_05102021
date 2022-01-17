@@ -165,7 +165,7 @@ class VideoLightBox
 // Fonctions
 // ---------
 
-function GetDataFromLocalStorage()
+function getDataFromLocalStorage()
 {
 
   // Récupération JSON via localStorage
@@ -177,7 +177,7 @@ function GetDataFromLocalStorage()
 
 }
 
-function GetPageData()
+function getPageData()
 {
 
   // Get required photograppher
@@ -199,7 +199,7 @@ function GetPageData()
 }
 
 
-function CreateFactories()
+function createFactories()
 {
 
   mediasfactory = new mediasFactory();
@@ -218,7 +218,8 @@ function CreateFactories()
   
 }
 
-function CreatePageHTML() {
+function createPageHTML()
+{
 
   // HTML de la page
   const headTagName = document.getElementsByTagName('head')[0]; // Sans [0] --> Rien ne s'affiche.
@@ -609,10 +610,10 @@ function closeForm()
 window.onload = function()
 {
 
-  GetDataFromLocalStorage();
-  GetPageData();
-  CreateFactories();
-  CreatePageHTML();
+  getDataFromLocalStorage();
+  getPageData();
+  createFactories();
+  createPageHTML();
 
 
   let descPLikes = false;
