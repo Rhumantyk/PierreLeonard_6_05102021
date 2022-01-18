@@ -55,6 +55,8 @@ button:hover
     {
         display: flex;
         justify-content: center;
+        align-items: center;
+        height: 35px;
     }
 
     .btn-modal /*  */
