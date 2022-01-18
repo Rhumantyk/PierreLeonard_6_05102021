@@ -42,11 +42,19 @@ button:hover
         display: flex;
         position: sticky;
         bottom: 0;
+        justify-content: center;
+        padding-bottom: 3%;
+    }
+
+    .div-btn-modal-sticky button
+    {
+        margin-left: inherit;
     }
 
     .btn-modal-sticky 
     {
         display: flex;
+        justify-content: center;
     }
 
     .btn-modal /*  */
