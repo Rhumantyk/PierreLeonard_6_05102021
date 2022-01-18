@@ -84,18 +84,27 @@ header
 
 #link-content
 {
+    width: 100%;
+    font-weight: 700;
+    font-size: 1em;
+    cursor: pointer;
     display: flex;
-    justify-content: center;
     position: fixed;
-    width: 150px;
-    height: 30px;
-    margin: 0px 46%;
-    background-color: #DB8876;
-    font-weight: 600;
-    margin-top: 5px;
-    border-radius: 5px;
-    padding-left: 7px;
-    padding-right: 7px;
+    z-index: 1;
+    top: 0px;
+    justify-content: center;
+}
+
+#link-content a
+{
+    display: flex;
+    width: 151px;
+    border-radius: 6px;
+    background-color: rgb(219, 136, 118);
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin-top: 1%;
+    padding: 4px;
 }
 
 .hide /* Cf scroll JS */
