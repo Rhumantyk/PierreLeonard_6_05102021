@@ -526,26 +526,26 @@ function sortTitlesList(list, sortDescending)
 function ManageModal(Element)
 {
 
-  // alert(Element.id);
   let modal = null;
 
-  if (Element.id.indexOf("contact") >= 0)
+  if (Element.id.indexOf("contact") >= 0) // Si le mot "contact" se trouve dans le tableau de caractère de l'id qui suit
   {
     modal = document.getElementById('contact-form');
   }
-  else if (Element.id.indexOf("lightbox") >= 0)
+  else if (Element.id.indexOf("lightbox") >= 0) // Ou bien si le mot "lightbox" se trouve dans le tableau de caractère de l'id qui suit
   {
     modal = document.getElementById('lightbox');
   }
 
+                  // Alors
 
-  if (modal.classList.contains("displayNone"))
+  if (modal.classList.contains("displayNone")) // Si le CSS appliqué est celui-ci
   {
-    modal.classList.remove("displayNone");
+    modal.classList.remove("displayNone"); // Alors il le retire
   }
   else
   {  
-    modal.classList.add("displayNone");
+    modal.classList.add("displayNone"); // Ou bien si le CSS  appliqué n'est pas "displayNone", il l'applique
   }
 
 }
