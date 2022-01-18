@@ -198,7 +198,6 @@ function getPageData()
 
 }
 
-
 function createFactories()
 {
 
@@ -258,6 +257,7 @@ function createPageHTML()
 
   // Bouton "Contactez-moi".
   const btnContact = document.createElement('button'); // Création de button.
+  btnContact.classList.add('btn-modal'); // Ajout de la classe correspondante.
   btnContact.setAttribute('id', 'btn-open-modal'); // Ajout de l'ID correspondant.
   btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant btn. 
   btnContact.setAttribute('onclick', 'openForm();'); // Ajout du rôle correspondant openForm(); 
@@ -388,8 +388,20 @@ function createPageHTML()
     </div>
   `
 
-} // onclick="closeForm();" au niveau du span (la croix)
-
+  const divBtnContactTM = document.createElement('div'); // Création de div tags-filtered.
+  divBtnContactTM.classList.add('div-btn-modal-sticky'); // Ajout de la classe correspondante.
+  mainHtml.appendChild(divBtnContactTM); // Appartient à la div contactDetails.
+  
+  // Bouton "Contactez-moi" pour tabelette et mobile
+  const btnContactTM = document.createElement('button'); // Création de button.
+  btnContactTM.classList.add('btn-modal-sticky'); // Ajout de la classe correspondante.
+  btnContactTM.setAttribute('id', 'btn-open-modal'); // Ajout de l'ID correspondant.
+  btnContactTM.setAttribute('role', 'button'); // Ajout du rôle correspondant btn. 
+  btnContactTM.setAttribute('onclick', 'openForm();'); // Ajout du rôle correspondant openForm(); 
+  divBtnContactTM.appendChild(btnContactTM); // Appartient à la div divBtnContactTM.
+  btnContactTM.innerHTML = `Contactez-moi`;
+  
+}
 
 function updateTotalLikes()
 {
@@ -507,7 +519,7 @@ function sortTitlesList(list, sortDescending)
 }
 
 
-// Script pour Lightbox
+// // Script pour Lightbox
 // Ouverture Modal
 function openModal()
 {
@@ -529,12 +541,6 @@ function plusSlides(n) // Permet la navigation avec les flèches
 {
 	showSlides((slideIndex += n));
 }
-
-// Thumbnail image controls -- À SUPPRIMER --
-// function currentSlide(n) // Permet la navigation en cliquant sur les médias disposés en dessous du média affiché
-// {
-// 	showSlides((slideIndex = n));
-// }
 
 // À mettre dans une fontion
 function showSlides(n)

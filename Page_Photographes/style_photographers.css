@@ -25,6 +25,36 @@ button:hover
     background-color: #D3573C;
 }
 
+.btn-modal-sticky 
+{
+    display: none;
+}
+
+.div-btn-modal-sticky
+{
+    display: none;
+}
+
+@media screen and (max-width: 769px) /* Bouton "Contactez-moi" mobile et tablette */
+{
+    .div-btn-modal-sticky
+    {
+        display: flex;
+        position: sticky;
+        bottom: 0;
+    }
+
+    .btn-modal-sticky 
+    {
+        display: flex;
+    }
+
+    .btn-modal /*  */
+    {
+        display: none;
+    }
+}
+
 h1
 {
     color: #D3573C;
