@@ -58,7 +58,7 @@ class imageMedia
       <div class="media">
         <a href="#">
           <img id="btn-open-lightbox-${media.image}" src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}"
-          class="img-pictures hover-shadow cursor" onclick="ManageModal(this)">
+          class="img-pictures hover-shadow cursor" onclick="manageModal(this)">
           <span class="screenreader-text">${media.title}</span>
           <div class="media-details">
             <p>${media.title}</p>
@@ -260,7 +260,7 @@ function createPageHTML()
   btnContact.classList.add('btn-modal'); // Ajout de la classe correspondante.
   btnContact.setAttribute('id', 'btn-open-contact'); // Ajout de l'ID correspondant.
   btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant btn. 
-  btnContact.setAttribute('onclick', 'ManageModal(this);'); // Ajout du rôle correspondant openForm(); 
+  btnContact.setAttribute('onclick', 'manageModal(this);'); // Ajout du rôle correspondant openForm(); 
   photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
   btnContact.innerHTML = `Contactez-moi`;
 
@@ -329,7 +329,7 @@ function createPageHTML()
   const closeCursor = document.createElement('span'); // Création du span.
   closeCursor.setAttribute('id', 'lightbox-close');
   lightBox.appendChild(closeCursor);
-  closeCursor.setAttribute('onclick','ManageModal(this);');
+  closeCursor.setAttribute('onclick','manageModal(this);');
   closeCursor.classList.add('close', 'cursor');
   closeCursor.innerHTML = `&times`; // <span class="close cursor" onclick="closeModal()">&times;</span>
 
@@ -366,7 +366,7 @@ function createPageHTML()
 
       <div class="tittle-form">
         <h2> CONTACTEZ-MOI </br>${Photographer.name}</h2>
-        <span id="contact-form-close" class="close-form cursor" onclick="ManageModal(this);">&times</span>
+        <span id="contact-form-close" class="close-form cursor" onclick="manageModal(this);">&times</span>
       </div>
 
       <div class="inputs-form">
@@ -400,7 +400,7 @@ function createPageHTML()
   btnContactTM.classList.add('btn-modal-sticky'); // Ajout de la classe correspondante.
   btnContactTM.setAttribute('id', 'contact-form-open-mobile'); // Ajout de l'ID correspondant.
   btnContactTM.setAttribute('role', 'button'); // Ajout du rôle correspondant btn. 
-  btnContactTM.setAttribute('onclick', 'ManageModal(this);'); // Ajout du rôle correspondant openForm(); 
+  btnContactTM.setAttribute('onclick', 'manageModal(this);'); // Ajout du rôle correspondant openForm(); 
   divBtnContactTM.appendChild(btnContactTM); // Appartient à la div divBtnContactTM.
   btnContactTM.innerHTML = `Contactez-moi`;
 
@@ -523,7 +523,7 @@ function sortTitlesList(list, sortDescending)
 
 
 // Script pour Lightbox et Formulaire.
-function ManageModal(Element)
+function manageModal(Element)
 {
 
   let modal = null;
