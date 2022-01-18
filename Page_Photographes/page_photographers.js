@@ -258,8 +258,9 @@ function createPageHTML()
 
   // Bouton "Contactez-moi".
   const btnContact = document.createElement('button'); // Création de button.
+  btnContact.setAttribute('id', 'btn-open-modal'); // Ajout de l'ID correspondant.
   btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant btn. 
-  btnContact.setAttribute('onclick', 'openForm();'); // Ajout du rôle correspondant openForm();. 
+  btnContact.setAttribute('onclick', 'openForm();'); // Ajout du rôle correspondant openForm(); 
   photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
   btnContact.innerHTML = `Contactez-moi`;
 
@@ -362,7 +363,7 @@ function createPageHTML()
 
       <div class="tittle-form">
         <h2> CONTACTEZ-MOI </br>${Photographer.name}</h2>
-        <span class="close-form cursor" onclick="closeForm()">&times</span>
+        <span id="btn-close-modal" class="close-form cursor" onclick="closeForm();">&times</span>
       </div>
 
       <div class="inputs-form">
@@ -387,7 +388,7 @@ function createPageHTML()
     </div>
   `
 
-}
+} // onclick="closeForm();" au niveau du span (la croix)
 
 
 function updateTotalLikes()
@@ -419,8 +420,6 @@ function sortLikesList(list, sortDescending)
       elements = [].slice.call(htmlCollection); // Converti htmlCollection (tous les médias) en tableau (array).
 
   //Trier par ...
-  // elements.sort(compareDates);
-  //elements.sort(compareTitle);
   elements.sort(compareLikes);
 
   if (sortDescending) elements.reverse();
@@ -432,7 +431,6 @@ function sortLikesList(list, sortDescending)
     list.appendChild(elements[i]); // Les rajoute dans un ordre différent.
   }
   
-  // elements.sort(compareLikes);
   function compareLikes(el1, el2)
   {
     var like1 = parseInt(el1.children[0].children[2].children[1].children[0].innerText),
@@ -452,8 +450,6 @@ function sortDatesList(list, sortDescending)
 
   //Trier par ...
   elements.sort(compareDates);
-  //elements.sort(compareTitle);
-  // elements.sort(compareLikes);
 
   if (sortDescending) elements.reverse();
 
@@ -464,7 +460,6 @@ function sortDatesList(list, sortDescending)
     list.appendChild(elements[i]); // Les rajoute dans un ordre différent.
   }
 
-  // elements.sort(compareDates);
   function compareDates()
   {
 
@@ -496,7 +491,6 @@ function sortTitlesList(list, sortDescending)
     list.appendChild(elements[i]); // Les rajoute dans un ordre différent.
   }
 
-  // elements.sort(compareLikes);
   function compareTitles()
   {
 
@@ -525,22 +519,6 @@ function closeModal()
 {
 	document.getElementById('modal').style.display = 'none';
 }
-
-// function openCloseModal()
-// {
-
-//   let modal = document.getElementById('modal');
-
-//   if (modal == false)
-//   {
-//     document.getElementById('modal').style.display = 'none';
-//   }
-//   else if (modal == true)
-//   {
-//     document.getElementById('modal').style.display = 'flex';
-//   }
-
-// }
 
 // Ligne à debugger
 var slideIndex = 1;
@@ -603,6 +581,29 @@ function closeForm()
 	document.getElementById('contact-form').style.display = 'none';
 }
 
+// ******** Tentative factorisation echec *************
+// function openCloseForm(event) // openForm et closeForm sont commentés, tout comme leurs onclick(); respectifs //
+// {
+
+//   let modal = document.getElementById('contact-form');
+
+//   let openFormModal = document.getElementById('btn-open-modal');
+//   let closeFormModal = document.getElementById('btn-close-modal');
+    
+//   if (event.target.id == openFormModal)
+//   {
+//     modal.style.display = 'flex';
+//   }
+//   else (event.target.id == closeFormModal)
+//   {
+//     modal.style.display = 'none';
+//   } 
+
+// }
+
+
+
+
 
 // Evènements
 // ----------
@@ -614,14 +615,15 @@ window.onload = function()
   getPageData();
   createFactories();
   createPageHTML();
+  // openCloseForm();
 
-  let descPLikes = false;
-  document.getElementById("popularity").onclick = function()
-  {
-    sortLikesList(document.getElementById('medias-div'), descPLikes);
-    descPLikes = !descPLikes;
-    return false;
-  };
+  // let descPLikes = false;
+  // document.getElementById("popularity").onclick = function()
+  // {
+  //   sortLikesList(document.getElementById('medias-div'), descPLikes);
+  //   descPLikes = !descPLikes;
+  //   return false;
+  // };
 
   // let descDate = false;
   // document.getElementById("date").onclick = function()
@@ -631,12 +633,12 @@ window.onload = function()
   //   return false;
   // };
 
-  // let descTitle = false;
-  // document.getElementById("title").onclick = function()
-  // {
-  //   sortTitlesList(document.getElementById('medias-div'), descTitle);
-  //   descTitle = !descTitle;
-  //   return false;
-  // };
+  let descTitle = false;
+  document.getElementById("title").onclick = function()
+  {
+    sortTitlesList(document.getElementById('medias-div'), descTitle);
+    descTitle = !descTitle;
+    return false;
+  };
 
 }

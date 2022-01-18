@@ -213,6 +213,15 @@ main
     }
 }
 
+@media screen and (max-width: 426px) /* Test media queries */
+{
+    #main-title /* Titre index */
+    {
+        font-size: 0.3em;
+        margin-top: -31px;
+    }
+}
+
 .h1-main
 {
     padding-right: 60px;

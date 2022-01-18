@@ -184,7 +184,7 @@ nav ul
     display: none;
 }
 
-.dropdown:focus + .ul-sort
+.dropdown + .ul-sort /* :focus à l'origine */
 {
     display: block;
 }
