@@ -429,7 +429,7 @@ nav ul
 /* Modal "COntactez-moi" */
 .contact-form 
 {
-    display: none;
+    display: flex;
     /* align-items: center; */
     /* padding: 3%; */
     position: fixed;
@@ -573,7 +573,7 @@ textarea
 /* The Modal (background) */
 .modal 
 {
-    display: none;
+    display: flex;
     align-items: center;
     /* padding: 3%; */
     position: fixed;
@@ -585,6 +585,10 @@ textarea
     height: 100%;
     overflow: auto;
     background-color: white;
+}
+
+.displayNone {
+    display: none;
 }
 
 /* Modal Content */

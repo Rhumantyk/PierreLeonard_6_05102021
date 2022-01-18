@@ -19,7 +19,7 @@ let totalLikes = 0;
 // Global HTML tags
 const mainHtml = document.createElement('main');
 const mediasDiv = document.createElement('div'); // Création de div media.
-const modalContent = document.createElement('div'); // Création de la div modal-content.
+const lightBox = document.createElement('div'); // Création de la div modal-content.
 
 // Factories
 let mediasfactory = null;
@@ -57,8 +57,8 @@ class imageMedia
       `
       <div class="media">
         <a href="#">
-          <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}"
-          class="img-pictures hover-shadow cursor" onclick="openModal()">
+          <img id="btn-open-lightbox-${media.image}" src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}" alt="${media.title}"
+          class="img-pictures hover-shadow cursor" onclick="ManageModal(this)">
           <span class="screenreader-text">${media.title}</span>
           <div class="media-details">
             <p>${media.title}</p>
@@ -124,7 +124,7 @@ class imageLightBox
   {
     this._type = 'image';
     // Ajout lightbox
-    modalContent.innerHTML += 
+    lightBox.innerHTML += 
       `
         <div class="mySlides mediaLightBox">
           <img src="../Photos_FishEye/Sample_Photos/${Photographer.name}/${media.image}"
@@ -144,7 +144,7 @@ class videoLightBox
   {
 		this._type = 'video';
     // Ajout lightbox
-    modalContent.innerHTML += 
+    lightBox.innerHTML += 
       `
         <div class="mySlides mediaLightBox">
           <video controls width="300">
@@ -258,9 +258,9 @@ function createPageHTML()
   // Bouton "Contactez-moi".
   const btnContact = document.createElement('button'); // Création de button.
   btnContact.classList.add('btn-modal'); // Ajout de la classe correspondante.
-  btnContact.setAttribute('id', 'btn-open-modal'); // Ajout de l'ID correspondant.
+  btnContact.setAttribute('id', 'btn-open-contact'); // Ajout de l'ID correspondant.
   btnContact.setAttribute('role', 'button'); // Ajout du rôle correspondant btn. 
-  btnContact.setAttribute('onclick', 'openForm();'); // Ajout du rôle correspondant openForm(); 
+  btnContact.setAttribute('onclick', 'ManageModal(this);'); // Ajout du rôle correspondant openForm(); 
   photographersDetails.appendChild(btnContact); // Appartient à la div contactDetails.
   btnContact.innerHTML = `Contactez-moi`;
 
@@ -318,30 +318,32 @@ function createPageHTML()
   // HTML LightBox
   const modal = document.createElement('div'); // Création de la div modal.
   mainHtml.appendChild(modal);
-  modal.setAttribute('id', 'modal');
+  modal.setAttribute('id', 'lightbox');
   modal.classList.add('modal');
+  modal.classList.add('displayNone'); // <div class="modal-content">
 
-  modal.appendChild(modalContent);
-  modalContent.classList.add('modal-content'); // <div class="modal-content">
+  modal.appendChild(lightBox);
+  lightBox.classList.add('modal-content'); // <div class="modal-content">
 
   // Fermeture modale (X)
   const closeCursor = document.createElement('span'); // Création du span.
-  modalContent.appendChild(closeCursor);
-  closeCursor.setAttribute('onclick','closeModal();');
+  closeCursor.setAttribute('id', 'lightbox-close');
+  lightBox.appendChild(closeCursor);
+  closeCursor.setAttribute('onclick','ManageModal(this);');
   closeCursor.classList.add('close', 'cursor');
   closeCursor.innerHTML = `&times`; // <span class="close cursor" onclick="closeModal()">&times;</span>
 
   // Previous Controls (<)
   const prevControl = document.createElement('a');
   prevControl.setAttribute('onclick', 'plusSlides(-1)');
-  modalContent.appendChild(prevControl);
+  lightBox.appendChild(prevControl);
   prevControl.classList.add('prev');
   prevControl.innerHTML = `&#10094;`; // <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 
   // Next Controls (>)
   const nextControl = document.createElement('a');
   nextControl.setAttribute('onclick', 'plusSlides(1)');
-  modalContent.appendChild(nextControl);
+  lightBox.appendChild(nextControl);
   nextControl.classList.add('next');
   nextControl.innerHTML = `&#10095;`; // <a class="next" onclick="plusSlides(1)">&#10095;</a>
 
@@ -357,13 +359,14 @@ function createPageHTML()
   mainHtml.appendChild(contactForm);
   contactForm.setAttribute('id', 'contact-form');
   contactForm.classList.add('contact-form');
+  contactForm.classList.add('displayNone');
   contactForm.innerHTML +=
   `
     <div class="form-elements">
 
       <div class="tittle-form">
         <h2> CONTACTEZ-MOI </br>${Photographer.name}</h2>
-        <span id="btn-close-modal" class="close-form cursor" onclick="closeForm();">&times</span>
+        <span id="contact-form-close" class="close-form cursor" onclick="ManageModal(this);">&times</span>
       </div>
 
       <div class="inputs-form">
@@ -392,15 +395,15 @@ function createPageHTML()
   divBtnContactTM.classList.add('div-btn-modal-sticky'); // Ajout de la classe correspondante.
   mainHtml.appendChild(divBtnContactTM); // Appartient à la div contactDetails.
   
-  // Bouton "Contactez-moi" pour tabelette et mobile
+  // Bouton "Contactez-moi" pour tablette et mobile
   const btnContactTM = document.createElement('button'); // Création de button.
   btnContactTM.classList.add('btn-modal-sticky'); // Ajout de la classe correspondante.
-  btnContactTM.setAttribute('id', 'btn-open-modal'); // Ajout de l'ID correspondant.
+  btnContactTM.setAttribute('id', 'contact-form-open-mobile'); // Ajout de l'ID correspondant.
   btnContactTM.setAttribute('role', 'button'); // Ajout du rôle correspondant btn. 
-  btnContactTM.setAttribute('onclick', 'openForm();'); // Ajout du rôle correspondant openForm(); 
+  btnContactTM.setAttribute('onclick', 'ManageModal(this);'); // Ajout du rôle correspondant openForm(); 
   divBtnContactTM.appendChild(btnContactTM); // Appartient à la div divBtnContactTM.
   btnContactTM.innerHTML = `Contactez-moi`;
-  
+
 }
 
 function updateTotalLikes()
@@ -519,17 +522,32 @@ function sortTitlesList(list, sortDescending)
 }
 
 
-// // Script pour Lightbox
-// Ouverture Modal
-function openModal()
+// Script pour Lightbox et Formulaire.
+function ManageModal(Element)
 {
-	document.getElementById('modal').style.display = 'flex';
-}
 
-// Fermeture Modal
-function closeModal()
-{
-	document.getElementById('modal').style.display = 'none';
+  // alert(Element.id);
+  let modal = null;
+
+  if (Element.id.indexOf("contact") >= 0)
+  {
+    modal = document.getElementById('contact-form');
+  }
+  else if (Element.id.indexOf("lightbox") >= 0)
+  {
+    modal = document.getElementById('lightbox');
+  }
+
+
+  if (modal.classList.contains("displayNone"))
+  {
+    modal.classList.remove("displayNone");
+  }
+  else
+  {  
+    modal.classList.add("displayNone");
+  }
+
 }
 
 // Ligne à debugger
@@ -574,43 +592,6 @@ function showSlides(n)
 }
 
 
-// Script pour Lightbox
-// Ouverture Modal
-function openForm()
-{
-	document.getElementById('contact-form').style.display = 'flex';
-}
-
-// Fermeture Modal
-function closeForm()
-{
-	document.getElementById('contact-form').style.display = 'none';
-}
-
-// ******** Tentative factorisation echec *************
-// function openCloseForm(event) // openForm et closeForm sont commentés, tout comme leurs onclick(); respectifs //
-// {
-
-//   let modal = document.getElementById('contact-form');
-
-//   let openFormModal = document.getElementById('btn-open-modal');
-//   let closeFormModal = document.getElementById('btn-close-modal');
-    
-//   if (event.target.id == openFormModal)
-//   {
-//     modal.style.display = 'flex';
-//   }
-//   else (event.target.id == closeFormModal)
-//   {
-//     modal.style.display = 'none';
-//   } 
-
-// }
-
-
-
-
-
 // Evènements
 // ----------
 
@@ -621,7 +602,6 @@ window.onload = function()
   getPageData();
   createFactories();
   createPageHTML();
-  // openCloseForm();
 
   // let descPLikes = false;
   // document.getElementById("popularity").onclick = function()
