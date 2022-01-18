@@ -406,6 +406,34 @@ function createPageHTML()
 
 }
 
+// Script pour Lightbox et Formulaire.
+function manageModal(Element)
+{
+
+  let modal = null;
+
+  if (Element.id.indexOf("contact") >= 0) // Si le mot "contact" se trouve dans le tableau de caractère de l'id qui suit
+  {
+    modal = document.getElementById('contact-form'); // Alors modal = Ceci
+  }
+  else if (Element.id.indexOf("lightbox") >= 0) // Ou bien si le mot "lightbox" se trouve dans le tableau de caractère de l'id qui suit
+  {
+    modal = document.getElementById('lightbox'); // Alors modal = Ceci
+  }
+
+  // Dès lors
+
+  if (modal.classList.contains("displayNone")) // Si le CSS appliqué est celui-ci
+  {
+    modal.classList.remove("displayNone"); // Alors il est retiré
+  }
+  else
+  {  
+    modal.classList.add("displayNone"); // Ou bien si le CSS  appliqué n'est pas "displayNone", il est appliqué
+  }
+
+}
+
 function updateTotalLikes()
 {
   const allLikes = document.getElementById("all-likes");
@@ -415,7 +443,8 @@ function updateTotalLikes()
 // Incrémentation
 function incrementButton(control) // Single increment for each medias.
 {
-  let idMedia = control.id.split(";")[0];
+
+  let idMedia = control.id.split(";")[0]; // Séparation de l'id via le ";"
   let counter = document.getElementById(idMedia + ";counter"); // Element récupéreré
   let counterValue = counter.innerText; // Nombre de likes (propriété de)
 
@@ -425,7 +454,7 @@ function incrementButton(control) // Single increment for each medias.
 
   totalLikes++;
   updateTotalLikes();
-  console.log(counterValue);
+
 }
 
 // Triage des medias par nombre de likes
@@ -521,35 +550,6 @@ function sortTitlesList(list, sortDescending)
 
 }
 
-
-// Script pour Lightbox et Formulaire.
-function manageModal(Element)
-{
-
-  let modal = null;
-
-  if (Element.id.indexOf("contact") >= 0) // Si le mot "contact" se trouve dans le tableau de caractère de l'id qui suit
-  {
-    modal = document.getElementById('contact-form');
-  }
-  else if (Element.id.indexOf("lightbox") >= 0) // Ou bien si le mot "lightbox" se trouve dans le tableau de caractère de l'id qui suit
-  {
-    modal = document.getElementById('lightbox');
-  }
-
-                  // Alors
-
-  if (modal.classList.contains("displayNone")) // Si le CSS appliqué est celui-ci
-  {
-    modal.classList.remove("displayNone"); // Alors il le retire
-  }
-  else
-  {  
-    modal.classList.add("displayNone"); // Ou bien si le CSS  appliqué n'est pas "displayNone", il l'applique
-  }
-
-}
-
 // Ligne à debugger
 var slideIndex = 1;
 showSlides(slideIndex);
@@ -602,6 +602,7 @@ window.onload = function()
   getPageData();
   createFactories();
   createPageHTML();
+  // manageModal(); // Pourquoi quand je l'applique ici : "Cannot read properties of undefined (reading 'id')" ?
 
   // let descPLikes = false;
   // document.getElementById("popularity").onclick = function()
