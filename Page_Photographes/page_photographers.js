@@ -434,6 +434,7 @@ function manageModal(Element)
 
 }
 
+// Likes totaux avant incrémentation
 function updateTotalLikes()
 {
   const allLikes = document.getElementById("all-likes");
@@ -453,12 +454,31 @@ function incrementButton(control) // Single increment for each medias.
   counter.innerText = counterValue; // Nouvelle valeur counter value.
 
   totalLikes++;
-  updateTotalLikes();
+  updateTotalLikes(); // Like totaux après incrémentation, en ayant appelé la fonction d'origine
 
 }
 
+// // Sorting initial
+// function sortInitial(list, sortDescending)
+// {
+//   var htmlCollection = list.getElementsByClassName("media"),
+//       elements = [].slice.call(htmlCollection); // Converti htmlCollection (tous les médias) en tableau (array).
+
+//   // Trier par ...
+//   elements.sort(compareLikes);
+
+//   if (sortDescending) elements.reverse();
+
+//   list.innerHtml = ''; // Enlève les éléments qui s'y trouvent.
+
+//   for (var i = 0; i < elements.length; i++)
+//   {
+//     list.appendChild(elements[i]); // Les rajoute dans un ordre différent.
+//   }
+// }
+
 // Triage des medias par nombre de likes
-function sortLikesList(list, sortDescending)
+function sortLikesList(list, sortDescending) // (list, sortDescending)
 {
   var htmlCollection = list.getElementsByClassName("media"),
       elements = [].slice.call(htmlCollection); // Converti htmlCollection (tous les médias) en tableau (array).
@@ -474,7 +494,7 @@ function sortLikesList(list, sortDescending)
   {
     list.appendChild(elements[i]); // Les rajoute dans un ordre différent.
   }
-  
+
   function compareLikes(el1, el2)
   {
     var like1 = parseInt(el1.children[0].children[2].children[1].children[0].innerText),
@@ -604,13 +624,13 @@ window.onload = function()
   createPageHTML();
   // manageModal(); // Pourquoi quand je l'applique ici : "Cannot read properties of undefined (reading 'id')" ?
 
-  // let descPLikes = false;
-  // document.getElementById("popularity").onclick = function()
-  // {
-  //   sortLikesList(document.getElementById('medias-div'), descPLikes);
-  //   descPLikes = !descPLikes;
-  //   return false;
-  // };
+  let descPLikes = false;
+  document.getElementById("popularity").onclick = function()
+  {
+    sortLikesList(document.getElementById('medias-div'), descPLikes);
+    descPLikes = !descPLikes;
+    return false;
+  };
 
   // let descDate = false;
   // document.getElementById("date").onclick = function()

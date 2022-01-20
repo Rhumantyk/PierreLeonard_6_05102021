@@ -413,12 +413,24 @@ nav ul
 
 #like-price p
 {
+    display: flex;
     padding-right: 25px;
     padding-left: 25px;
     font-weight: 600;
 }
 
+#like-price :nth-child(1)
+{
+    margin-right: 3px;
+}
 
+@media screen and (max-width: 769px) /* Bouton "Contactez-moi" mobile et tablette */
+{
+    #like-price
+    {
+        display: none;
+    }
+}
 
 
 
