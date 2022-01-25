@@ -107,6 +107,14 @@ header
     padding: 4px;
 }
 
+@media screen and (max-width: 768px) /* Test media queries */
+{
+    #link-content
+    {
+        display: none;
+    }
+}
+
 .hide /* Cf scroll JS */
 {
     display: none;
